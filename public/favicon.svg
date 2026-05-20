@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#FAF9F6" rx="8"/>
+  <text x="32" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#D26A47">F</text>
+  <text x="32" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#696B68" opacity="0.3" transform="translate(8, 6)">H</text>
+</svg>

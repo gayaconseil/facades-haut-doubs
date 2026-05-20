@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galerie photos FB → FHD — Sélection</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F4652F;
+    --orange-dark: #C84B1A;
+    --gris: #737373;
+    --noir: #000;
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --border: #E5E5E5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--noir);
+    padding: 30px 20px 100px;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border);
+  }
+  header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+  }
+  header h1 em { color: var(--orange); font-style: normal; }
+  header p { color: var(--gris); font-size: 1rem; }
+  .stats {
+    display: inline-flex;
+    gap: 30px;
+    margin-top: 16px;
+    padding: 14px 24px;
+    background: white;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .stats b { color: var(--orange-dark); font-size: 1.1rem; }
+
+  .filters {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 16px 0;
+    z-index: 50;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .filter-btn {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--orange); color: var(--orange-dark); }
+  .filter-btn.active {
+    background: var(--noir);
+    color: white;
+    border-color: var(--noir);
+  }
+  .filter-btn .count {
+    display: inline-block;
+    background: rgba(0,0,0,0.08);
+    color: var(--gris);
+    padding: 1px 8px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    margin-left: 6px;
+  }
+  .filter-btn.active .count { background: var(--orange); color: white; }
+
+  .actions {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+  }
+  .btn-export {
+    padding: 8px 18px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .btn-export:hover { background: var(--orange-dark); }
+  .btn-reset {
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-family: inherit;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  .category {
+    margin-bottom: 50px;
+  }
+  .category h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+  .category h2 em { color: var(--orange); font-style: normal; }
+  .category .cat-desc {
+    color: var(--gris);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .photo-card {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.15s;
+    cursor: pointer;
+    position: relative;
+  }
+  .photo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: var(--orange);
+  }
+  .photo-card.selected {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 2px var(--orange);
+  }
+  .photo-card .img-wrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  .photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .photo-card:hover img { transform: scale(1.04); }
+  .photo-card .check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.98);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    transition: all 0.15s;
+    cursor: pointer;
+    border: 2px solid white;
+    z-index: 5;
+  }
+  .photo-card .check:hover {
+    transform: scale(1.12);
+    background: var(--orange);
+    color: white;
+  }
+  .photo-card.selected .check {
+    background: var(--orange);
+    color: white;
+    border-color: var(--orange);
+  }
+  .photo-card .info {
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    color: var(--gris);
+    word-break: break-all;
+    line-height: 1.35;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    cursor: zoom-out;
+  }
+  .modal.open { display: flex; }
+  .modal img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+  .modal .modal-name {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.95);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+  }
+
+  /* Export panel */
+  .export-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: 2px solid var(--orange);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    z-index: 200;
+    display: none;
+  }
+  .export-panel.open { display: block; }
+  .export-panel h3 { margin-bottom: 12px; font-family: 'Libre Baskerville', serif; }
+  .export-panel textarea {
+    width: 100%;
+    height: 200px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.78rem;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  .export-panel .panel-actions { display: flex; gap: 8px; }
+  .export-panel .panel-actions button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .export-panel .btn-copy { background: var(--orange); color: white; }
+  .export-panel .btn-close { background: var(--border); }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gris);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Galerie photos <em>FB → FHD</em></h1>
+    <p>Sélectionne les photos que tu veux conserver pour Façades Haut-Doubs</p>
+    <div class="stats">
+      <div><b id="total">0</b> photos disponibles</div>
+      <div><b id="selected-count">0</b> sélectionnées</div>
+    </div>
+  </header>
+
+  <div class="filters" id="filters">
+    <!-- Filtres générés en JS -->
+  </div>
+
+  <div id="gallery"></div>
+
+</div>
+
+<!-- Modal preview -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="">
+  <div class="modal-name" id="modal-name"></div>
+</div>
+
+<!-- Export panel -->
+<div class="export-panel" id="export-panel">
+  <h3>Photos sélectionnées</h3>
+  <textarea id="export-text" readonly></textarea>
+  <div class="panel-actions">
+    <button class="btn-copy" onclick="copyExport()">📋 Copier</button>
+    <button class="btn-close" onclick="closeExport()">Fermer</button>
+  </div>
+</div>
+
+<script>
+  // --- Catégorisation des photos ---
+  const PHOTOS = [
+    '64677686354b.png',
+    'Facades-Bisontines-Valeurs-Diversite.jpg',
+    'Submit-high-res-photo.png',
+    'bardage-bois-composite-copie.jpg',
+    'bardage-bois-composite.png',
+    'bardage-exterieur-01.jpg',
+    'bardage-fibre-ciment.png',
+    'bardage-metallique-1.png',
+    'enduit-chaux.jpg',
+    'enduit-exterieur-01.jpg',
+    'facades-bisontines-bardage-exterieur-1.jpg',
+    'facades-bisontines-bardage-exterieur-2.jpg',
+    'facades-bisontines-bardage-exterieur-3.jpg',
+    'facades-bisontines-bardage-exterieur-5.jpg',
+    'facades-bisontines-bardage-exterieur-6.jpg',
+    'facades-bisontines-bardage-exterieur-7.jpg',
+    'facades-bisontines-bardage-exterieur-8.jpg',
+    'facades-bisontines-chantier-etancheite-sol-1-1.jpg',
+    'facades-bisontines-chantier-etancheite-sol-1.jpg',
+    'facades-bisontines-chantier-etancheite-sol-2.jpg',
+    'facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg',
+    'facades-bisontines-chantier-maison-particulier-1.jpg',
+    'facades-bisontines-chantier-maison-particulier-enduit-de-facade-1-w500.jpg',
+    'facades-bisontines-chantier-maison-particulier-enduit-de-facade-1.jpg',
+    'facades-bisontines-chantier-maison-particulier-ravalement-facade-1-1.jpg',
+    'facades-bisontines-chantier-maison-particulier-ravalement-facade-1.jpg',
+    'facades-bisontines-chantier-renovation-exterieur-1.jpg',
+    'facades-bisontines-chantier-renovation-exterieur-2.jpg',
+    'facades-bisontines-chantier-renovation-exterieur-3.jpg',
+    'facades-bisontines-chantier-renovation-exterieur-4.jpg',
+    'facades-bisontines-enduit-de-facade-de-maison.jpg',
+    'facades-bisontines-engager-diversite.jpg',
+    'facades-bisontines-equipe-avant-projet.jpg',
+    'facades-bisontines-equipe-travail-chantier-maison-particulier.jpg',
+    'facades-bisontines-etancheite-balcon-03.jpg',
+    'facades-bisontines-etancheite-sol-exterieur.jpg',
+    'facades-bisontines-famille-interieur-maison-2.jpg',
+    'facades-bisontines-famille-interieur-mur-brique-2.jpg',
+    'facades-bisontines-famille-salon-2.jpg',
+    'facades-bisontines-fond-accueil-2.png',
+    'facades-bisontines-implantation-franhe-comte-besancon.png',
+    'facades-bisontines-isolation-exterieur-enduit-facade.jpg',
+    'facades-bisontines-isolation-thermique-exterieur-et-renovation-facade-couv.jpg',
+    'facades-bisontines-nos-references-clients-1.jpg',
+    'facades-bisontines-nos-valeurs-au-plus-proche-clients.jpg',
+    'facades-bisontines-photo-dejan-barisic.jpg',
+    'facades-bisontines-ravalement-facade-avec-echafaudages-chantier.jpg',
+    'facades-bisontines-ravalement-facade-exterieur-1.jpg',
+    'facades-bisontines-ravalement-facade-exterieur-2.jpg',
+    'facades-bisontines-ravalement-facade-pierre-et-brique.jpg',
+    'facades-bisontines-ravalement-maison-particulier-exterieur.jpg',
+    'facades-bisontines-renovation-enduit-exterieur-1.jpg',
+    'facades-bisontines-renovation-enduit-exterieur-chantier-particulier-3.jpg',
+    'facades-bisontines-valeurs-engagement.jpg',
+    'isolant-fibre-boix.jpeg',
+    'isolant-polystyrene-maison.jpeg',
+    'isolation-thermique-exterieur-01.jpg',
+    'isolation-thermique-exterieur-02.jpg',
+    'isolation-thermique-exterieur-03.jpg',
+    'isolation-thermique-par-exterieur-04.jpg',
+    'isolation-thermique-par-exterieur-05.jpg',
+    'laine-de-roche.jpeg',
+    'maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png',
+    'photo-laine-verre-3.jpeg',
+    'picto-enduit.png',
+    'picto-etancheite.png',
+    'picto-facade-exterieur.png',
+    'picto-isolation-par-exterieur.png',
+    'picto-ravaelement-facade.png',
+    'ravalement-01.jpg',
+  ];
+
+  function categorize(name) {
+    const n = name.toLowerCase();
+    if (n.startsWith('picto-')) return 'pictos';
+    if (n.includes('ravalement') || n.includes('ravaelement')) return 'ravalement';
+    if (n.includes('bardage')) return 'bardage';
+    if (n.includes('isolation') || n.includes('isolant') || n.includes('laine-de-roche') || n.includes('laine-verre') || n.includes('polystyrene') || n.includes('fibre-boix') || n.includes('fibre-ciment')) return 'isolation';
+    if (n.includes('enduit')) return 'enduit';
+    if (n.includes('etancheite')) return 'etancheite';
+    if (n.includes('equipe') || n.includes('dejan') || n.includes('valeurs') || n.includes('engager') || n.includes('diversite') || n.includes('engagement')) return 'equipe';
+    if (n.includes('famille')) return 'lifestyle';
+    if (n.includes('implantation') || n.includes('carte')) return 'implantation';
+    if (n.includes('accueil') || n.includes('fond')) return 'home';
+    if (n.includes('chantier') || n.includes('renovation')) return 'chantiers';
+    if (n.includes('reference')) return 'references';
+    return 'divers';
+  }
+
+  const CATEGORIES = {
+    'ravalement': { label: '🏠 Ravalement de façade', desc: 'Chantiers de ravalement, façades pierre et enduit' },
+    'bardage': { label: '🪵 Bardage extérieur', desc: 'Bois, composite, fibre-ciment, métallique' },
+    'isolation': { label: '🧱 Isolation thermique', desc: 'ITE et matériaux isolants (laine, polystyrène...)' },
+    'enduit': { label: '🎨 Enduit de façade', desc: 'Enduits décoratifs, chaux, finitions' },
+    'etancheite': { label: '☔ Étanchéité', desc: 'Sols extérieurs, balcons' },
+    'equipe': { label: '👥 Équipe & valeurs', desc: 'Photos équipe, valeurs, Dejan, diversité' },
+    'lifestyle': { label: '🏡 Lifestyle (famille)', desc: 'Ambiances intérieures, scènes de vie' },
+    'home': { label: '🌟 Hero / Accueil', desc: 'Photos de fond pour la home' },
+    'chantiers': { label: '🚧 Chantiers généraux', desc: 'Rénovation extérieure, vues globales' },
+    'implantation': { label: '🗺️ Implantation', desc: 'Cartes et zones d\'intervention' },
+    'references': { label: '⭐ Références clients', desc: 'Pages de références' },
+    'pictos': { label: '🔧 Pictos (déjà utilisés)', desc: 'Petites icônes des métiers — déjà intégrées' },
+    'divers': { label: '📦 Divers', desc: 'Non catégorisés automatiquement' },
+  };
+
+  // Group photos by category
+  const grouped = {};
+  PHOTOS.forEach(p => {
+    const cat = categorize(p);
+    if (!grouped[cat]) grouped[cat] = [];
+    grouped[cat].push(p);
+  });
+
+  // localStorage selection
+  const STORAGE_KEY = 'fhd-selected-photos';
+  let selected = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+  function updateCount() {
+    document.getElementById('total').textContent = PHOTOS.length;
+    document.getElementById('selected-count').textContent = selected.length;
+  }
+
+  function toggleSelect(photo, el) {
+    const idx = selected.indexOf(photo);
+    if (idx >= 0) { selected.splice(idx, 1); el.classList.remove('selected'); }
+    else { selected.push(photo); el.classList.add('selected'); }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(selected));
+    updateCount();
+  }
+
+  function openModal(src, name) {
+    document.getElementById('modal-img').src = src;
+    document.getElementById('modal-name').textContent = name;
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+  function openExport() {
+    if (selected.length === 0) { alert('Aucune photo sélectionnée'); return; }
+    document.getElementById('export-text').value = selected.join('\n');
+    document.getElementById('export-panel').classList.add('open');
+  }
+  function closeExport() { document.getElementById('export-panel').classList.remove('open'); }
+  function copyExport() {
+    const ta = document.getElementById('export-text');
+    ta.select();
+    navigator.clipboard.writeText(ta.value);
+    alert('✓ Copié dans le presse-papier (' + selected.length + ' photos)');
+  }
+  function resetSelection() {
+    if (!confirm('Tout désélectionner ?')) return;
+    selected = [];
+    localStorage.setItem(STORAGE_KEY, '[]');
+    document.querySelectorAll('.photo-card').forEach(c => c.classList.remove('selected'));
+    updateCount();
+  }
+
+  // --- Render filters ---
+  const filtersEl = document.getElementById('filters');
+  const catCountsHTML = ['<button class="filter-btn active" data-cat="all">Toutes <span class="count">' + PHOTOS.length + '</span></button>'];
+  Object.keys(CATEGORIES).forEach(cat => {
+    if (grouped[cat] && grouped[cat].length) {
+      catCountsHTML.push(`<button class="filter-btn" data-cat="${cat}">${CATEGORIES[cat].label} <span class="count">${grouped[cat].length}</span></button>`);
+    }
+  });
+  catCountsHTML.push('<div class="actions"><button class="btn-reset" onclick="resetSelection()">Vider</button><button class="btn-export" onclick="openExport()">📋 Voir ma sélection</button></div>');
+  filtersEl.innerHTML = catCountsHTML.join('');
+
+  // Filter behavior
+  filtersEl.addEventListener('click', (e) => {
+    if (!e.target.closest('.filter-btn')) return;
+    const btn = e.target.closest('.filter-btn');
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.category').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+    });
+  });
+
+  // --- Render gallery ---
+  const galleryEl = document.getElementById('gallery');
+  Object.keys(CATEGORIES).forEach(cat => {
+    const photos = grouped[cat] || [];
+    if (!photos.length) return;
+    const section = document.createElement('div');
+    section.className = 'category';
+    section.dataset.cat = cat;
+    section.innerHTML = `
+      <h2>${CATEGORIES[cat].label} <em>(${photos.length})</em></h2>
+      <p class="cat-desc">${CATEGORIES[cat].desc}</p>
+      <div class="grid">
+        ${photos.map(p => {
+          const isSelected = selected.includes(p) ? 'selected' : '';
+          const src = '/photos-fb/' + p;
+          return `
+            <div class="photo-card ${isSelected}" data-photo="${p}">
+              <div class="img-wrapper">
+                <img src="${src}" alt="${p}" loading="lazy">
+              </div>
+              <div class="check" title="Cliquer pour sélectionner">${selected.includes(p) ? '✓' : ''}</div>
+              <div class="info">${p}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+    galleryEl.appendChild(section);
+  });
+
+  // ----- Comportement clic clair -----
+  // Clic sur .check (rond en haut à droite) → toggle sélection
+  // Clic sur .img-wrapper (image) → ouvre la modal en grand
+  // Clic sur .info (nom du fichier) → toggle sélection
+  document.querySelectorAll('.photo-card').forEach(card => {
+    const photo = card.dataset.photo;
+    const src = '/photos-fb/' + photo;
+    const check = card.querySelector('.check');
+    const imgWrapper = card.querySelector('.img-wrapper');
+    const info = card.querySelector('.info');
+
+    // Toggle sélection via le rond
+    check.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSelect(photo, card);
+      check.textContent = card.classList.contains('selected') ? '✓' : '';
+    });
+
+    // Toggle sélection via le nom (info)
+    info.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSelect(photo, card);
+      check.textContent = card.classList.contains('selected') ? '✓' : '';
+    });
+
+    // Ouvrir la modal en cliquant sur l'image
+    imgWrapper.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openModal(src, photo);
+    });
+  });
+
+  updateCount();
+</script>
+</body>
+</html>

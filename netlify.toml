@@ -1,0 +1,44 @@
+# ============================================================
+# Configuration Netlify — Façades Haut-Doubs
+# ============================================================
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Détection automatique des formulaires Astro (data-netlify="true")
+# Active aussi le honeypot anti-spam (bot-field)
+
+# Headers de sécurité
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache aggressif pour les assets statiques
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/photos-fb/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/icones/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Redirections (à venir si besoin)
+# [[redirects]]
+#   from = "/ancien-url"
+#   to = "/nouveau-url"
+#   status = 301

@@ -1,0 +1,500 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import BlocMetier from '../components/BlocMetier.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const metiers = [
+  {
+    titre: 'Isolation thermique',
+    description: 'ITE performante pour réduire vos factures de chauffage et améliorer votre confort.',
+    iconeUrl: '/icones/isolation.png',
+    href: '/isolation-thermique-exterieur/',
+  },
+  {
+    titre: 'Ravalement de façade',
+    description: 'Redonnez tout son éclat à votre maison avec un ravalement professionnel.',
+    iconeUrl: '/icones/ravalement.png',
+    href: '/ravalement-de-facade/',
+  },
+  {
+    titre: 'Bardage extérieur',
+    description: 'Bardage bois, composite ou métal pour habiller et protéger durablement votre façade.',
+    iconeUrl: '/icones/bardage.png',
+    href: '/bardage-exterieur/',
+  },
+  {
+    titre: 'Enduit de façade',
+    description: 'Enduits décoratifs et techniques pour une protection longue durée.',
+    iconeUrl: '/icones/enduit.png',
+    href: '/enduit-de-facade/',
+  },
+  {
+    titre: 'Étanchéité de façade',
+    description: 'Solutions complètes pour protéger durablement votre habitation de l\'humidité.',
+    iconeUrl: '/icones/etancheite.png',
+    href: '/etancheite-de-facade/',
+  },
+];
+
+const piliers = [
+  {
+    titre: 'Confiance',
+    description: '15 ans d\'expertise, 30 collaborateurs, certification RGE. Nous nous engageons sur des prestations de qualité, dans le respect des délais.',
+    icone: '🤝',
+  },
+  {
+    titre: 'Économie',
+    description: 'L\'isolation thermique par l\'extérieur peut réduire vos factures de chauffage jusqu\'à 30%. Profitez des aides MaPrimeRénov\' et CEE.',
+    icone: '💶',
+  },
+  {
+    titre: 'Élégance',
+    description: 'Rénover sa façade, c\'est aussi embellir son patrimoine. Nous vous accompagnons dans le choix des matériaux et des coloris.',
+    icone: '✨',
+  },
+];
+
+const realisations = [
+  { src: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-1.jpg', titre: 'Ravalement complet', lieu: 'Valdahon' },
+  { src: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg', titre: 'Façade pierre rénovée', lieu: 'Pontarlier' },
+  { src: '/photos-fb/bardage-bois-composite.png', titre: 'Bardage bois composite', lieu: 'Morteau' },
+  { src: '/photos-fb/maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png', titre: 'ITE maison de campagne', lieu: 'Haut-Doubs' },
+  { src: '/photos-fb/facades-bisontines-chantier-renovation-exterieur-4.jpg', titre: 'Rénovation extérieure', lieu: 'Levier' },
+  { src: '/photos-fb/facades-bisontines-chantier-maison-particulier-1.jpg', titre: 'Chantier particulier', lieu: 'Maîche' },
+];
+
+const secteurs = [
+  {
+    titre: 'Particuliers',
+    description: 'Propriétaires de maisons individuelles, rénovation et isolation au cas par cas avec conseil personnalisé.',
+    href: '#',
+  },
+  {
+    titre: 'Maîtrise d\'ouvrage privée',
+    description: 'Bailleurs, copropriétés, promoteurs : nous gérons vos projets de bout en bout avec professionnalisme.',
+    href: '/maitrise-ouvrage-privee/',
+  },
+  {
+    titre: 'Maîtrise d\'ouvrage publique',
+    description: 'Collectivités, offices HLM, bâtiments publics : nous répondons à vos marchés avec rigueur.',
+    href: '/maitrise-ouvrage-publique/',
+  },
+];
+---
+
+<BaseLayout
+  title="Façades Haut-Doubs — Isolation, ravalement, bardage dans le Haut-Doubs"
+  description="Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs. Pontarlier, Morteau, Valdahon. 15 ans d'expérience, certifié RGE."
+>
+  <Hero />
+
+  <!-- ===== SECTION NOS MÉTIERS ===== -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos <em>métiers</em></h2>
+        <p>De l'isolation thermique au bardage extérieur, une expertise complète pour valoriser votre patrimoine.</p>
+      </div>
+
+      <div class="grid-5 metiers-grid">
+        {metiers.map((m) => (
+          <BlocMetier
+            titre={m.titre}
+            description={m.description}
+            iconeUrl={m.iconeUrl}
+            href={m.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRÉSENTATION ===== -->
+  <section class="gris presentation">
+    <div class="container">
+      <div class="presentation-grid">
+        <div>
+          <h2>Votre spécialiste façades <em>au cœur du Haut-Doubs</em></h2>
+          <p>
+            <strong>Façades Haut-Doubs</strong> est l'agence dédiée au territoire du Haut-Doubs de
+            <strong>Façades Bisontines</strong>, entreprise familiale spécialisée dans la rénovation
+            extérieure des bâtiments depuis 2010.
+          </p>
+          <p>
+            Implantés à Valdahon, nous intervenons sur l'ensemble du Haut-Doubs :
+            <strong>Pontarlier, Morteau, Valdahon</strong>, et toutes les communes environnantes.
+            Notre équipe locale connaît parfaitement les contraintes climatiques et architecturales
+            de la région.
+          </p>
+          <a href="/nos-valeurs/" class="btn btn-outline">Découvrir nos valeurs</a>
+        </div>
+
+        <div class="dejan-card">
+          <img src="/photos-fb/facades-bisontines-photo-dejan-barisic.jpg" alt="Dejan Barisic, dirigeant" />
+          <div class="dejan-info">
+            <strong>Dejan Barisic</strong>
+            <span>Dirigeant et fondateur</span>
+            <p>« Chaque façade raconte une histoire. Notre mission : la rendre plus belle, plus performante, pour les 30 prochaines années. »</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOS RÉALISATIONS ===== -->
+  <section class="realisations">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos <em>réalisations récentes</em></h2>
+        <p>Découvrez quelques-uns de nos chantiers dans le Haut-Doubs.</p>
+      </div>
+
+      <div class="realisations-grid">
+        {realisations.map((r) => (
+          <div class="realisation-card">
+            <div class="realisation-img" style={`background-image: url('${r.src}')`}>
+              <div class="realisation-overlay">
+                <div class="realisation-titre">{r.titre}</div>
+                <div class="realisation-lieu">📍 {r.lieu}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="realisations-cta">
+        <a href="/nos-references/" class="btn btn-outline">Voir toutes nos réalisations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TROIS PILIERS ===== -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Trois engagements <em>pour vous</em></h2>
+        <p>Nos clients nous confient leur projet en toute sérénité depuis 15 ans.</p>
+      </div>
+
+      <div class="grid-3">
+        {piliers.map((p) => (
+          <div class="pilier-card">
+            <div class="pilier-icone">{p.icone}</div>
+            <h3>{p.titre}</h3>
+            <p>{p.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AIDES FINANCIÈRES ===== -->
+  <section class="gris">
+    <div class="container">
+      <div class="aides-banner">
+        <div class="aides-text">
+          <h2>Jusqu'à <em>70 €/m²</em> d'aides à l'isolation</h2>
+          <p>
+            MaPrimeRénov', Certificats d'Économies d'Énergie (CEE), Éco-PTZ...
+            Nous vous accompagnons dans le montage de votre dossier d'aides pour réduire
+            significativement le coût de vos travaux.
+          </p>
+          <a href="#devis" class="btn">Estimer mes aides</a>
+        </div>
+        <div class="aides-stat">
+          <div class="big-stat">70 €</div>
+          <div class="big-stat-label">par m² isolé</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TROIS SECTEURS ===== -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Trois secteurs <em>d'activité</em></h2>
+        <p>Nous accompagnons aussi bien les particuliers que les maîtres d'ouvrage privés et publics.</p>
+      </div>
+
+      <div class="grid-3">
+        {secteurs.map((s) => (
+          <a href={s.href} class="secteur-card">
+            <h3>{s.titre}</h3>
+            <p>{s.description}</p>
+            <span class="lire-plus">En savoir plus →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHIFFRES CLÉS ===== -->
+  <section class="chiffres">
+    <div class="container">
+      <div class="grid-4 chiffres-grid">
+        <div class="chiffre">
+          <div class="num">15</div>
+          <div class="label">années d'expérience</div>
+        </div>
+        <div class="chiffre">
+          <div class="num">30</div>
+          <div class="label">collaborateurs experts</div>
+        </div>
+        <div class="chiffre">
+          <div class="num">1 500+</div>
+          <div class="label">chantiers réalisés</div>
+        </div>
+        <div class="chiffre">
+          <div class="num">RGE</div>
+          <div class="label">certifié & qualibat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORMULAIRE DEVIS ===== -->
+  <FormDevis />
+
+</BaseLayout>
+
+<style>
+  .metiers-grid {
+    gap: 20px;
+  }
+
+  .presentation-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .presentation-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .presentation-grid h2 { margin-bottom: 20px; }
+  .presentation-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .presentation-grid p {
+    color: var(--anthracite);
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+  }
+
+  .dejan-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid var(--orange-500);
+  }
+  .dejan-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+  .dejan-card .dejan-info {
+    padding: 22px 26px 26px;
+  }
+  .dejan-card .dejan-info strong {
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    color: var(--noir-doux);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .dejan-card .dejan-info span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--orange-700);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .dejan-card .dejan-info p {
+    font-style: italic;
+    color: var(--anthracite);
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin: 0;
+    border-left: 3px solid var(--orange-300);
+    padding-left: 14px;
+  }
+
+  /* ===== RÉALISATIONS ===== */
+  .realisations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    .realisations-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .realisations-grid { grid-template-columns: 1fr; }
+  }
+
+  .realisation-card {
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s;
+  }
+  .realisation-card:hover {
+    transform: translateY(-4px);
+  }
+  .realisation-img {
+    position: relative;
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s;
+  }
+  .realisation-card:hover .realisation-img {
+    transform: scale(1.04);
+  }
+  .realisation-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    color: white;
+    transition: opacity 0.2s;
+  }
+  .realisation-titre {
+    font-family: var(--font-titre);
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+  .realisation-lieu {
+    font-size: 0.85rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+  .realisations-cta {
+    text-align: center;
+  }
+
+  .pilier-card {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-radius: 10px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pilier-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+  .pilier-icone {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  .pilier-card h3 {
+    color: var(--orange-700);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+  }
+  .pilier-card p {
+    color: var(--anthracite);
+    font-size: 0.98rem;
+  }
+
+  .aides-banner {
+    background: white;
+    border-radius: 14px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 12px 40px rgba(210, 106, 71, 0.1);
+    border-left: 6px solid var(--orange-500);
+  }
+  @media (max-width: 760px) {
+    .aides-banner { grid-template-columns: 1fr; padding: 30px; text-align: center; }
+  }
+  .aides-text h2 { margin-bottom: 16px; }
+  .aides-text h2 em { color: var(--orange-500); font-style: normal; }
+  .aides-text p {
+    color: var(--anthracite);
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+  }
+  .big-stat {
+    font-family: var(--font-titre);
+    font-size: 5rem;
+    color: var(--orange-500);
+    line-height: 1;
+    text-align: center;
+  }
+  .big-stat-label {
+    color: var(--anthracite);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  .secteur-card {
+    display: block;
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-radius: 10px;
+    padding: 32px 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .secteur-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange-300);
+    box-shadow: 0 12px 32px rgba(210, 106, 71, 0.1);
+  }
+  .secteur-card h3 {
+    color: var(--noir-doux);
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+  }
+  .secteur-card p {
+    color: var(--anthracite);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .secteur-card .lire-plus {
+    color: var(--orange-700);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .chiffres {
+    background: var(--noir-doux);
+    color: white;
+    padding: 80px 0;
+  }
+  .chiffres-grid {
+    text-align: center;
+  }
+  .chiffre .num {
+    font-family: var(--font-titre);
+    font-size: 4rem;
+    color: var(--orange-500);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .chiffre .label {
+    color: var(--gris-perle);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.88rem;
+  }
+</style>

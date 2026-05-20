@@ -1,0 +1,163 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Accueil', href: '/' },
+  {
+    label: 'Nos métiers',
+    href: '/nos-metiers/',
+    sub: [
+      { label: 'Isolation thermique', href: '/isolation-thermique-exterieur/' },
+      { label: 'Ravalement de façade', href: '/ravalement-de-facade/' },
+      { label: 'Bardage extérieur', href: '/bardage-exterieur/' },
+      { label: 'Enduit de façade', href: '/enduit-de-facade/' },
+      { label: 'Étanchéité', href: '/etancheite-de-facade/' },
+    ],
+  },
+  { label: 'Nos services', href: '/nos-services/' },
+  { label: 'Choisir ses matériaux', href: '/choisir-ses-materiaux/' },
+  { label: 'Nos références', href: '/nos-references/' },
+  { label: 'Nos valeurs', href: '/nos-valeurs/' },
+  {
+    label: 'Professionnels',
+    href: '#',
+    sub: [
+      { label: 'Maîtrise d\'ouvrage privée', href: '/maitrise-ouvrage-privee/' },
+      { label: 'Maîtrise d\'ouvrage publique', href: '/maitrise-ouvrage-publique/' },
+    ],
+  },
+];
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-fhd">
+        <span class="o">F</span><span>açades </span><span class="o">H</span><span>aut-</span><span class="o">D</span><span>oubs</span>
+      </span>
+    </a>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        {navItems.map((item) => (
+          <li class={`nav-item ${item.sub ? 'has-sub' : ''}`}>
+            <a
+              href={item.href}
+              class={currentPath === item.href ? 'active' : ''}
+            >
+              {item.label}
+              {item.sub && <span class="caret">▾</span>}
+            </a>
+            {item.sub && (
+              <ul class="nav-sub">
+                {item.sub.map((s) => (
+                  <li><a href={s.href}>{s.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="#devis" class="btn btn-cta">Devis gratuit</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: white;
+    border-bottom: 1px solid var(--gris-perle);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 24px;
+  }
+  .logo {
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+    color: var(--noir-doux);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo-fhd .o { color: var(--orange-500); }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+  }
+  .nav-item { position: relative; }
+  .nav-item > a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--noir-doux);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.92rem;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-item > a:hover,
+  .nav-item > a.active {
+    color: var(--orange-700);
+    background: var(--orange-100);
+  }
+  .caret {
+    font-size: 0.7rem;
+    margin-left: 4px;
+    color: var(--gris-moyen);
+  }
+
+  .nav-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    min-width: 240px;
+    border: 1px solid var(--gris-perle);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  }
+  .nav-item:hover .nav-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-sub li a {
+    display: block;
+    padding: 10px 14px;
+    color: var(--noir-doux);
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .nav-sub li a:hover {
+    background: var(--orange-100);
+    color: var(--orange-700);
+  }
+
+  .btn-cta {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1100px) {
+    .nav { display: none; }
+  }
+</style>

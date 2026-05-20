@@ -1,0 +1,152 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-block">
+        <div class="logo-fhd">
+          <span class="o">F</span><span>açades </span><span class="o">H</span><span>aut-</span><span class="o">D</span><span>oubs</span>
+        </div>
+        <p class="tagline">
+          Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs depuis 15 ans.
+        </p>
+      </div>
+
+      <div class="footer-block">
+        <h4>Nous contacter</h4>
+        <p>
+          <strong>Agence du Haut-Doubs</strong><br />
+          25800 Valdahon
+        </p>
+        <p>
+          📞 <a href="tel:0381255547">03 81 25 55 47</a>
+        </p>
+        <p class="horaires">
+          Lun-Jeu : 8h30-12h / 13h30-18h<br />
+          Vendredi : 8h30-12h / 13h30-17h
+        </p>
+      </div>
+
+      <div class="footer-block">
+        <h4>Nos métiers</h4>
+        <ul>
+          <li><a href="/isolation-thermique-exterieur/">Isolation thermique</a></li>
+          <li><a href="/ravalement-de-facade/">Ravalement de façade</a></li>
+          <li><a href="/bardage-exterieur/">Bardage extérieur</a></li>
+          <li><a href="/enduit-de-facade/">Enduit de façade</a></li>
+          <li><a href="/etancheite-de-facade/">Étanchéité</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-block">
+        <h4>Zones d'intervention</h4>
+        <ul>
+          <li><a href="/isolation-thermique-exterieur/valdahon/">Valdahon</a></li>
+          <li><a href="/isolation-thermique-exterieur/pontarlier/">Pontarlier</a></li>
+          <li><a href="/isolation-thermique-exterieur/morteau/">Morteau</a></li>
+          <li>Et tout le Haut-Doubs</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {year} Façades Haut-Doubs — Une marque de Façades Bisontines</p>
+      <p>
+        <a href="/mentions-legales/">Mentions légales</a> ·
+        <a href="/politique-confidentialite/">Confidentialité</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--noir-doux);
+    color: var(--gris-perle);
+    padding: 60px 0 30px;
+    margin-top: 80px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  .logo-fhd {
+    font-family: var(--font-titre);
+    font-size: 1.6rem;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .logo-fhd .o { color: var(--orange-500); }
+
+  .tagline {
+    color: var(--gris-moyen);
+    font-size: 0.95rem;
+  }
+
+  .footer-block h4 {
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 16px;
+  }
+  .footer-block p {
+    color: var(--gris-moyen);
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+  }
+  .footer-block ul {
+    list-style: none;
+  }
+  .footer-block ul li {
+    margin-bottom: 8px;
+  }
+  .footer-block ul li a,
+  .footer-block ul li {
+    color: var(--gris-moyen);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-block ul li a:hover {
+    color: var(--orange-300);
+  }
+
+  .horaires {
+    font-size: 0.85rem;
+    color: var(--gris-moyen);
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--gris-moyen);
+  }
+  .footer-bottom a {
+    color: var(--gris-moyen);
+    text-decoration: none;
+  }
+  .footer-bottom a:hover { color: var(--orange-300); }
+
+  a {
+    color: var(--orange-300);
+  }
+</style>

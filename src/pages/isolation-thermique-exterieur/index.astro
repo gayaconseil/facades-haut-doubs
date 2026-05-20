@@ -1,0 +1,434 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FormDevis from '../../components/FormDevis.astro';
+
+const benefices = [
+  {
+    icone: '🔥',
+    titre: 'Économies d\'énergie',
+    description: 'Réduisez vos factures de chauffage jusqu\'à 30% grâce à une enveloppe thermique performante.',
+  },
+  {
+    icone: '🏠',
+    titre: 'Confort été comme hiver',
+    description: 'Pas de pont thermique, pas de paroi froide. Une maison plus saine et plus agréable à vivre.',
+  },
+  {
+    icone: '💶',
+    titre: 'Aides financières',
+    description: 'MaPrimeRénov\', CEE, Éco-PTZ : jusqu\'à 70 €/m² d\'aides pour votre projet d\'ITE.',
+  },
+  {
+    icone: '🎨',
+    titre: 'Façade rénovée',
+    description: 'Une seconde jeunesse pour votre maison : nouvelles couleurs, nouvelle finition, valeur patrimoniale augmentée.',
+  },
+];
+
+const isolants = [
+  {
+    titre: 'Laine de roche',
+    image: '/photos-fb/laine-de-roche.jpeg',
+    description: 'Excellente performance thermique et acoustique, incombustible (M0).',
+    avantages: ['Très bonne tenue au feu', 'Bon isolant phonique', 'Durable (50+ ans)'],
+  },
+  {
+    titre: 'Laine de verre',
+    image: '/photos-fb/photo-laine-verre-3.jpeg',
+    description: 'Isolant performant et économique, le plus utilisé en France.',
+    avantages: ['Rapport qualité/prix excellent', 'Léger et facile à poser', 'Bilan carbone correct'],
+  },
+  {
+    titre: 'Polystyrène expansé',
+    image: '/photos-fb/isolant-polystyrene-maison.jpeg',
+    description: 'Isolant léger et performant, idéal sous enduit mince.',
+    avantages: ['Très léger', 'Résiste à l\'humidité', 'Économique'],
+  },
+  {
+    titre: 'Fibre de bois',
+    image: '/photos-fb/isolant-fibre-boix.jpeg',
+    description: 'Solution biosourcée, écologique, excellent confort d\'été.',
+    avantages: ['100% naturel', 'Régule l\'humidité', 'Excellent en été'],
+  },
+];
+
+const etapes = [
+  {
+    num: 1,
+    titre: 'Visite technique',
+    description: 'Diagnostic de votre façade : état, contraintes, choix des matériaux. Étude personnalisée.',
+  },
+  {
+    num: 2,
+    titre: 'Devis détaillé',
+    description: 'Sous 48h, vous recevez un devis clair avec le détail des prestations et des aides mobilisables.',
+  },
+  {
+    num: 3,
+    titre: 'Montage des aides',
+    description: 'Nous vous accompagnons dans les démarches MaPrimeRénov\', CEE, Éco-PTZ pour réduire le coût.',
+  },
+  {
+    num: 4,
+    titre: 'Pose ITE',
+    description: 'Installation de l\'isolant, du système de fixation, et de l\'enduit ou bardage de finition.',
+  },
+  {
+    num: 5,
+    titre: 'Finitions & livraison',
+    description: 'Mise en peinture, nettoyage du chantier, remise des garanties (décennale, biennale).',
+  },
+];
+
+const faq = [
+  {
+    q: 'Combien coûte une ITE au m² ?',
+    r: 'Le coût varie entre 120 € et 220 €/m² selon l\'isolant choisi, la finition et la complexité de la façade. Les aides peuvent couvrir jusqu\'à 70 €/m².',
+  },
+  {
+    q: 'Combien de temps dure un chantier d\'ITE ?',
+    r: 'Pour une maison individuelle de 100m² de façade : 2 à 4 semaines selon les conditions météo et la complexité.',
+  },
+  {
+    q: 'Faut-il un permis de construire ?',
+    r: 'Non, mais une déclaration préalable de travaux en mairie est obligatoire (modification de l\'aspect extérieur).',
+  },
+  {
+    q: 'L\'ITE est-elle compatible avec ma façade en pierre ?',
+    r: 'Sur façade en pierre apparente, on privilégie l\'ITI ou des solutions spécifiques. Nous étudions chaque cas particulier.',
+  },
+];
+---
+
+<BaseLayout
+  title="Isolation thermique par l'extérieur (ITE) — Façades Haut-Doubs"
+  description="Spécialiste de l'ITE dans le Haut-Doubs. Économies d'énergie, aides MaPrimeRénov', devis gratuit. Pontarlier, Morteau, Valdahon."
+>
+  <Hero
+    titre="Isolation thermique <em>par l'extérieur</em>"
+    sousTitre="Réduisez vos factures de chauffage jusqu'à 30% et donnez une nouvelle vie à votre façade grâce à l'ITE."
+    bgImage="/photos-fb/maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png"
+  />
+
+  <!-- Introduction ITE -->
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>L'ITE, <em>la solution complète</em></h2>
+        <p>
+          L'isolation thermique par l'extérieur (ITE) consiste à envelopper votre maison d'une
+          couche isolante recouverte d'un enduit ou d'un bardage. C'est <strong>la méthode la
+          plus efficace</strong> pour améliorer les performances énergétiques d'un bâtiment.
+        </p>
+        <p>
+          Contrairement à l'isolation par l'intérieur, l'ITE <strong>n'empiète pas sur votre
+          surface habitable</strong> et supprime tous les ponts thermiques.
+          C'est aussi l'occasion de <strong>rénover entièrement votre façade</strong>.
+        </p>
+        <p>
+          Façades Haut-Doubs est <strong>certifié RGE</strong>, condition indispensable pour
+          bénéficier des aides de l'État (MaPrimeRénov', CEE).
+        </p>
+      </div>
+      <div>
+        <img
+          src="/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg"
+          alt="Chantier ITE en cours"
+          class="intro-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Bénéfices ITE -->
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>4 bonnes raisons <em>de choisir l'ITE</em></h2>
+      </div>
+      <div class="grid-4 benefices-grid">
+        {benefices.map((b) => (
+          <div class="benefice-card">
+            <div class="benefice-icone">{b.icone}</div>
+            <h3>{b.titre}</h3>
+            <p>{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Isolants -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Choisir <em>son isolant</em></h2>
+        <p>Nous vous conseillons l'isolant le plus adapté à votre projet et votre budget.</p>
+      </div>
+      <div class="grid-4 isolants-grid">
+        {isolants.map((i) => (
+          <div class="isolant-card">
+            <div class="isolant-img" style={`background-image: url('${i.image}')`}></div>
+            <div class="isolant-body">
+              <h3>{i.titre}</h3>
+              <p>{i.description}</p>
+              <ul>
+                {i.avantages.map((a) => <li>✓ {a}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Étapes du chantier -->
+  <section class="etapes-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Comment se déroule <em>un chantier ITE ?</em></h2>
+        <p>De la visite technique à la livraison, nous vous accompagnons à chaque étape.</p>
+      </div>
+      <div class="etapes-list">
+        {etapes.map((e) => (
+          <div class="etape">
+            <div class="etape-num">{e.num}</div>
+            <div class="etape-content">
+              <h3>{e.titre}</h3>
+              <p>{e.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Questions <em>fréquentes</em></h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Zones d'intervention -->
+  <section class="zones-cta">
+    <div class="container">
+      <h2>ITE dans le <em>Haut-Doubs</em></h2>
+      <p>Nous intervenons sur tout le territoire du Haut-Doubs et ses environs :</p>
+      <div class="zones-links">
+        <a href="/isolation-thermique-exterieur/pontarlier/">ITE à Pontarlier</a>
+        <a href="/isolation-thermique-exterieur/morteau/">ITE à Morteau</a>
+        <a href="/isolation-thermique-exterieur/valdahon/">ITE à Valdahon</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Votre projet d'ITE ?"
+    sousTitre="Décrivez-nous votre projet, nous étudions vos aides et établissons un devis gratuit sous 48h."
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; }
+  }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid p {
+    color: var(--anthracite);
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .intro-img {
+    width: 100%;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .benefices-grid { gap: 24px; }
+  .benefice-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px 24px;
+    text-align: center;
+    border: 1px solid var(--gris-perle);
+  }
+  .benefice-icone {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+  .benefice-card h3 {
+    color: var(--orange-700);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .benefice-card p {
+    color: var(--anthracite);
+    font-size: 0.95rem;
+  }
+
+  .isolants-grid { gap: 24px; }
+  .isolant-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gris-perle);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .isolant-img {
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--gris-perle);
+  }
+  .isolant-body { padding: 20px; }
+  .isolant-body h3 {
+    color: var(--noir-doux);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+  .isolant-body p {
+    color: var(--anthracite);
+    font-size: 0.92rem;
+    margin-bottom: 14px;
+  }
+  .isolant-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .isolant-body ul li {
+    color: var(--orange-700);
+    font-size: 0.85rem;
+    padding: 3px 0;
+    font-weight: 500;
+  }
+
+  .etapes-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .etape {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gris-perle);
+  }
+  .etape:last-child { border-bottom: none; }
+  .etape-num {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+  }
+  .etape-content h3 {
+    color: var(--noir-doux);
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+  }
+  .etape-content p {
+    color: var(--anthracite);
+    margin: 0;
+  }
+
+  .faq {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 0;
+  }
+  .faq-item summary {
+    padding: 18px 22px;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: var(--noir-doux);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+  }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange-500);
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+  .faq-item p {
+    padding: 0 22px 20px;
+    color: var(--anthracite);
+    margin: 0;
+  }
+
+  .zones-cta {
+    background: var(--noir-doux);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+  }
+  .zones-cta h2 {
+    color: white;
+    margin-bottom: 16px;
+  }
+  .zones-cta h2 em { color: var(--orange-300); font-style: normal; }
+  .zones-cta p {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+  }
+  .zones-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .zones-links a {
+    background: var(--orange-500);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .zones-links a:hover {
+    background: var(--orange-700);
+    color: white;
+  }
+</style>

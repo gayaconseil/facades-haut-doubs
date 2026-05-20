@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Demande envoyée — Façades Haut-Doubs"
+  description="Votre demande de devis a bien été envoyée. Nous vous recontactons sous 24h ouvrées."
+>
+  <section class="merci">
+    <div class="container">
+      <div class="merci-card">
+        <div class="check-icon">✓</div>
+        <h1>Merci pour votre demande !</h1>
+        <p class="lead">
+          Votre message a bien été transmis à notre équipe.
+          <strong>Nous vous recontacterons sous 24h ouvrées</strong> pour échanger sur votre projet.
+        </p>
+        <div class="next-steps">
+          <h2>Et maintenant ?</h2>
+          <ol>
+            <li>Vous recevrez un <strong>accusé de réception par email</strong> dans quelques instants</li>
+            <li>Un <strong>conseiller dédié vous contacte</strong> sous 24h ouvrées</li>
+            <li>Nous planifions ensemble une <strong>visite technique gratuite</strong> sur place</li>
+            <li>Vous recevez un <strong>devis détaillé sous 48h</strong> après la visite</li>
+          </ol>
+        </div>
+        <div class="contact-direct">
+          <p>Une question urgente ?</p>
+          <a href="tel:0381255547" class="btn">📞 03 81 25 55 47</a>
+        </div>
+        <a href="/" class="back-link">← Retour à l'accueil</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .merci {
+    padding: 80px 0 100px;
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    min-height: 70vh;
+  }
+  .merci-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+  .check-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .merci h1 { margin-bottom: 16px; }
+  .merci .lead {
+    font-size: 1.15rem;
+    color: var(--anthracite);
+    margin-bottom: 40px;
+  }
+  .next-steps {
+    text-align: left;
+    background: var(--gris-fond);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+  .next-steps h2 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    color: var(--orange-700);
+  }
+  .next-steps ol {
+    padding-left: 24px;
+    color: var(--anthracite);
+  }
+  .next-steps ol li {
+    padding: 8px 0;
+  }
+  .contact-direct {
+    margin-bottom: 30px;
+  }
+  .contact-direct p {
+    color: var(--anthracite);
+    margin-bottom: 12px;
+  }
+  .back-link {
+    display: inline-block;
+    color: var(--orange-700);
+    font-weight: 600;
+  }
+</style>

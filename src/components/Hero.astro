@@ -1,0 +1,146 @@
+---
+interface Props {
+  titre?: string;
+  sousTitre?: string;
+  bgImage?: string;
+}
+
+const {
+  titre = 'Soyez serein à l\'intérieur,<br><em>rénovez votre extérieur</em>',
+  sousTitre = 'Façades Haut-Doubs accompagne les particuliers et les professionnels du Haut-Doubs dans la rénovation, l\'isolation et le bardage de leurs façades depuis 15 ans.',
+  bgImage = '/photos-fb/facades-bisontines-chantier-renovation-exterieur-3.jpg',
+} = Astro.props;
+---
+
+<section class="hero" style={`background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('${bgImage}');`}>
+  <div class="container">
+    <div class="hero-content">
+      <h1 set:html={titre}></h1>
+      <p class="hero-sub">{sousTitre}</p>
+      <div class="hero-cta">
+        <a href="#devis" class="btn">Demander un devis gratuit</a>
+        <a href="tel:0381255547" class="btn btn-outline-light">📞 03 81 25 55 47</a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-num">15 ans</span>
+          <span class="trust-label">d'expérience</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">1 500+</span>
+          <span class="trust-label">chantiers réalisés</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">RGE</span>
+          <span class="trust-label">certifié</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 140px 0 100px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 24px;
+    color: white;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .hero h1 :global(em) {
+    color: var(--orange-300);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.92);
+    max-width: 680px;
+    margin: 0 auto 40px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Bouton outline pour fond sombre */
+  :global(.btn-outline-light) {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 26px;
+    font-family: var(--font-corps);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  :global(.btn-outline-light:hover) {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .hero-trust {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .trust-num {
+    font-family: var(--font-titre);
+    font-size: 2.4rem;
+    color: var(--orange-300);
+    line-height: 1;
+  }
+  .trust-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .hero { background-attachment: scroll; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 60px 0 50px; }
+    .hero-trust { gap: 24px; }
+    .trust-num { font-size: 1.6rem; }
+  }
+</style>

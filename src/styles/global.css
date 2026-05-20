@@ -1,0 +1,163 @@
+/* ========================================
+   FAÇADES HAUT-DOUBS — Styles globaux
+   Charte officielle V2 (Libre Baskerville + Inter)
+   2 palettes basculables via classe body
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ----- Palette officielle (charte V2) — par défaut ----- */
+  --orange-500: #F4652F;  /* orange vif officiel */
+  --orange-700: #C84B1A;  /* hover */
+  --orange-300: #F89870;  /* badges */
+  --orange-100: #FDE3D6;  /* fonds doux */
+  --anthracite: #737373;  /* gris neutre officiel */
+  --noir-doux: #000000;   /* noir pur officiel */
+
+  /* Gris neutres harmonisés */
+  --gris-moyen: #A8A8A8;
+  --gris-perle: #D6D6D6;
+  --gris-fond: #F5F5F5;
+  --blanc-casse: #FFFFFF;
+
+  /* Sémantiques */
+  --succes: #5A8A5A;
+  --erreur: #C84B1A;
+  --info: #5A7A8A;
+
+  /* Typo — charte officielle */
+  --font-titre: 'Libre Baskerville', Georgia, serif;
+  --font-corps: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Espacements */
+  --container: 1200px;
+}
+
+/* ----- Palette alternative (terracotta — proposition initiale) ----- */
+body.palette-terra {
+  --orange-500: #D26A47;
+  --orange-700: #A04829;
+  --orange-300: #E8A085;
+  --orange-100: #F4DDD3;
+  --anthracite: #696B68;
+  --noir-doux: #1A1B1A;
+  --gris-moyen: #B8BAB6;
+  --gris-perle: #D3D4D0;
+  --gris-fond: #F5F5F3;
+  --blanc-casse: #FAF9F6;
+  --erreur: #A04829;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-corps);
+  background: var(--blanc-casse);
+  color: var(--noir-doux);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+  color: var(--orange-700);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--orange-500); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-titre);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--noir-doux);
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; }
+
+p { margin-bottom: 1rem; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ----- Boutons ----- */
+.btn {
+  display: inline-block;
+  background: var(--orange-500);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-family: var(--font-corps);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--orange-700);
+  color: white;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--orange-500);
+  color: var(--orange-500);
+  padding: 12px 26px;
+}
+.btn-outline:hover { background: var(--orange-500); color: white; }
+
+/* ----- Sections ----- */
+section { padding: 80px 0; }
+section.gris { background: var(--gris-fond); }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title h2 { margin-bottom: 12px; }
+.section-title h2 em { color: var(--orange-500); font-style: normal; }
+.section-title p {
+  color: var(--anthracite);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ----- Grilles ----- */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-5 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+  section { padding: 50px 0; }
+}
