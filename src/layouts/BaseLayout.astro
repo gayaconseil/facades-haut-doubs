@@ -31,5 +31,113 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- ===== TOGGLE HERO (phase de sélection photo Hero) ===== -->
+    <div class="hero-toggle" id="hero-toggle">
+      <span class="hero-toggle-label">Hero :</span>
+      <button class="hero-btn active" data-hero="01" title="Château de Joux — donjon, ciel orangé">
+        <span class="hero-thumb hero-thumb-01"></span>
+        Photo 1
+      </button>
+      <button class="hero-btn" data-hero="02" title="Château de Joux — panorama, ciel nuageux rosé">
+        <span class="hero-thumb hero-thumb-02"></span>
+        Photo 2
+      </button>
+    </div>
+
+    <style>
+      .hero-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border: 1px solid #E5E5E5;
+        border-radius: 50px;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+        font-family: 'Inter', sans-serif;
+      }
+      .hero-toggle-label {
+        font-size: 0.72rem;
+        color: #737373;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        padding: 0 10px;
+      }
+      .hero-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px 6px 6px;
+        background: transparent;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #555;
+        transition: background 0.2s, color 0.2s;
+        font-family: inherit;
+      }
+      .hero-btn:hover { background: #f0f0f0; }
+      .hero-btn.active {
+        background: #000;
+        color: white;
+      }
+      .hero-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        border: 2px solid white;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      }
+      .hero-thumb-01 { background-image: url('/photos-fhd/hero-chateau-joux-01.jpg'); }
+      .hero-thumb-02 { background-image: url('/photos-fhd/hero-chateau-joux-02.jpg'); }
+      @media (max-width: 540px) {
+        .hero-toggle { right: 10px; bottom: 10px; }
+        .hero-btn { font-size: 0.75rem; padding: 5px 10px 5px 5px; }
+        .hero-thumb { width: 18px; height: 18px; }
+      }
+    </style>
+
+    <script>
+      const HERO_KEY = 'fhd-hero-choice';
+      const PHOTOS: Record<string, string> = {
+        '01': '/photos-fhd/hero-chateau-joux-01.jpg',
+        '02': '/photos-fhd/hero-chateau-joux-02.jpg',
+      };
+
+      function applyHero(choice: string) {
+        const url = PHOTOS[choice];
+        if (!url) return;
+        const hero = document.querySelector('.hero') as HTMLElement | null;
+        if (hero) {
+          hero.style.backgroundImage =
+            `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('${url}')`;
+        }
+        document.querySelectorAll('.hero-btn').forEach((b) => {
+          b.classList.toggle('active', (b as HTMLElement).dataset.hero === choice);
+        });
+      }
+
+      const saved = localStorage.getItem(HERO_KEY) || '01';
+      applyHero(saved);
+
+      document.querySelectorAll('.hero-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const choice = (btn as HTMLElement).dataset.hero || '01';
+          localStorage.setItem(HERO_KEY, choice);
+          applyHero(choice);
+        });
+      });
+    </script>
   </body>
 </html>
