@@ -8,11 +8,11 @@ interface Props {
 const {
   titre = 'Soyez serein à l\'intérieur,<br><em>rénovez votre extérieur</em>',
   sousTitre = 'Façades Haut-Doubs accompagne les particuliers et les professionnels du Haut-Doubs dans la rénovation, l\'isolation et le bardage de leurs façades depuis 15 ans.',
-  bgImage = '/photos-fhd/hero-chateau-joux-01.jpg',
+  bgImage = '/photos-fhd/hero-chateau-joux-02.jpg',
 } = Astro.props;
 ---
 
-<section class="hero" data-bg-default={bgImage} style={`background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('${bgImage}');`}>
+<section class="hero" style={`background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('${bgImage}');`}>
   <div class="container">
     <div class="hero-content">
       <h1 set:html={titre}></h1>
