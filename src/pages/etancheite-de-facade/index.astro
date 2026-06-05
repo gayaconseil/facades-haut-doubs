@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FormDevis from '../../components/FormDevis.astro';
+
+const problemes = [
+  { texte: 'Infiltrations d\'eau dans les murs', icone: '💧' },
+  { texte: 'Mousses et taches sombres', icone: '🦠' },
+  { texte: 'Microfissures et faïençage', icone: '⚡' },
+  { texte: 'Dommages dus au gel', icone: '🥶' },
+  { texte: 'Joints de pierre dégradés', icone: '🧱' },
+  { texte: 'Humidité dans les pièces', icone: '🌧️' },
+];
+
+const solutions = [
+  {
+    titre: 'Système D3 armé',
+    description: 'Revêtement spécifique pour façades verticales, intégrant une trame en fibre de verre. Excellent pour les supports fissurés.',
+    applications: 'Murs extérieurs, façades de copropriétés',
+    image: '/photos-fb/facades-bisontines-etancheite-balcon-03.jpg',
+  },
+  {
+    titre: 'Hydrofuge',
+    description: 'Imprégnation incolore qui rend la façade imperméable tout en la laissant respirer. Idéal pour pierres apparentes.',
+    applications: 'Pierre, brique, façades traditionnelles',
+    image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg',
+  },
+  {
+    titre: 'RSI (I1 à I4)',
+    description: 'Revêtements Souples d\'Imperméabilité classés selon la résistance anti-infiltration. I4 = niveau maximal pour façades très exposées.',
+    applications: 'Façades fissurées, exposées aux intempéries',
+    image: '/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg',
+  },
+  {
+    titre: 'Étanchéité liquide (Époxy / PMMA)',
+    description: 'Résine appliquée à froid sur supports horizontaux. Solution durable pour balcons, terrasses, escaliers extérieurs.',
+    applications: 'Balcons, terrasses, toits-terrasses, sols extérieurs',
+    image: '/photos-fb/facades-bisontines-chantier-etancheite-sol-1.jpg',
+  },
+];
+
+const faq = [
+  {
+    q: 'Comment savoir si ma façade a besoin d\'une étanchéité ?',
+    r: 'Plusieurs signaux : taches d\'humidité à l\'intérieur, mousses noires sur les murs, peinture qui cloque, sensation de murs froids. Un diagnostic technique gratuit lève le doute.',
+  },
+  {
+    q: 'Quel est le prix d\'une étanchéité de façade ?',
+    r: 'De 40 €/m² (hydrofuge simple) à 120 €/m² (système D3 armé). Pour balcons et terrasses : 60-90 €/m² avec étanchéité liquide. Devis personnalisé après visite.',
+  },
+  {
+    q: 'L\'étanchéité est-elle garantie ?',
+    r: 'Oui, garantie décennale sur tous nos systèmes. Notre certification RGE Qualibat est votre assurance qualité.',
+  },
+  {
+    q: 'Peut-on garder l\'aspect d\'origine de la façade ?',
+    r: 'Oui avec l\'hydrofuge (totalement transparent) ou un D3 teinté à votre coloris d\'origine. Aucune perte d\'esthétique.',
+  },
+];
+---
+
+<BaseLayout
+  title="Étanchéité de façade dans le Haut-Doubs — Façades Haut-Doubs"
+  description="Solutions d'étanchéité de façade dans le Haut-Doubs : hydrofuge, D3 armé, RSI, étanchéité liquide. Pontarlier, Morteau, Valdahon. Garantie décennale."
+>
+  <Hero
+    titre="Étanchéité de façade <em>protection anti-infiltration</em>"
+    sousTitre="Préservez votre maison de l'humidité et des infiltrations. Solutions techniques durables, garantie décennale, expert du Haut-Doubs."
+    bgImage="/photos-fb/facades-bisontines-etancheite-sol-exterieur.jpg"
+  />
+
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>Protéger votre maison <em>de l'humidité</em></h2>
+        <p>
+          L'<strong>étanchéité de façade</strong> traite et prévient les <strong>infiltrations
+          d'eau</strong>, les <strong>remontées capillaires</strong> et les dégâts liés à l'humidité.
+        </p>
+        <p>
+          Dans le <strong>Haut-Doubs</strong>, où les pluies abondantes, le gel et les écarts
+          thermiques fragilisent les murs, une étanchéité professionnelle est indispensable
+          pour protéger durablement votre bâti.
+        </p>
+        <p>
+          Nous proposons <strong>4 solutions techniques</strong> selon votre problématique :
+          étanchéité verticale (façades), horizontale (balcons, terrasses), avec une
+          <strong>garantie décennale</strong> sur tous nos systèmes.
+        </p>
+      </div>
+      <div>
+        <img
+          src="/photos-fb/facades-bisontines-chantier-etancheite-sol-2.jpg"
+          alt="Étanchéité en cours de réalisation"
+          class="intro-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>6 signaux d'<em>alerte humidité</em></h2>
+        <p>Si vous reconnaissez l'un de ces signes, une étude technique s'impose.</p>
+      </div>
+      <div class="problems-grid">
+        {problemes.map((p) => (
+          <div class="prob-card">
+            <span class="prob-icone">{p.icone}</span>
+            <span>{p.texte}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos 4 solutions <em>techniques</em></h2>
+        <p>Chaque problématique trouve sa solution adaptée.</p>
+      </div>
+      <div class="solutions-grid">
+        {solutions.map((s) => (
+          <div class="solution-card">
+            <div class="sol-img" style={`background-image: url('${s.image}')`}></div>
+            <div class="sol-body">
+              <h3>{s.titre}</h3>
+              <p>{s.description}</p>
+              <div class="sol-meta">
+                <strong>Applications :</strong> {s.applications}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Questions <em>fréquentes</em></h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Problème d'humidité ou d'infiltration ?"
+    sousTitre="Décrivez-nous votre problème, nous effectuons un diagnostic gratuit et proposons la solution technique adaptée."
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; } }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid p { color: var(--anthracite); margin-bottom: 16px; font-size: 1.05rem; line-height: 1.65; }
+  .intro-img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .problems-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 460px) { .problems-grid { grid-template-columns: 1fr; } }
+  .prob-card {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-left: 4px solid var(--orange-500);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--noir-doux);
+    font-weight: 500;
+  }
+  .prob-icone { font-size: 1.8rem; flex-shrink: 0; }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  @media (max-width: 700px) { .solutions-grid { grid-template-columns: 1fr; } }
+  .solution-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--gris-perle); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+  .sol-img { aspect-ratio: 16/9; background-size: cover; background-position: center; }
+  .sol-body { padding: 24px; }
+  .sol-body h3 { color: var(--noir-doux); margin-bottom: 10px; font-size: 1.3rem; }
+  .sol-body p { color: var(--anthracite); margin-bottom: 14px; line-height: 1.5; }
+  .sol-meta {
+    color: var(--anthracite);
+    font-size: 0.9rem;
+    background: var(--gris-fond);
+    padding: 10px 14px;
+    border-radius: 6px;
+  }
+  .sol-meta strong { color: var(--orange-700); }
+
+  .faq { max-width: 800px; margin: 0 auto; }
+  .faq-item { background: white; border: 1px solid var(--gris-perle); border-radius: 8px; margin-bottom: 12px; }
+  .faq-item summary {
+    padding: 18px 22px;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: var(--noir-doux);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+  }
+  .faq-item summary::after { content: '+'; position: absolute; right: 22px; top: 50%; transform: translateY(-50%); color: var(--orange-500); font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding: 0 22px 20px; color: var(--anthracite); margin: 0; }
+</style>

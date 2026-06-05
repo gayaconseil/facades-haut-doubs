@@ -1,0 +1,420 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FormDevis from '../../components/FormDevis.astro';
+
+const benefices = [
+  {
+    icone: '🛡️',
+    titre: 'Protection durable',
+    description: 'Barrière contre intempéries, pollution, UV et gel. Vos murs gagnent 20 à 30 ans de longévité.',
+  },
+  {
+    icone: '💰',
+    titre: 'Valeur immobilière',
+    description: 'Une façade rénovée augmente la valeur de revente de votre bien et son attractivité.',
+  },
+  {
+    icone: '🔥',
+    titre: 'Économies d\'énergie',
+    description: 'Couplé à une ITE, le ravalement réduit jusqu\'à 30% vos factures de chauffage.',
+  },
+  {
+    icone: '✨',
+    titre: 'Nouvelle jeunesse',
+    description: 'Couleurs, finitions, design : redonnez du caractère à votre maison du Haut-Doubs.',
+  },
+];
+
+const signaux = [
+  { texte: 'Zones noircies sur la façade', icone: '🟫' },
+  { texte: 'Peinture ou enduit qui s\'effrite', icone: '🪨' },
+  { texte: 'Fissures apparentes', icone: '⚡' },
+  { texte: 'Moisissures, mousses ou salissures', icone: '🦠' },
+  { texte: 'Joints de pierre dégradés', icone: '🧱' },
+  { texte: 'Infiltrations d\'eau', icone: '💧' },
+];
+
+const revetements = [
+  {
+    titre: 'Enduit de façade',
+    image: '/photos-fb/enduit-exterieur-01.jpg',
+    description: 'Finitions grattée, écrasée, rustique, taloché lavé. Choix de coloris infinis.',
+    avantages: ['Très large gamme', 'Économique', 'Durable 20+ ans'],
+  },
+  {
+    titre: 'Bardage extérieur',
+    image: '/photos-fb/bardage-bois-composite.png',
+    description: 'Bois, PVC, composite ou métallique. Pour un design moderne et une isolation renforcée.',
+    avantages: ['Très esthétique', 'Isole en plus', 'Pose rapide'],
+  },
+  {
+    titre: 'Peinture façade',
+    image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg',
+    description: 'Peintures siloxanes respirantes ou pliolites résistantes. Idéal pour rafraîchissement.',
+    avantages: ['Solution économique', 'Vaste choix de teintes', 'Application rapide'],
+  },
+  {
+    titre: 'Joints de pierre',
+    image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg',
+    description: 'Rejointoiement traditionnel pour pierres apparentes — préserve le cachet de votre maison.',
+    avantages: ['Authentique', 'Patrimonial', 'Spécifique au Haut-Doubs'],
+  },
+];
+
+const etapes = [
+  {
+    num: 1,
+    titre: 'Diagnostic de la façade',
+    description: 'Analyse de l\'état des murs : fissures, humidité, type de support, exposition. Conseil sur la solution adaptée.',
+  },
+  {
+    num: 2,
+    titre: 'Préparation du chantier',
+    description: 'Installation des échafaudages, protection du sol, des fenêtres et des plantations.',
+  },
+  {
+    num: 3,
+    titre: 'Nettoyage haute pression',
+    description: 'Élimination des saletés, mousses, peintures écaillées. Étape essentielle pour la durabilité.',
+  },
+  {
+    num: 4,
+    titre: 'Traitement & réparations',
+    description: 'Application d\'hydrofuge si nécessaire, rebouchage des fissures, traitement antimousse.',
+  },
+  {
+    num: 5,
+    titre: 'Finitions',
+    description: 'Application de la solution choisie : enduit, peinture, bardage ou ITE. Soin du détail.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Quel est le prix d\'un ravalement au m² ?',
+    r: 'Comptez entre 30 € et 80 €/m² pour un ravalement simple (peinture, enduit léger), et jusqu\'à 200 €/m² avec ITE complète. Devis personnalisé après visite gratuite.',
+  },
+  {
+    q: 'Faut-il une autorisation pour un ravalement ?',
+    r: 'Oui, une déclaration préalable de travaux en mairie est obligatoire dès que l\'aspect extérieur est modifié. Dans certaines communes du Haut-Doubs (Pontarlier centre, secteurs sauvegardés), des contraintes patrimoniales s\'appliquent.',
+  },
+  {
+    q: 'Combien de temps dure un chantier ?',
+    r: 'Pour une maison individuelle (150m² de façade) : 2 à 3 semaines selon météo et complexité. Nous évitons les chantiers en plein hiver dans le Haut-Doubs.',
+  },
+  {
+    q: 'Les ravalements donnent-ils droit à des aides ?',
+    r: 'Le ravalement seul n\'est pas éligible. Mais s\'il est couplé à une ITE, vous bénéficiez de MaPrimeRénov\', CEE et Éco-PTZ — jusqu\'à 70 €/m².',
+  },
+];
+---
+
+<BaseLayout
+  title="Ravalement de façade dans le Haut-Doubs — Façades Haut-Doubs"
+  description="Spécialiste du ravalement de façade dans le Haut-Doubs : Pontarlier, Morteau, Valdahon. Devis gratuit, garantie décennale, 15 ans d'expérience."
+>
+  <Hero
+    titre="Ravalement de façade <em>dans le Haut-Doubs</em>"
+    sousTitre="Donnez une nouvelle jeunesse à votre maison et protégez-la durablement contre les intempéries du Haut-Doubs."
+    bgImage="/photos-fb/facades-bisontines-ravalement-facade-exterieur-1.jpg"
+  />
+
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>Prolongez la durée de vie de <em>vos murs extérieurs</em></h2>
+        <p>
+          Le <strong>ravalement de façade</strong> est l'opération de rénovation complète de
+          l'enveloppe extérieure de votre maison. Bien plus qu'un simple coup de peinture,
+          il <strong>protège votre bâti, améliore son isolation et embellit votre patrimoine</strong>.
+        </p>
+        <p>
+          Dans le Haut-Doubs, où les conditions climatiques sont rudes (gel, neige, écarts de
+          température), un ravalement professionnel est <strong>essentiel tous les 10 à 15 ans</strong>
+          pour préserver vos murs.
+        </p>
+        <p>
+          Façades Haut-Doubs intervient à <strong>Pontarlier, Morteau, Valdahon</strong> et
+          dans tout le Haut-Doubs, avec la <strong>certification RGE Qualibat</strong> et une
+          garantie décennale.
+        </p>
+      </div>
+      <div>
+        <img
+          src="/photos-fb/facades-bisontines-ravalement-facade-avec-echafaudages-chantier.jpg"
+          alt="Chantier de ravalement en cours"
+          class="intro-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>4 bonnes raisons de <em>ravaler votre façade</em></h2>
+      </div>
+      <div class="grid-4">
+        {benefices.map((b) => (
+          <div class="benefice-card">
+            <div class="benefice-icone">{b.icone}</div>
+            <h3>{b.titre}</h3>
+            <p>{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Quand faire <em>un ravalement ?</em></h2>
+        <p>Voici les 6 signaux qui indiquent qu'il est temps d'agir.</p>
+      </div>
+      <div class="signaux-grid">
+        {signaux.map((s) => (
+          <div class="signal-card">
+            <span class="signal-icone">{s.icone}</span>
+            <span>{s.texte}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Choisir <em>son revêtement</em></h2>
+        <p>4 options principales adaptées à votre maison et votre budget.</p>
+      </div>
+      <div class="grid-4 isolants-grid">
+        {revetements.map((r) => (
+          <div class="isolant-card">
+            <div class="isolant-img" style={`background-image: url('${r.image}')`}></div>
+            <div class="isolant-body">
+              <h3>{r.titre}</h3>
+              <p>{r.description}</p>
+              <ul>{r.avantages.map((a) => <li>✓ {a}</li>)}</ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="etapes-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Comment se déroule <em>un chantier ?</em></h2>
+        <p>De la visite à la livraison, 5 étapes pour un ravalement réussi.</p>
+      </div>
+      <div class="etapes-list">
+        {etapes.map((e) => (
+          <div class="etape">
+            <div class="etape-num">{e.num}</div>
+            <div class="etape-content">
+              <h3>{e.titre}</h3>
+              <p>{e.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Questions <em>fréquentes</em></h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="zones-cta">
+    <div class="container">
+      <h2>Ravalement dans le <em>Haut-Doubs</em></h2>
+      <p>Nous intervenons sur tout le territoire du Haut-Doubs :</p>
+      <div class="zones-links">
+        <a href="/ravalement-de-facade/pontarlier/">Pontarlier</a>
+        <a href="/ravalement-de-facade/morteau/">Morteau</a>
+        <a href="/ravalement-de-facade/valdahon/">Valdahon</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Votre projet de ravalement ?"
+    sousTitre="Décrivez-nous votre projet, nous effectuons une visite gratuite et établissons un devis sous 48h."
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; }
+  }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid p {
+    color: var(--anthracite);
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .intro-img {
+    width: 100%;
+    border-radius: 12px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .benefice-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px 24px;
+    text-align: center;
+    border: 1px solid var(--gris-perle);
+  }
+  .benefice-icone { font-size: 2.5rem; margin-bottom: 12px; }
+  .benefice-card h3 { color: var(--orange-700); font-size: 1.2rem; margin-bottom: 10px; }
+  .benefice-card p { color: var(--anthracite); font-size: 0.95rem; }
+
+  .signaux-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .signaux-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 460px) { .signaux-grid { grid-template-columns: 1fr; } }
+
+  .signal-card {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-left: 4px solid var(--orange-500);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--noir-doux);
+    font-weight: 500;
+  }
+  .signal-icone {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+
+  .isolant-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gris-perle);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .isolant-img {
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+  }
+  .isolant-body { padding: 20px; }
+  .isolant-body h3 { color: var(--noir-doux); margin-bottom: 8px; font-size: 1.2rem; }
+  .isolant-body p { color: var(--anthracite); font-size: 0.92rem; margin-bottom: 14px; }
+  .isolant-body ul { list-style: none; padding: 0; }
+  .isolant-body ul li { color: var(--orange-700); font-size: 0.85rem; padding: 3px 0; font-weight: 500; }
+
+  .etapes-list { max-width: 800px; margin: 0 auto; }
+  .etape {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gris-perle);
+  }
+  .etape:last-child { border-bottom: none; }
+  .etape-num {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-titre);
+    font-size: 1.4rem;
+  }
+  .etape-content h3 { color: var(--noir-doux); margin-bottom: 6px; font-size: 1.2rem; }
+  .etape-content p { color: var(--anthracite); margin: 0; }
+
+  .faq { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    padding: 18px 22px;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: var(--noir-doux);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+  }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange-500);
+    font-size: 1.5rem;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding: 0 22px 20px; color: var(--anthracite); margin: 0; }
+
+  .zones-cta {
+    background: var(--noir-doux);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+  }
+  .zones-cta h2 { color: white; margin-bottom: 16px; }
+  .zones-cta h2 em { color: var(--orange-300); font-style: normal; }
+  .zones-cta p { color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .zones-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .zones-links a {
+    background: var(--orange-500);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .zones-links a:hover { background: var(--orange-700); color: white; }
+</style>

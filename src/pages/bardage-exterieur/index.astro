@@ -1,0 +1,344 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FormDevis from '../../components/FormDevis.astro';
+
+const benefices = [
+  {
+    icone: '🎨',
+    titre: 'Esthétique moderne',
+    description: 'Bois noble, composite contemporain, métal architectural : transformez radicalement votre façade.',
+  },
+  {
+    icone: '🛡️',
+    titre: 'Protection durable',
+    description: 'Protection contre les intempéries, UV et chocs thermiques propres au Haut-Doubs.',
+  },
+  {
+    icone: '🌡️',
+    titre: 'Isolation renforcée',
+    description: 'Couplé à un isolant, le bardage améliore la performance thermique et acoustique.',
+  },
+  {
+    icone: '⚡',
+    titre: 'Pose rapide',
+    description: 'Chantier "sec" sans délai de séchage : plus rapide qu\'un enduit classique.',
+  },
+];
+
+const types = [
+  {
+    titre: 'Bardage bois',
+    image: '/photos-fb/bardage-bois-composite.png',
+    description: 'Mélèze, douglas, épicéa traité. Matériau noble et chaleureux qui se patine avec le temps.',
+    avantages: ['Authentique', 'Très isolant', 'Écologique', 'Local (Haut-Doubs)'],
+    contrainte: 'Entretien tous les 5-10 ans',
+  },
+  {
+    titre: 'Bardage composite',
+    image: '/photos-fb/bardage-fibre-ciment.png',
+    description: 'Mélange de fibres et résines. Imite le bois sans ses contraintes d\'entretien.',
+    avantages: ['Sans entretien', 'Stable', 'Large gamme de teintes', 'Garantie 25 ans'],
+    contrainte: 'Investissement initial plus élevé',
+  },
+  {
+    titre: 'Bardage métallique',
+    image: '/photos-fb/bardage-metallique-1.png',
+    description: 'Aluminium, zinc ou acier laqué. Design contemporain et résistance exceptionnelle.',
+    avantages: ['Très moderne', 'Inoxydable', 'Durée de vie 50+ ans', 'Recyclable'],
+    contrainte: 'Esthétique urbaine, à intégrer avec soin en milieu rural',
+  },
+  {
+    titre: 'Bardage PVC',
+    image: '/photos-fb/facades-bisontines-bardage-exterieur-1.jpg',
+    description: 'Solution économique facile à poser, peu d\'entretien. Bon rapport qualité/prix.',
+    avantages: ['Économique', 'Pose simple', 'Sans entretien', 'Léger'],
+    contrainte: 'Esthétique moins haut de gamme que le bois ou composite',
+  },
+];
+
+const conseils = [
+  {
+    titre: 'Style de votre maison',
+    description: 'Une maison traditionnelle du Haut-Doubs s\'accommodera mieux d\'un bardage bois local. Une construction contemporaine accueillera bardage métal ou composite.',
+  },
+  {
+    titre: 'Exposition de la façade',
+    description: 'Côté nord ou ombragé : privilégier les matériaux résistants à l\'humidité. Plein sud : éviter les bois clairs qui grisaillent vite.',
+  },
+  {
+    titre: 'Budget global',
+    description: 'PVC à partir de 50 €/m². Composite et bois entre 100 et 180 €/m². Métal premium jusqu\'à 220 €/m². ITE incluse selon devis.',
+  },
+  {
+    titre: 'Entretien souhaité',
+    description: 'Si vous voulez "poser et oublier" : composite ou métal. Si vous aimez prendre soin de votre maison : bois.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Quelle est la durée de vie d\'un bardage ?',
+    r: 'PVC et bois : 25-40 ans. Composite : 30-50 ans. Métal : 50+ ans avec garantie décennale. La pose professionnelle est essentielle pour la longévité.',
+  },
+  {
+    q: 'Un bardage améliore-t-il l\'isolation ?',
+    r: 'Oui, particulièrement si couplé à une ITE (isolation entre le mur et le bardage). Vous bénéficiez alors des aides MaPrimeRénov\' et CEE.',
+  },
+  {
+    q: 'Faut-il déclarer les travaux ?',
+    r: 'Oui, déclaration préalable en mairie obligatoire. Dans les zones protégées (cœurs de bourgs anciens, abords de bâtiments historiques), des contraintes esthétiques s\'appliquent.',
+  },
+  {
+    q: 'Peut-on poser un bardage sur n\'importe quelle façade ?',
+    r: 'Quasiment toutes : béton, parpaing, brique, pierre. Une étude technique préalable détermine les fixations et le pare-pluie adaptés.',
+  },
+];
+---
+
+<BaseLayout
+  title="Bardage extérieur dans le Haut-Doubs — Façades Haut-Doubs"
+  description="Pose de bardage extérieur dans le Haut-Doubs : bois, composite, métal, PVC. Pontarlier, Morteau, Valdahon. Devis gratuit, garantie décennale."
+>
+  <Hero
+    titre="Bardage extérieur <em>design et performant</em>"
+    sousTitre="Habillez votre façade avec un bardage noble : bois local, composite moderne, métal architectural. Protection et style pour les maisons du Haut-Doubs."
+    bgImage="/photos-fb/facades-bisontines-bardage-exterieur-1.jpg"
+  />
+
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>Bardage extérieur, <em>l'élégance qui dure</em></h2>
+        <p>
+          Le <strong>bardage extérieur</strong> consiste à habiller votre façade d'un parement
+          ventilé fixé sur une ossature secondaire. C'est <strong>la solution la plus polyvalente</strong>
+          pour transformer radicalement l'aspect d'une maison.
+        </p>
+        <p>
+          Particulièrement adapté aux maisons du <strong>Haut-Doubs</strong>, le bardage offre
+          une <strong>protection optimale contre les rigueurs climatiques</strong> tout en
+          créant une lame d'air qui améliore la performance thermique.
+        </p>
+        <p>
+          Bois local (mélèze, douglas), composite contemporain, métal architectural ou PVC
+          économique : <strong>nous vous accompagnons</strong> dans le choix du matériau le
+          mieux adapté à votre projet, votre maison et votre budget.
+        </p>
+      </div>
+      <div>
+        <img
+          src="/photos-fb/facades-bisontines-bardage-exterieur-3.jpg"
+          alt="Bardage extérieur réalisé"
+          class="intro-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Pourquoi choisir <em>un bardage ?</em></h2>
+      </div>
+      <div class="grid-4">
+        {benefices.map((b) => (
+          <div class="benefice-card">
+            <div class="benefice-icone">{b.icone}</div>
+            <h3>{b.titre}</h3>
+            <p>{b.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Les 4 grandes <em>familles de bardage</em></h2>
+        <p>Chaque matériau a ses atouts et ses contraintes. Nous vous guidons vers le bon choix.</p>
+      </div>
+      <div class="types-grid">
+        {types.map((t) => (
+          <div class="type-card">
+            <div class="type-img" style={`background-image: url('${t.image}')`}></div>
+            <div class="type-body">
+              <h3>{t.titre}</h3>
+              <p>{t.description}</p>
+              <div class="type-avantages">
+                {t.avantages.map((a) => <span class="avantage">✓ {a}</span>)}
+              </div>
+              <p class="contrainte">⚠️ {t.contrainte}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Comment <em>bien choisir</em> son bardage ?</h2>
+        <p>4 critères à considérer avant de vous décider.</p>
+      </div>
+      <div class="grid-4 conseils-grid">
+        {conseils.map((c) => (
+          <div class="conseil-card">
+            <h3>{c.titre}</h3>
+            <p>{c.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Questions <em>fréquentes</em></h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="zones-cta">
+    <div class="container">
+      <h2>Bardage dans le <em>Haut-Doubs</em></h2>
+      <p>Pose de bardage sur tout le territoire :</p>
+      <div class="zones-links">
+        <a href="/bardage-exterieur/pontarlier/">Pontarlier</a>
+        <a href="/bardage-exterieur/morteau/">Morteau</a>
+        <a href="/bardage-exterieur/valdahon/">Valdahon</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Votre projet de bardage ?"
+    sousTitre="Bois, composite, métal ou PVC : décrivez-nous votre projet, nous vous conseillons et établissons un devis sous 48h."
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; } }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid p { color: var(--anthracite); margin-bottom: 16px; font-size: 1.05rem; line-height: 1.65; }
+  .intro-img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .benefice-card { background: white; border-radius: 10px; padding: 30px 24px; text-align: center; border: 1px solid var(--gris-perle); }
+  .benefice-icone { font-size: 2.5rem; margin-bottom: 12px; }
+  .benefice-card h3 { color: var(--orange-700); font-size: 1.2rem; margin-bottom: 10px; }
+  .benefice-card p { color: var(--anthracite); font-size: 0.95rem; }
+
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  @media (max-width: 700px) { .types-grid { grid-template-columns: 1fr; } }
+  .type-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--gris-perle);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .type-img {
+    aspect-ratio: 16/9;
+    background-size: cover;
+    background-position: center;
+  }
+  .type-body { padding: 24px; }
+  .type-body h3 { color: var(--noir-doux); margin-bottom: 10px; font-size: 1.4rem; }
+  .type-body p { color: var(--anthracite); margin-bottom: 14px; }
+  .type-avantages { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .avantage {
+    background: var(--orange-100);
+    color: var(--orange-700);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .contrainte {
+    color: var(--gris-moyen);
+    font-size: 0.88rem;
+    font-style: italic;
+    margin-top: 12px;
+  }
+
+  .conseils-grid { gap: 20px; }
+  .conseil-card {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    border-top: 4px solid var(--orange-500);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .conseil-card h3 { color: var(--orange-700); font-size: 1.1rem; margin-bottom: 10px; }
+  .conseil-card p { color: var(--anthracite); font-size: 0.92rem; line-height: 1.5; }
+
+  .faq { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    background: white;
+    border: 1px solid var(--gris-perle);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .faq-item summary {
+    padding: 18px 22px;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: var(--noir-doux);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+  }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange-500);
+    font-size: 1.5rem;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding: 0 22px 20px; color: var(--anthracite); margin: 0; }
+
+  .zones-cta {
+    background: var(--noir-doux);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+  }
+  .zones-cta h2 { color: white; margin-bottom: 16px; }
+  .zones-cta h2 em { color: var(--orange-300); font-style: normal; }
+  .zones-cta p { color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .zones-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .zones-links a {
+    background: var(--orange-500);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .zones-links a:hover { background: var(--orange-700); color: white; }
+</style>

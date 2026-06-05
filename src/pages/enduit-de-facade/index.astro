@@ -1,0 +1,263 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import FormDevis from '../../components/FormDevis.astro';
+
+const roles = [
+  {
+    icone: '🛡️',
+    titre: 'Protéger votre habitat',
+    description: 'Barrière contre les intempéries du Haut-Doubs (pluie, neige, gel). Prévient fissures et infiltrations sur la maçonnerie.',
+  },
+  {
+    icone: '✨',
+    titre: 'Embellir votre bien',
+    description: 'L\'enduit donne la finition esthétique de votre façade : couleur, aspect, motif. Comble les défauts pour une surface décorative.',
+  },
+];
+
+const types = [
+  {
+    titre: 'Enduit monocouche projeté',
+    image: '/photos-fb/enduit-exterieur-01.jpg',
+    description: 'Application en une seule passe sur surfaces propres (brique, béton, parpaing). Solution moderne, rapide, économique.',
+    avantages: ['Pose rapide', 'Bon rapport qualité/prix', 'Large gamme de teintes', 'Pose mécanisée'],
+  },
+  {
+    titre: 'Enduit à la chaux',
+    image: '/photos-fb/enduit-chaux.jpg',
+    description: 'Revêtement microporeux, naturellement bactéricide, traditionnel. Prisé pour le patrimoine et les Monuments Historiques.',
+    avantages: ['100% naturel', 'Respirant', 'Patrimonial', 'Durable 50+ ans'],
+  },
+];
+
+const finitions = [
+  {
+    titre: 'Taloché lavé',
+    description: 'Aspect lisse et régulier après lavage de la croûte de surface. Élégant et contemporain.',
+  },
+  {
+    titre: 'Gratté',
+    description: 'Surface grattée à la règle pour révéler les granulats. Aspect minéral, mat, sobre.',
+  },
+  {
+    titre: 'Écrasé',
+    description: 'Texture créée par écrasement à la taloche. Effet décoratif marqué.',
+  },
+  {
+    titre: 'Rustique (projeté tyrolien)',
+    description: 'Aspect grenu obtenu par projection. Traditionnel, masque les défauts du support.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Quel est le prix d\'un enduit de façade ?',
+    r: 'Comptez 30-50 €/m² pour un enduit monocouche, 50-90 €/m² pour un enduit chaux. Le coût final dépend du support, des finitions et de la hauteur (échafaudage).',
+  },
+  {
+    q: 'Combien de temps dure un enduit ?',
+    r: 'Un enduit monocouche bien posé dure 20 à 30 ans. Un enduit chaux peut tenir 50+ ans avec un entretien minimal.',
+  },
+  {
+    q: 'Peut-on appliquer un enduit sur n\'importe quel support ?',
+    r: 'Quasiment : brique, béton, parpaing, pierre. Sur un ancien enduit, un diagnostic préalable détermine si on peut recouvrir ou s\'il faut décroûter.',
+  },
+  {
+    q: 'À quelle saison faire les travaux ?',
+    r: 'D\'avril à octobre dans le Haut-Doubs. Éviter les périodes de gel, de canicule et de pluies prolongées. La chaux nécessite des conditions douces.',
+  },
+];
+---
+
+<BaseLayout
+  title="Enduit de façade dans le Haut-Doubs — Façades Haut-Doubs"
+  description="Application d'enduit de façade dans le Haut-Doubs : monocouche, chaux, finitions taloché/gratté/écrasé. Pontarlier, Morteau, Valdahon. Devis gratuit."
+>
+  <Hero
+    titre="Enduit de façade <em>protection et esthétique</em>"
+    sousTitre="L'enduit extérieur protège vos murs et donne le caractère final à votre façade. Monocouche moderne ou chaux traditionnelle, pour toutes les maisons du Haut-Doubs."
+    bgImage="/photos-fb/facades-bisontines-enduit-de-facade-de-maison.jpg"
+  />
+
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>L'enduit, <em>deux rôles essentiels</em></h2>
+        <p>
+          L'<strong>enduit de façade</strong> joue à la fois un rôle <strong>technique</strong>
+          (protection du gros œuvre) et <strong>esthétique</strong> (finition visible de votre maison).
+        </p>
+        <p>
+          Dans le <strong>Haut-Doubs</strong>, où l'humidité, les écarts de température et le gel
+          mettent vos murs à rude épreuve, le choix d'un enduit de qualité est primordial.
+        </p>
+        <p>
+          Façades Haut-Doubs maîtrise <strong>l'enduit monocouche projeté</strong> (pour
+          constructions modernes et neuves) et <strong>l'enduit à la chaux</strong> (pour
+          rénovations patrimoniales et maisons traditionnelles).
+        </p>
+      </div>
+      <div>
+        <img
+          src="/photos-fb/facades-bisontines-renovation-enduit-exterieur-1.jpg"
+          alt="Application d'enduit en cours"
+          class="intro-img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Pourquoi <em>enduire sa façade ?</em></h2>
+      </div>
+      <div class="grid-2-large">
+        {roles.map((r) => (
+          <div class="role-card">
+            <div class="role-icone">{r.icone}</div>
+            <h3>{r.titre}</h3>
+            <p>{r.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>2 familles <em>d'enduits</em></h2>
+        <p>Selon la nature de votre maison et le rendu souhaité.</p>
+      </div>
+      <div class="types-grid">
+        {types.map((t) => (
+          <div class="type-card">
+            <div class="type-img" style={`background-image: url('${t.image}')`}></div>
+            <div class="type-body">
+              <h3>{t.titre}</h3>
+              <p>{t.description}</p>
+              <div class="type-avantages">
+                {t.avantages.map((a) => <span class="avantage">✓ {a}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>4 finitions <em>au choix</em></h2>
+        <p>Chaque finition apporte un caractère différent à votre façade.</p>
+      </div>
+      <div class="grid-4 finitions-grid">
+        {finitions.map((f) => (
+          <div class="finition-card">
+            <h3>{f.titre}</h3>
+            <p>{f.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Questions <em>fréquentes</em></h2>
+      </div>
+      <div class="faq">
+        {faq.map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.r}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Votre projet d'enduit de façade ?"
+    sousTitre="Monocouche moderne ou chaux traditionnelle, décrivez-nous votre projet, nous vous proposons un devis adapté sous 48h."
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; } }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid p { color: var(--anthracite); margin-bottom: 16px; font-size: 1.05rem; line-height: 1.65; }
+  .intro-img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .grid-2-large {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .grid-2-large { grid-template-columns: 1fr; } }
+
+  .role-card {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    border-top: 6px solid var(--orange-500);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .role-icone { font-size: 3rem; margin-bottom: 16px; }
+  .role-card h3 { color: var(--orange-700); margin-bottom: 12px; font-size: 1.4rem; }
+  .role-card p { color: var(--anthracite); font-size: 1rem; line-height: 1.55; }
+
+  .types-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  @media (max-width: 700px) { .types-grid { grid-template-columns: 1fr; } }
+  .type-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--gris-perle); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+  .type-img { aspect-ratio: 16/9; background-size: cover; background-position: center; }
+  .type-body { padding: 24px; }
+  .type-body h3 { color: var(--noir-doux); margin-bottom: 10px; font-size: 1.4rem; }
+  .type-body p { color: var(--anthracite); margin-bottom: 14px; }
+  .type-avantages { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .avantage { background: var(--orange-100); color: var(--orange-700); padding: 4px 12px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+
+  .finitions-grid { gap: 20px; }
+  .finition-card {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    border-left: 4px solid var(--orange-500);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .finition-card h3 { color: var(--orange-700); font-size: 1.1rem; margin-bottom: 10px; }
+  .finition-card p { color: var(--anthracite); font-size: 0.92rem; line-height: 1.5; }
+
+  .faq { max-width: 800px; margin: 0 auto; }
+  .faq-item { background: white; border: 1px solid var(--gris-perle); border-radius: 8px; margin-bottom: 12px; }
+  .faq-item summary {
+    padding: 18px 22px;
+    font-family: var(--font-titre);
+    font-size: 1.1rem;
+    color: var(--noir-doux);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+  }
+  .faq-item summary::after { content: '+'; position: absolute; right: 22px; top: 50%; transform: translateY(-50%); color: var(--orange-500); font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p { padding: 0 22px 20px; color: var(--anthracite); margin: 0; }
+</style>
