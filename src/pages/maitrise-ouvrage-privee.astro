@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const clients = [
+  { titre: 'Architectes', desc: 'Conception et exécution de projets exigeants. Co-conception possible.' },
+  { titre: 'Maîtres d\'œuvre', desc: 'Sous-traitance partielle ou globale, dans le respect du cahier des charges.' },
+  { titre: 'Investisseurs immobiliers', desc: 'Valorisation patrimoniale, rénovation locative, optimisation fiscale.' },
+  { titre: 'Entreprises générales BTP', desc: 'Lot façade en sous-traitance, intégration au planning global.' },
+  { titre: 'Copropriétés', desc: 'Travaux votés en AG, accompagnement des syndics, devis aux normes.' },
+  { titre: 'Bailleurs privés', desc: 'Rénovation parc locatif, conformité RGE pour subventions locataires.' },
+];
+
+const services = [
+  { titre: 'Bureau d\'études interne', desc: 'Chiffrage technique, conformité réglementaire, accompagnement BIM si nécessaire.' },
+  { titre: '25 poseurs qualifiés', desc: 'Équipes dimensionnées pour chantiers de toutes tailles, formées en continu.' },
+  { titre: 'Pilotage chantier', desc: 'Chargé d\'affaires + chef de chantier dédiés, reporting hebdomadaire.' },
+  { titre: 'Certifications', desc: 'Qualibat, RGE, garantie décennale, assurance dommages-ouvrage.' },
+];
+---
+
+<BaseLayout
+  title="Maîtrise d'ouvrage privée — Façades Haut-Doubs"
+  description="Façades Haut-Doubs pour architectes, maîtres d'œuvre, copropriétés, bailleurs privés. Bureau d'études, 25 poseurs, certifications Qualibat RGE."
+>
+  <section class="hero-pro">
+    <div class="container">
+      <span class="badge">PROFESSIONNELS</span>
+      <h1>Maîtrise d'ouvrage <em>privée</em></h1>
+      <p class="lead">
+        Architectes, maîtres d'œuvre, copropriétés, bailleurs : <strong>Façades Haut-Doubs</strong>
+        est votre partenaire pour des projets d'envergure dans le Haut-Doubs et toute la
+        région Bourgogne-Franche-Comté.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos <em>clients</em></h2>
+        <p>Nous accompagnons tous les acteurs privés de la construction et de la rénovation.</p>
+      </div>
+      <div class="clients-grid">
+        {clients.map((c) => (
+          <div class="client-card">
+            <h3>{c.titre}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Pourquoi <em>nous choisir ?</em></h2>
+        <p>Une entreprise structurée pour répondre aux exigences des professionnels.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => (
+          <div class="service-card">
+            <div class="check">✓</div>
+            <h4>{s.titre}</h4>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container metiers-pro">
+      <div class="section-title">
+        <h2>Nos <em>métiers</em></h2>
+      </div>
+      <div class="metiers-pro-grid">
+        <a href="/isolation-thermique-exterieur/" class="metier-link">Isolation thermique extérieure</a>
+        <a href="/ravalement-de-facade/" class="metier-link">Ravalement de façade</a>
+        <a href="/bardage-exterieur/" class="metier-link">Bardage extérieur</a>
+        <a href="/enduit-de-facade/" class="metier-link">Enduit de façade</a>
+        <a href="/etancheite-de-facade/" class="metier-link">Étanchéité de façade</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Un projet professionnel ?"
+    sousTitre="Décrivez-nous votre projet et le cahier des charges, nous reviendrons vers vous sous 48h ouvrées avec un devis chiffré."
+  />
+</BaseLayout>
+
+<style>
+  .hero-pro {
+    background: linear-gradient(135deg, var(--noir-doux) 0%, #2a2a2a 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .badge {
+    background: var(--orange-500);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+  .hero-pro h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 16px;
+    color: white;
+  }
+  .hero-pro h1 em { color: var(--orange-300); font-style: normal; }
+  .hero-pro .lead {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .clients-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .clients-grid { grid-template-columns: 1fr; } }
+  .client-card {
+    background: white;
+    padding: 26px;
+    border-radius: 10px;
+    border-top: 4px solid var(--orange-500);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .client-card h3 { color: var(--orange-700); font-size: 1.15rem; margin-bottom: 10px; }
+  .client-card p { color: var(--anthracite); font-size: 0.92rem; margin: 0; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .services-grid { grid-template-columns: 1fr; } }
+  .service-card {
+    background: white;
+    padding: 26px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: 8px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .service-card .check {
+    grid-row: 1 / span 2;
+    width: 40px;
+    height: 40px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .service-card h4 { color: var(--noir-doux); font-size: 1.1rem; margin: 0; }
+  .service-card p { color: var(--anthracite); margin: 0; font-size: 0.92rem; }
+
+  .metiers-pro-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .metier-link {
+    background: var(--orange-500);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .metier-link:hover {
+    background: var(--orange-700);
+    color: white;
+  }
+</style>

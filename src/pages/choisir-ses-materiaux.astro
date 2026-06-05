@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const isolants = [
+  { nom: 'Laine de roche', desc: 'Incombustible et excellent isolant phonique. Résiste 50+ ans.', image: '/photos-fb/laine-de-roche.jpeg', tag: 'Sécurité incendie' },
+  { nom: 'Laine de verre', desc: 'Excellent rapport qualité/prix. Le plus utilisé en France.', image: '/photos-fb/photo-laine-verre-3.jpeg', tag: 'Économique' },
+  { nom: 'Fibre de bois', desc: 'Matériau renouvelable, basse empreinte carbone, excellent confort d\'été.', image: '/photos-fb/isolant-fibre-boix.jpeg', tag: 'Écologique' },
+  { nom: 'Polystyrène expansé', desc: 'Léger, résistant à l\'humidité, idéal sous enduit mince.', image: '/photos-fb/isolant-polystyrene-maison.jpeg', tag: 'Léger' },
+];
+
+const bardages = [
+  { nom: 'Fibre-ciment', desc: 'Mélange sable + ciment + cellulose. Stable, sans entretien.', image: '/photos-fb/bardage-fibre-ciment.png', tag: 'Durable' },
+  { nom: 'Bois composite', desc: 'Fibres de bois et résines polymères. Aspect bois sans contraintes.', image: '/photos-fb/bardage-bois-composite.png', tag: 'Sans entretien' },
+  { nom: 'Bois naturel', desc: 'Mélèze, douglas, épicéa. Authentique, local au Haut-Doubs.', image: '/photos-fb/facades-bisontines-bardage-exterieur-1.jpg', tag: 'Authentique' },
+  { nom: 'Bardage métallique', desc: 'Aluminium, zinc, acier laqué. Très durable, design moderne.', image: '/photos-fb/bardage-metallique-1.png', tag: 'Contemporain' },
+];
+
+const enduits = [
+  { nom: 'Enduit siloxane', desc: 'Très bonne perméabilité à la vapeur d\'eau. Laisse respirer le mur.' },
+  { nom: 'Peinture pliolite', desc: 'Effet perlant. Idéal pour les climats humides du Haut-Doubs.' },
+  { nom: 'Enduit à la chaux', desc: 'Naturel, élastique, patrimonial. Pour rénovations traditionnelles.' },
+  { nom: 'Enduit monocouche', desc: 'Application rapide, large gamme de teintes, économique.' },
+];
+---
+
+<BaseLayout
+  title="Choisir ses matériaux — Façades Haut-Doubs"
+  description="Guide des matériaux pour la rénovation de façade : isolants, bardages, enduits. Faites le bon choix selon votre projet dans le Haut-Doubs."
+>
+  <section class="hero-mat">
+    <div class="container">
+      <h1>Choisir <em>ses matériaux</em></h1>
+      <p class="lead">
+        Matériaux minéraux ou organiques, traditionnels ou modernes : faites le bon choix pour
+        <strong>l'isolation</strong>, le <strong>revêtement</strong> et la <strong>finition</strong> de votre maison.
+      </p>
+    </div>
+  </section>
+
+  <!-- Isolants -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>4 isolants <em>pour l'ITE</em></h2>
+        <p>Choisissez l'isolant le plus adapté à votre projet, votre budget et vos valeurs.</p>
+      </div>
+      <div class="mat-grid">
+        {isolants.map((m) => (
+          <div class="mat-card">
+            <div class="mat-img" style={`background-image: url('${m.image}')`}>
+              <span class="mat-tag">{m.tag}</span>
+            </div>
+            <div class="mat-body">
+              <h3>{m.nom}</h3>
+              <p>{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bardages -->
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>4 types de <em>bardages</em></h2>
+        <p>Habillez votre façade avec le matériau qui vous ressemble.</p>
+      </div>
+      <div class="mat-grid">
+        {bardages.map((m) => (
+          <div class="mat-card">
+            <div class="mat-img" style={`background-image: url('${m.image}')`}>
+              <span class="mat-tag">{m.tag}</span>
+            </div>
+            <div class="mat-body">
+              <h3>{m.nom}</h3>
+              <p>{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Enduits & Peintures -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Peintures <em>et enduits</em></h2>
+        <p>Finitions techniques et esthétiques selon votre exposition et le caractère de votre maison.</p>
+      </div>
+      <div class="enduits-grid">
+        {enduits.map((e) => (
+          <div class="enduit-card">
+            <h3>{e.nom}</h3>
+            <p>{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Encart conseil -->
+  <section class="gris">
+    <div class="container">
+      <div class="conseil-box">
+        <h2>Besoin d'un <em>conseil personnalisé ?</em></h2>
+        <p>
+          Le bon matériau dépend de nombreux critères : exposition de votre maison, climat
+          local, budget, valeurs écologiques, esthétique recherchée, contraintes patrimoniales…
+        </p>
+        <p>
+          <strong>Notre équipe vous accompagne</strong> pendant la visite technique gratuite
+          pour vous orienter vers la meilleure solution pour <strong>votre projet</strong>.
+        </p>
+        <a href="#devis" class="btn">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis />
+</BaseLayout>
+
+<style>
+  .hero-mat {
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero-mat h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+  .hero-mat h1 em { color: var(--orange-500); font-style: normal; }
+  .hero-mat .lead { font-size: 1.2rem; color: var(--anthracite); max-width: 800px; margin: 0 auto; }
+
+  .mat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 1000px) { .mat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .mat-grid { grid-template-columns: 1fr; } }
+  .mat-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gris-perle);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .mat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .mat-img {
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .mat-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--orange-500);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .mat-body { padding: 20px; }
+  .mat-body h3 { color: var(--noir-doux); margin-bottom: 8px; font-size: 1.15rem; }
+  .mat-body p { color: var(--anthracite); font-size: 0.9rem; margin: 0; }
+
+  .enduits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .enduits-grid { grid-template-columns: 1fr; } }
+  .enduit-card {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    border-left: 4px solid var(--orange-500);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .enduit-card h3 { color: var(--orange-700); margin-bottom: 8px; font-size: 1.15rem; }
+  .enduit-card p { color: var(--anthracite); font-size: 0.95rem; margin: 0; }
+
+  .conseil-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 14px;
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+  .conseil-box h2 em { color: var(--orange-500); font-style: normal; }
+  .conseil-box p { color: var(--anthracite); margin-bottom: 16px; }
+</style>

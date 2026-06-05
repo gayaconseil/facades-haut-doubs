@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const projets = [
+  { titre: 'Ravalement complet', lieu: 'Valdahon', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-1.jpg' },
+  { titre: 'Façade pierre rénovée', lieu: 'Pontarlier', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg' },
+  { titre: 'Maison particulier', lieu: 'Maîche', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-chantier-maison-particulier-1.jpg' },
+  { titre: 'Façade pierre & brique', lieu: 'Morteau', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg' },
+  { titre: 'Bardage bois composite', lieu: 'Morteau', metier: 'Bardage', image: '/photos-fb/bardage-bois-composite.png' },
+  { titre: 'Bardage extérieur', lieu: 'Pontarlier', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-3.jpg' },
+  { titre: 'Bardage modulaire', lieu: 'Levier', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-6.jpg' },
+  { titre: 'Bardage architectural', lieu: 'Valdahon', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-8.jpg' },
+  { titre: 'ITE maison de campagne', lieu: 'Haut-Doubs', metier: 'ITE', image: '/photos-fb/maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png' },
+  { titre: 'Chantier ITE', lieu: 'Pontarlier', metier: 'ITE', image: '/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg' },
+  { titre: 'Enduit chaux traditionnel', lieu: 'Mouthe', metier: 'Enduit', image: '/photos-fb/enduit-chaux.jpg' },
+  { titre: 'Rénovation extérieure', lieu: 'Levier', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-chantier-renovation-exterieur-4.jpg' },
+];
+---
+
+<BaseLayout
+  title="Nos références — Façades Haut-Doubs"
+  description="Découvrez nos réalisations de façades dans le Haut-Doubs : ravalement, bardage, ITE, enduit, étanchéité. Pontarlier, Morteau, Valdahon."
+>
+  <section class="hero-ref">
+    <div class="container">
+      <h1>Nos <em>références</em></h1>
+      <p class="lead">
+        Voici quelques-unes de nos réalisations dans le Haut-Doubs et ses environs.
+        <strong>1 500+ chantiers</strong> réussis en 15 ans pour des particuliers et professionnels.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Une sélection de <em>nos chantiers</em></h2>
+        <p>Tous les corps de métiers représentés : ravalement, bardage, ITE, enduit.</p>
+      </div>
+      <div class="projets-grid">
+        {projets.map((p) => (
+          <div class="projet-card">
+            <div class="projet-img" style={`background-image: url('${p.image}')`}>
+              <span class="projet-tag">{p.metier}</span>
+            </div>
+            <div class="projet-info">
+              <h3>{p.titre}</h3>
+              <p>📍 {p.lieu}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Vos <em>avis comptent</em></h2>
+        <p>Note moyenne de nos clients : <strong>4,7/5</strong></p>
+      </div>
+      <div class="temoignages-grid">
+        <div class="temoignage">
+          <div class="stars">★★★★★</div>
+          <p>
+            « Travail soigné, équipe sympathique, respect des délais. Notre façade est comme
+            neuve, nous sommes ravis. »
+          </p>
+          <div class="signature">— Famille L., Pontarlier</div>
+        </div>
+        <div class="temoignage">
+          <div class="stars">★★★★★</div>
+          <p>
+            « Conseil de qualité dès la visite technique. ITE parfaitement réalisée, nos
+            factures de chauffage ont baissé de 25%. »
+          </p>
+          <div class="signature">— M. et Mme D., Valdahon</div>
+        </div>
+        <div class="temoignage">
+          <div class="stars">★★★★★</div>
+          <p>
+            « Bardage bois magnifique sur notre rénovation. Travail impeccable, équipe
+            professionnelle et à l'écoute. »
+          </p>
+          <div class="signature">— P. Barbier, Morteau</div>
+        </div>
+      </div>
+      <p class="note">Témoignages à compléter par de vrais avis clients après lancement.</p>
+    </div>
+  </section>
+
+  <FormDevis />
+</BaseLayout>
+
+<style>
+  .hero-ref {
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero-ref h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+  .hero-ref h1 em { color: var(--orange-500); font-style: normal; }
+  .hero-ref .lead { font-size: 1.2rem; color: var(--anthracite); max-width: 800px; margin: 0 auto; }
+
+  .projets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px) { .projets-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .projets-grid { grid-template-columns: 1fr; } }
+  .projet-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .projet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+  .projet-img {
+    aspect-ratio: 4/3;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .projet-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--orange-500);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .projet-info { padding: 18px 20px; }
+  .projet-info h3 {
+    font-size: 1.15rem;
+    color: var(--noir-doux);
+    margin-bottom: 6px;
+  }
+  .projet-info p { color: var(--anthracite); font-size: 0.9rem; margin: 0; }
+
+  .temoignages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+  }
+  @media (max-width: 900px) { .temoignages-grid { grid-template-columns: 1fr; } }
+  .temoignage {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .stars {
+    color: var(--orange-500);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+  .temoignage p {
+    font-style: italic;
+    color: var(--anthracite);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .signature {
+    color: var(--orange-700);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .note {
+    text-align: center;
+    color: var(--gris-moyen);
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+</style>

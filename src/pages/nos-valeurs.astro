@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+---
+
+<BaseLayout
+  title="Nos valeurs — Façades Haut-Doubs"
+  description="Nos valeurs : engagement, esprit d'équipe, ancrage territorial. Façades Haut-Doubs, une marque de Façades Bisontines, entreprise familiale du Doubs."
+>
+  <section class="hero-val">
+    <div class="container">
+      <h1>Nos <em>valeurs</em></h1>
+      <p class="lead">
+        Façades Haut-Doubs est une marque de <strong>Façades Bisontines</strong>, entreprise
+        familiale fondée en 2010. Notre culture d'entreprise repose sur 4 piliers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Valeur 1 - Engagement -->
+  <section>
+    <div class="container valeur-section">
+      <div class="valeur-text">
+        <span class="num">01</span>
+        <h2>Engagement <em>local</em></h2>
+        <p>
+          Nous sommes profondément ancrés dans le tissu socio-économique du <strong>Doubs et du
+          Haut-Doubs</strong>. Notre engagement se traduit par des <strong>partenariats actifs</strong>
+          avec des associations locales :
+        </p>
+        <ul>
+          <li><strong>PARI</strong> — Insertion par l'activité économique</li>
+          <li><strong>SAUVEGARDE</strong> — Protection de l'enfance</li>
+          <li><strong>ARCADE</strong> — Accompagnement social</li>
+          <li><strong>BESAC Basket</strong> — Sport amateur et formation</li>
+          <li><strong>GBD Handball</strong> — Sport de haut niveau</li>
+        </ul>
+        <p>
+          Nous considérons que la réussite d'une entreprise se mesure aussi à sa contribution
+          à la vitalité du territoire qui l'accueille.
+        </p>
+      </div>
+      <div class="valeur-img">
+        <img src="/photos-fb/facades-bisontines-valeurs-engagement.jpg" alt="Engagement local" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeur 2 - Esprit d'équipe -->
+  <section class="gris">
+    <div class="container valeur-section reverse">
+      <div class="valeur-text">
+        <span class="num">02</span>
+        <h2>Esprit <em>d'équipe</em></h2>
+        <p>
+          Nos chantiers réussissent parce que <strong>nos équipes communiquent et collaborent
+          efficacement</strong>. Du chargé d'affaires au poseur sur le chantier, en passant par
+          le bureau d'études, chaque maillon compte.
+        </p>
+        <p>
+          Nous cultivons une culture de <strong>respect mutuel</strong> et de transmission des
+          savoir-faire. Nos artisans expérimentés forment les nouveaux arrivants, garants de
+          la qualité Façades Bisontines.
+        </p>
+        <div class="key-stats">
+          <div><strong>30</strong> collaborateurs experts</div>
+          <div><strong>25</strong> poseurs qualifiés</div>
+          <div><strong>1</strong> bureau d'études interne</div>
+        </div>
+      </div>
+      <div class="valeur-img">
+        <img src="/photos-fb/facades-bisontines-equipe-travail-chantier-maison-particulier.jpg" alt="Esprit d'équipe" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeur 3 - Diversité -->
+  <section>
+    <div class="container valeur-section">
+      <div class="valeur-text">
+        <span class="num">03</span>
+        <h2>Diversité <em>et inclusion</em></h2>
+        <p>
+          Dès la création de l'entreprise en 2010, nous avons fait de l'<strong>intégration et
+          de la diversité</strong> un axe majeur de notre management. Cet engagement nous a valu
+          de recevoir le <strong>prix "Talent des Cités"</strong> dès notre première année
+          d'activité, pour notre action en faveur de l'insertion socio-économique dans les
+          quartiers défavorisés.
+        </p>
+        <p>
+          Aujourd'hui encore, nous formons et accompagnons des jeunes issus de tous horizons
+          pour qu'ils deviennent les façadiers de demain.
+        </p>
+      </div>
+      <div class="valeur-img">
+        <img src="/photos-fb/facades-bisontines-engager-diversite.jpg" alt="Diversité" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Mot du directeur -->
+  <section class="mot-directeur">
+    <div class="container">
+      <div class="mot-card">
+        <img src="/photos-fb/facades-bisontines-photo-dejan-barisic.jpg" alt="Dejan Barisic" />
+        <div>
+          <h2>Le mot <em>du dirigeant</em></h2>
+          <blockquote>
+            « Chaque façade que nous rénovons raconte une histoire. Une famille qui veut
+            embellir son patrimoine, un bailleur qui rénove pour ses locataires, une commune
+            qui valorise son centre-bourg.
+            <br /><br />
+            En créant Façades Haut-Doubs, j'ai voulu rapprocher notre savoir-faire des
+            propriétaires du plateau. Notre nouvelle agence de Valdahon nous permet d'être
+            au plus près de nos clients et de leur offrir une qualité de service à la hauteur
+            de leurs attentes. »
+          </blockquote>
+          <div class="signature">
+            <strong>Dejan Barisic</strong>
+            <span>Dirigeant et fondateur de Façades Bisontines</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis />
+</BaseLayout>
+
+<style>
+  .hero-val {
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero-val h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+  .hero-val h1 em { color: var(--orange-500); font-style: normal; }
+  .hero-val .lead { font-size: 1.2rem; color: var(--anthracite); max-width: 800px; margin: 0 auto; }
+
+  .valeur-section {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .valeur-section.reverse { grid-template-columns: 1fr 1.3fr; }
+  .valeur-section.reverse .valeur-text { order: 2; }
+  .valeur-section.reverse .valeur-img { order: 1; }
+  @media (max-width: 900px) {
+    .valeur-section, .valeur-section.reverse { grid-template-columns: 1fr; }
+    .valeur-section.reverse .valeur-text { order: unset; }
+    .valeur-section.reverse .valeur-img { order: unset; }
+  }
+  .num {
+    display: inline-block;
+    font-family: var(--font-titre);
+    font-size: 3rem;
+    color: var(--orange-300);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .valeur-text h2 { margin-bottom: 20px; }
+  .valeur-text h2 em { color: var(--orange-500); font-style: normal; }
+  .valeur-text p { color: var(--anthracite); margin-bottom: 14px; line-height: 1.65; }
+  .valeur-text ul { padding-left: 24px; margin: 16px 0; }
+  .valeur-text ul li { color: var(--anthracite); padding: 6px 0; }
+  .valeur-img img { width: 100%; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .key-stats {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .key-stats div { color: var(--anthracite); font-size: 0.95rem; }
+  .key-stats strong { display: block; color: var(--orange-500); font-size: 1.5rem; font-family: var(--font-titre); }
+
+  .mot-directeur {
+    background: var(--noir-doux);
+    color: white;
+    padding: 80px 0;
+  }
+  .mot-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .mot-card { grid-template-columns: 1fr; text-align: center; } }
+  .mot-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--orange-500);
+  }
+  .mot-card h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  .mot-card h2 em { color: var(--orange-300); font-style: normal; }
+  .mot-card blockquote {
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    border-left: 3px solid var(--orange-500);
+    padding-left: 16px;
+  }
+  .mot-card .signature strong { color: var(--orange-300); display: block; }
+  .mot-card .signature span { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+</style>

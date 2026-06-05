@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const clients = [
+  { titre: 'Bailleurs sociaux & HLM', desc: 'Rénovation thermique du parc locatif social, ITE en série, conformité RGE pour aides locataires.' },
+  { titre: 'Communes & agglomérations', desc: 'Bâtiments communaux (mairies, écoles, salles polyvalentes), ravalements urbains, marchés publics.' },
+  { titre: 'Départements & Régions', desc: 'Collèges, lycées, bâtiments départementaux et régionaux. Marchés à procédure adaptée ou formalisée.' },
+  { titre: 'Établissements publics', desc: 'Hôpitaux, EHPAD, gendarmeries, casernes. Travaux compatibles avec maintien d\'activité.' },
+];
+
+const expertise = [
+  { titre: 'Service dédié marchés publics', desc: 'Chiffrages, mémoires techniques, DPGF complets et conformes au CCAG-Travaux.' },
+  { titre: 'Présent depuis 2008', desc: '15+ ans d\'expérience sur les marchés publics en région Bourgogne-Franche-Comté.' },
+  { titre: 'Approche tri-dimensionnelle', desc: 'Allie l\'esthétique, le technique et le thermique pour des bâtiments durables.' },
+  { titre: 'Certifications complètes', desc: 'Qualibat, RGE, garantie décennale, assurance dommages-ouvrage. ISO en cours.' },
+  { titre: 'Échafaudage en propre', desc: 'Montage et location intégrés : un seul interlocuteur, un seul devis.' },
+  { titre: 'Couverture régionale', desc: 'Doubs, Jura, Haute-Saône, Territoire de Belfort. Et tout le Haut-Doubs en proximité.' },
+];
+
+const services = [
+  'Isolation thermique par l\'extérieur (ITE)',
+  'Ravalement de façade',
+  'Bardage extérieur (bois, composite, métal)',
+  'Enduit de façade projeté',
+  'Étanchéité de façade',
+  'Montage et location d\'échafaudages',
+];
+---
+
+<BaseLayout
+  title="Maîtrise d'ouvrage publique — Façades Haut-Doubs"
+  description="Façades Haut-Doubs pour collectivités, HLM, marchés publics. Service dédié marchés publics, certifications Qualibat RGE, 15+ ans d'expérience."
+>
+  <section class="hero-pub">
+    <div class="container">
+      <span class="badge">SECTEUR PUBLIC</span>
+      <h1>Maîtrise d'ouvrage <em>publique</em></h1>
+      <p class="lead">
+        Bailleurs sociaux, collectivités, établissements publics : <strong>Façades Haut-Doubs</strong>
+        intervient sur les marchés publics depuis <strong>2008</strong> avec un service dédié
+        au chiffrage et aux mémoires techniques.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos <em>clients publics</em></h2>
+        <p>Nous répondons à tous les marchés publics avec rigueur et professionnalisme.</p>
+      </div>
+      <div class="clients-grid">
+        {clients.map((c) => (
+          <div class="client-card">
+            <h3>{c.titre}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Notre <em>expertise marché public</em></h2>
+        <p>6 atouts pour vous accompagner sur vos projets institutionnels.</p>
+      </div>
+      <div class="expertise-grid">
+        {expertise.map((e) => (
+          <div class="expertise-card">
+            <h4>{e.titre}</h4>
+            <p>{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Nos <em>services</em></h2>
+        <p>Une offre complète couvrant tous les besoins de rénovation extérieure.</p>
+      </div>
+      <ul class="services-list">
+        {services.map((s) => (
+          <li>
+            <span class="check">✓</span>
+            <span>{s}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Un appel d'offres en cours ?"
+    sousTitre="Adressez-nous votre cahier des charges ou DCE par le formulaire. Réponse sous 5 jours ouvrés."
+  />
+</BaseLayout>
+
+<style>
+  .hero-pub {
+    background: linear-gradient(135deg, #1a3a5c 0%, var(--noir-doux) 100%);
+    color: white;
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .badge {
+    background: var(--orange-500);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+  .hero-pub h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 16px;
+    color: white;
+  }
+  .hero-pub h1 em { color: var(--orange-300); font-style: normal; }
+  .hero-pub .lead {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .clients-grid { grid-template-columns: 1fr; } }
+  .client-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 4px solid var(--orange-500);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .client-card h3 { color: var(--orange-700); font-size: 1.2rem; margin-bottom: 10px; }
+  .client-card p { color: var(--anthracite); margin: 0; line-height: 1.55; }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) { .expertise-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 540px) { .expertise-grid { grid-template-columns: 1fr; } }
+  .expertise-card {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+  .expertise-card h4 { color: var(--orange-700); font-size: 1.05rem; margin-bottom: 8px; }
+  .expertise-card p { color: var(--anthracite); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+  .services-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .services-list li {
+    background: white;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--noir-doux);
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .services-list .check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+</style>
