@@ -1,0 +1,35 @@
+---
+import { villes } from '../../data/villes';
+import PageMetierVille from '../../components/PageMetierVille.astro';
+
+export async function getStaticPaths() {
+  return villes.map((v) => ({
+    params: { ville: v.slug },
+    props: { ville: v },
+  }));
+}
+
+const { ville } = Astro.props;
+
+const metier = {
+  slug: 'isolation-thermique-exterieur',
+  nom: 'Isolation thermique extérieure',
+  nomCourt: 'ITE',
+  nomVerbe: 'isoler',
+  accroche: 'Réduisez vos factures de chauffage jusqu\'à 30% grâce à une ITE performante.',
+  benefices: [
+    'Économies de chauffage jusqu\'à 30% (essentiel dans le Haut-Doubs)',
+    'Suppression de tous les ponts thermiques',
+    'Confort thermique en hiver ET en été',
+    'Façade rénovée et embellie en même temps',
+    'Aides MaPrimeRénov\' + CEE : jusqu\'à 70 €/m²',
+    'Valorisation immobilière significative',
+    'Garantie décennale + certification RGE',
+    'Pas de perte de surface habitable',
+  ],
+  heroImage: '/photos-fb/maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png',
+  introImage: '/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg',
+};
+---
+
+<PageMetierVille ville={ville} metier={metier} />

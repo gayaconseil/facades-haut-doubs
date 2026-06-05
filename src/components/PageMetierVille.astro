@@ -1,0 +1,295 @@
+---
+// ============================================================
+// Composant générique pour les pages métier × ville
+// Utilisé par /isolation-thermique-exterieur/[ville].astro
+// /ravalement-de-facade/[ville].astro
+// /bardage-exterieur/[ville].astro
+// ============================================================
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FormDevis from '../components/FormDevis.astro';
+import type { Ville } from '../data/villes';
+
+interface Props {
+  ville: Ville;
+  metier: {
+    slug: string;             // 'isolation-thermique-exterieur'
+    nom: string;              // 'Isolation thermique par l'extérieur'
+    nomCourt: string;         // 'ITE'
+    nomVerbe: string;         // 'isoler' / 'ravaler' / 'barder'
+    accroche: string;         // Tagline du métier
+    benefices: string[];      // Liste des bénéfices clés
+    heroImage: string;        // URL photo de fond hero
+    introImage: string;       // Image dans la section intro
+  };
+}
+
+const { ville, metier } = Astro.props;
+
+const titre = `${metier.nom} ${ville.article}`;
+const description =
+  `${metier.nom} ${ville.article} (${ville.codePostal}). ` +
+  `Spécialiste local, devis gratuit, garantie décennale. ${metier.accroche}`;
+---
+
+<BaseLayout title={`${titre} — Façades Haut-Doubs`} description={description}>
+  <Hero
+    titre={`${metier.nom} <em>${ville.article}</em>`}
+    sousTitre={`${metier.accroche} Votre expert local du ${ville.nom} et ses environs.`}
+    bgImage={metier.heroImage}
+  />
+
+  <!-- Intro + ancrage local -->
+  <section>
+    <div class="container intro-grid">
+      <div>
+        <h2>
+          {metier.nomCourt} à <em>{ville.nom}</em>,
+          <br />
+          <span class="sub-title">{ville.baseline}</span>
+        </h2>
+        <p class="ville-stats">
+          <span><strong>📍 {ville.codePostal}</strong></span>
+          <span><strong>👥 {ville.population}</strong></span>
+          <span><strong>⛰️ {ville.altitude}</strong></span>
+        </p>
+        <p>{ville.description}</p>
+        <h3>Pourquoi {metier.nomVerbe} à {ville.nom} ?</h3>
+        <p>
+          <strong>Climat local :</strong> {ville.climat}
+        </p>
+        <p>
+          <strong>Bâti caractéristique :</strong> {ville.architecture}
+        </p>
+      </div>
+      <div>
+        <img src={metier.introImage} alt={`${metier.nom} à ${ville.nom}`} class="intro-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Bénéfices ciblés métier×ville -->
+  <section class="gris">
+    <div class="container">
+      <div class="section-title">
+        <h2>Les avantages du <em>{metier.nomCourt}</em> {ville.article}</h2>
+      </div>
+      <div class="benef-list">
+        {metier.benefices.map((b) => (
+          <div class="benef-item">
+            <span class="benef-check">✓</span>
+            <span>{b}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Communes desservies -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Communes desservies <em>autour de {ville.nom}</em></h2>
+        <p>Nous intervenons à {ville.nom} et dans toutes les communes limitrophes :</p>
+      </div>
+      <div class="communes-list">
+        <span class="commune principale">{ville.nom} ({ville.codePostal})</span>
+        {ville.communes.map((c) => <span class="commune">{c}</span>)}
+        <span class="commune autres">Et toutes les communes alentour</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA visuel -->
+  <section class="ville-cta-section">
+    <div class="container">
+      <div class="ville-cta">
+        <h2>Un projet de {metier.nomCourt} {ville.article} ?</h2>
+        <p>
+          Notre équipe locale connaît parfaitement les spécificités de {ville.nom}.
+          Bénéficiez d'un conseil sur mesure et d'un devis personnalisé.
+        </p>
+        <div class="ville-cta-actions">
+          <a href="#devis" class="btn">Demander un devis gratuit</a>
+          <a href="tel:0381255547" class="btn btn-outline-light">📞 03 81 25 55 47</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liens vers les autres villes du même métier -->
+  <section class="autres-villes">
+    <div class="container">
+      <h3>Voir aussi {metier.nom} dans nos autres communes :</h3>
+      <div class="autres-villes-links">
+        <a href={`/${metier.slug}/pontarlier/`} class:list={[ville.slug === 'pontarlier' && 'current']}>Pontarlier</a>
+        <a href={`/${metier.slug}/morteau/`} class:list={[ville.slug === 'morteau' && 'current']}>Morteau</a>
+        <a href={`/${metier.slug}/valdahon/`} class:list={[ville.slug === 'valdahon' && 'current']}>Valdahon</a>
+        <a href={`/${metier.slug}/`} class="back">← Tout savoir sur {metier.nomCourt}</a>
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre={`Votre projet de ${metier.nomCourt.toLowerCase()} ${ville.article} ?`}
+    sousTitre={`Décrivez-nous votre projet, nous étudions votre dossier et établissons un devis sous 48h pour ${ville.nom} et ses environs.`}
+  />
+</BaseLayout>
+
+<style>
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; } }
+  .intro-grid h2 { font-size: 2rem; line-height: 1.2; margin-bottom: 16px; }
+  .intro-grid h2 em { color: var(--orange-500); font-style: normal; }
+  .intro-grid h3 { font-size: 1.3rem; margin: 24px 0 10px; color: var(--orange-700); }
+  .sub-title {
+    display: block;
+    font-size: 1.1rem;
+    font-family: var(--font-corps);
+    color: var(--anthracite);
+    font-style: italic;
+    margin-top: 8px;
+  }
+  .intro-grid p { color: var(--anthracite); margin-bottom: 14px; font-size: 1rem; line-height: 1.65; }
+  .ville-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 16px 0 24px;
+    padding: 14px 20px;
+    background: var(--gris-fond);
+    border-left: 4px solid var(--orange-500);
+    border-radius: 6px;
+  }
+  .ville-stats span { color: var(--anthracite); font-size: 0.95rem; }
+  .ville-stats strong { color: var(--noir-doux); }
+  .intro-img { width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+  .benef-list {
+    max-width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) { .benef-list { grid-template-columns: 1fr; } }
+  .benef-item {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 8px;
+    border-left: 4px solid var(--orange-500);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .benef-check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--orange-500);
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .communes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .commune {
+    background: var(--blanc-casse);
+    border: 1px solid var(--gris-perle);
+    padding: 10px 18px;
+    border-radius: 50px;
+    color: var(--anthracite);
+    font-size: 0.95rem;
+  }
+  .commune.principale {
+    background: var(--orange-500);
+    color: white;
+    border-color: var(--orange-500);
+    font-weight: 600;
+  }
+  .commune.autres {
+    background: var(--gris-fond);
+    color: var(--gris-moyen);
+    font-style: italic;
+  }
+
+  .ville-cta-section {
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    padding: 80px 0;
+  }
+  .ville-cta {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .ville-cta h2 { margin-bottom: 16px; }
+  .ville-cta p { color: var(--anthracite); margin-bottom: 30px; font-size: 1.1rem; }
+  .ville-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  :global(.ville-cta-actions .btn-outline-light) {
+    border-color: var(--orange-700);
+    color: var(--orange-700);
+  }
+  :global(.ville-cta-actions .btn-outline-light:hover) {
+    background: var(--orange-700);
+    color: white;
+  }
+
+  .autres-villes {
+    padding: 50px 0;
+    background: var(--noir-doux);
+    color: white;
+    text-align: center;
+  }
+  .autres-villes h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  .autres-villes-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .autres-villes-links a {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .autres-villes-links a:hover { background: var(--orange-500); }
+  .autres-villes-links a.current {
+    background: var(--orange-500);
+    pointer-events: none;
+    font-weight: 600;
+  }
+  .autres-villes-links .back {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    margin-left: 20px;
+  }
+</style>

@@ -1,0 +1,35 @@
+---
+import { villes } from '../../data/villes';
+import PageMetierVille from '../../components/PageMetierVille.astro';
+
+export async function getStaticPaths() {
+  return villes.map((v) => ({
+    params: { ville: v.slug },
+    props: { ville: v },
+  }));
+}
+
+const { ville } = Astro.props;
+
+const metier = {
+  slug: 'ravalement-de-facade',
+  nom: 'Ravalement de façade',
+  nomCourt: 'Ravalement',
+  nomVerbe: 'ravaler',
+  accroche: 'Donnez une nouvelle jeunesse à votre maison et protégez-la des intempéries.',
+  benefices: [
+    'Protection contre intempéries, gel et pollution',
+    'Augmentation de la valeur immobilière',
+    'Embellissement et nouvelle identité visuelle',
+    'Diagnostic de la façade offert',
+    'Choix de finitions (enduit, peinture, bardage)',
+    'Conseil personnalisé selon le bâti local',
+    'Garantie décennale RGE Qualibat',
+    'Aides cumulables si couplé à une ITE',
+  ],
+  heroImage: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-1.jpg',
+  introImage: '/photos-fb/facades-bisontines-ravalement-facade-avec-echafaudages-chantier.jpg',
+};
+---
+
+<PageMetierVille ville={ville} metier={metier} />

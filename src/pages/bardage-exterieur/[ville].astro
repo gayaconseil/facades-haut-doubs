@@ -1,0 +1,35 @@
+---
+import { villes } from '../../data/villes';
+import PageMetierVille from '../../components/PageMetierVille.astro';
+
+export async function getStaticPaths() {
+  return villes.map((v) => ({
+    params: { ville: v.slug },
+    props: { ville: v },
+  }));
+}
+
+const { ville } = Astro.props;
+
+const metier = {
+  slug: 'bardage-exterieur',
+  nom: 'Bardage extérieur',
+  nomCourt: 'Bardage',
+  nomVerbe: 'barder',
+  accroche: 'Habillez votre façade avec un bardage noble : bois local, composite ou métal architectural.',
+  benefices: [
+    'Bardage bois local (mélèze, douglas, épicéa)',
+    'Composite contemporain sans entretien',
+    'Métal architectural longue durée (50+ ans)',
+    'Isolation renforcée (couplée à une ITE)',
+    'Lame d\'air ventilée (anti-humidité)',
+    'Chantier "sec" rapide (pas de séchage)',
+    'Très large gamme esthétique',
+    'Garantie décennale',
+  ],
+  heroImage: '/photos-fb/facades-bisontines-bardage-exterieur-1.jpg',
+  introImage: '/photos-fb/facades-bisontines-bardage-exterieur-3.jpg',
+};
+---
+
+<PageMetierVille ville={ville} metier={metier} />
