@@ -11,7 +11,7 @@ const year = new Date().getFullYear();
           <span class="o">F</span><span>açades </span><span class="o">H</span><span>aut-</span><span class="o">D</span><span>oubs</span>
         </div>
         <p class="tagline">
-          Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs depuis 15 ans.
+          Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs depuis 18 ans.
         </p>
       </div>
 
@@ -19,7 +19,12 @@ const year = new Date().getFullYear();
         <h4>Nous contacter</h4>
         <p>
           <strong>Agence du Haut-Doubs</strong><br />
+          Rue Gay Lussac<br />
+          ZAC En Pougie<br />
           25800 Valdahon
+        </p>
+        <p class="opening-soon">
+          🏗️ Ouverture le <strong>1er mars 2027</strong>
         </p>
         <p>
           📞 <a href="tel:0381255547">03 81 25 55 47</a>
@@ -129,6 +134,15 @@ const year = new Date().getFullYear();
     color: var(--gris-moyen);
     line-height: 1.5;
   }
+  .opening-soon {
+    background: rgba(244, 101, 47, 0.12);
+    border-left: 3px solid var(--orange-500);
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: var(--orange-300) !important;
+    font-size: 0.92rem !important;
+  }
+  .opening-soon strong { color: var(--orange-300); }
 
   .footer-bottom {
     border-top: 1px solid #333;

@@ -33,6 +33,7 @@ const navItems = [
 <header class="header">
   <div class="container header-inner">
     <a href="/" class="logo">
+      <img src="/logo-fhd.png" alt="" class="logo-img" />
       <span class="logo-fhd">
         <span class="o">F</span><span>açades </span><span class="o">H</span><span>aut-</span><span class="o">D</span><span>oubs</span>
       </span>
@@ -119,6 +120,9 @@ const navItems = [
     gap: 16px;
   }
   .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: var(--font-titre);
     font-size: 1.3rem;
     color: var(--noir-doux);
@@ -126,7 +130,15 @@ const navItems = [
     white-space: nowrap;
     flex-shrink: 0;
   }
+  .logo-img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+  }
   .logo-fhd .o { color: var(--orange-500); }
+  @media (max-width: 480px) {
+    .logo-img { width: 36px; height: 36px; }
+  }
 
   .nav { flex: 1; display: flex; justify-content: center; }
   .nav-list {

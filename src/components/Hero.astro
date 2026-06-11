@@ -7,7 +7,7 @@ interface Props {
 
 const {
   titre = 'Soyez serein à l\'intérieur,<br><em>rénovez votre extérieur</em>',
-  sousTitre = 'Façades Haut-Doubs accompagne les particuliers et les professionnels du Haut-Doubs dans la rénovation, l\'isolation et le bardage de leurs façades depuis 15 ans.',
+  sousTitre = 'Façades Haut-Doubs accompagne les particuliers et les professionnels du Haut-Doubs dans la rénovation, l\'isolation et le bardage de leurs façades depuis 18 ans.',
   bgImage = '/photos-fhd/hero-chateau-joux-02.jpg',
 } = Astro.props;
 ---
@@ -22,18 +22,12 @@ const {
         <a href="tel:0381255547" class="btn btn-outline-light">📞 03 81 25 55 47</a>
       </div>
 
-      <div class="hero-trust">
-        <div class="trust-item">
-          <span class="trust-num">15 ans</span>
-          <span class="trust-label">d'expérience</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-num">1 500+</span>
-          <span class="trust-label">chantiers réalisés</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-num">RGE</span>
-          <span class="trust-label">certifié</span>
+      <div class="hero-opening">
+        <div class="opening-pulse"></div>
+        <div class="opening-content">
+          <span class="opening-label">Nouvelle agence Haut-Doubs</span>
+          <span class="opening-date">Ouverture le 1<sup>er</sup> mars 2027</span>
+          <span class="opening-meta">Rue Gay Lussac · ZAC En Pougie · 25800 Valdahon</span>
         </div>
       </div>
     </div>
@@ -107,33 +101,68 @@ const {
     margin-bottom: 60px;
   }
 
-  .hero-trust {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.2);
+  .hero-opening {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    background: rgba(244, 101, 47, 0.18);
+    border: 2px solid var(--orange-500);
+    backdrop-filter: blur(6px);
+    padding: 18px 30px;
+    border-radius: 14px;
+    margin-top: 40px;
+    box-shadow: 0 8px 32px rgba(244, 101, 47, 0.25);
   }
-  .trust-item {
+  .opening-pulse {
+    width: 14px;
+    height: 14px;
+    background: var(--orange-500);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 var(--orange-500);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(244, 101, 47, 0.7); }
+    70% { box-shadow: 0 0 0 14px rgba(244, 101, 47, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(244, 101, 47, 0); }
+  }
+  .opening-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
   }
-  .trust-num {
-    font-family: var(--font-titre);
-    font-size: 2.4rem;
+  .opening-label {
+    font-size: 0.78rem;
     color: var(--orange-300);
-    line-height: 1;
-  }
-  .trust-label {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.8);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-top: 6px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .opening-date {
+    font-family: var(--font-titre);
+    font-size: 1.55rem;
+    color: white;
+    line-height: 1.1;
+    margin: 4px 0;
+  }
+  .opening-date sup {
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+  .opening-meta {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.85);
   }
 
+  @media (max-width: 640px) {
+    .hero-opening { padding: 14px 20px; gap: 12px; }
+    .opening-date { font-size: 1.2rem; }
+    .opening-label { font-size: 0.7rem; }
+    .opening-meta { font-size: 0.75rem; }
+  }
   @media (max-width: 768px) {
     .hero { background-attachment: scroll; }
   }

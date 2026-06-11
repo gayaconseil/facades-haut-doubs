@@ -40,7 +40,7 @@ const metiers = [
 const piliers = [
   {
     titre: 'Confiance',
-    description: '15 ans d\'expertise, 30 collaborateurs, certification RGE. Nous nous engageons sur des prestations de qualité, dans le respect des délais.',
+    description: '18 ans d\'expertise, 30 collaborateurs, certification RGE. Nous nous engageons sur des prestations de qualité, dans le respect des délais.',
     icone: '🤝',
   },
   {
@@ -85,7 +85,7 @@ const secteurs = [
 
 <BaseLayout
   title="Façades Haut-Doubs — Isolation, ravalement, bardage dans le Haut-Doubs"
-  description="Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs. Pontarlier, Morteau, Valdahon. 15 ans d'expérience, certifié RGE."
+  description="Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs. Pontarlier, Morteau, Valdahon. 18 ans d'expérience, certifié RGE."
 >
   <Hero />
 
@@ -114,16 +114,29 @@ const secteurs = [
   <section class="gris presentation">
     <div class="container">
       <div class="presentation-grid">
-        <div>
+        <div class="agence-card">
+          <img src="/photos-fhd/agence-valdahon.jpg" alt="Future agence Façades Haut-Doubs à Valdahon" />
+          <div class="agence-info">
+            <span class="agence-badge">🏗️ Nouvelle agence</span>
+            <strong>Bientôt à Valdahon</strong>
+            <p>Rue Gay Lussac · ZAC En Pougie</p>
+            <p class="agence-opening">Ouverture le 1<sup>er</sup> mars 2027</p>
+          </div>
+        </div>
+
+        <div class="presentation-text">
           <h2>Votre spécialiste façades <em>au cœur du Haut-Doubs</em></h2>
           <p>
             <strong>Façades Haut-Doubs</strong> est l'agence dédiée au territoire du Haut-Doubs de
             <strong>Façades Bisontines</strong>, entreprise familiale spécialisée dans la rénovation
-            extérieure des bâtiments depuis 2010.
+            extérieure des bâtiments depuis 2007.
           </p>
           <p>
-            Implantés à Valdahon, nous intervenons sur l'ensemble du Haut-Doubs :
-            <strong>Pontarlier, Morteau, Valdahon</strong>, et toutes les communes environnantes.
+            Notre <strong>nouvelle agence</strong> ouvre ses portes le <strong>1<sup>er</sup> mars 2027</strong>
+            à Valdahon, pour vous accompagner au plus près sur l'ensemble du Haut-Doubs :
+            <strong>Pontarlier, Morteau, Valdahon</strong> et toutes les communes environnantes.
+          </p>
+          <p>
             Notre équipe locale connaît parfaitement les contraintes climatiques et architecturales
             de la région.
           </p>
@@ -174,7 +187,7 @@ const secteurs = [
     <div class="container">
       <div class="section-title">
         <h2>Trois engagements <em>pour vous</em></h2>
-        <p>Nos clients nous confient leur projet en toute sérénité depuis 15 ans.</p>
+        <p>Nos clients nous confient leur projet en toute sérénité depuis 18 ans.</p>
       </div>
 
       <div class="grid-3">
@@ -235,7 +248,7 @@ const secteurs = [
     <div class="container">
       <div class="grid-4 chiffres-grid">
         <div class="chiffre">
-          <div class="num">15</div>
+          <div class="num">18</div>
           <div class="label">années d'expérience</div>
         </div>
         <div class="chiffre">
@@ -266,20 +279,87 @@ const secteurs = [
 
   .presentation-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 1fr 1.3fr 1fr;
+    gap: 32px;
+    align-items: stretch;
   }
-  @media (max-width: 900px) {
-    .presentation-grid { grid-template-columns: 1fr; gap: 40px; }
+  @media (max-width: 1100px) {
+    .presentation-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "text text" "agence dejan";
+      gap: 30px;
+    }
+    .presentation-text { grid-area: text; }
+    .agence-card { grid-area: agence; }
+    .dejan-card { grid-area: dejan; }
   }
-  .presentation-grid h2 { margin-bottom: 20px; }
-  .presentation-grid h2 em { color: var(--orange-500); font-style: normal; }
-  .presentation-grid p {
+  @media (max-width: 700px) {
+    .presentation-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas: "text" "agence" "dejan";
+    }
+  }
+  .presentation-text { display: flex; flex-direction: column; justify-content: center; }
+  .presentation-text h2 { margin-bottom: 20px; }
+  .presentation-text h2 em { color: var(--orange-500); font-style: normal; }
+  .presentation-text p {
     color: var(--anthracite);
     font-size: 1.05rem;
     margin-bottom: 18px;
   }
+  .presentation-text .btn { align-self: flex-start; }
+
+  /* ---- AGENCE CARD (futur bâtiment) ---- */
+  .agence-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid var(--orange-500);
+    display: flex;
+    flex-direction: column;
+  }
+  .agence-card img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+  }
+  .agence-info { padding: 20px 22px 24px; }
+  .agence-badge {
+    display: inline-block;
+    background: var(--orange-100);
+    color: var(--orange-700);
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .agence-info strong {
+    font-family: var(--font-titre);
+    font-size: 1.2rem;
+    color: var(--noir-doux);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .agence-info p {
+    color: var(--anthracite);
+    font-size: 0.88rem;
+    margin: 0 0 6px;
+  }
+  .agence-info .agence-opening {
+    background: var(--orange-100);
+    color: var(--orange-700);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  .agence-info .agence-opening sup { font-size: 0.7em; vertical-align: super; }
 
   .dejan-card {
     background: white;
