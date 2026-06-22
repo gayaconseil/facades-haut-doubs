@@ -37,12 +37,12 @@ const {
 <style>
   .hero {
     position: relative;
-    padding: 140px 0 100px;
+    padding: 70px 0 50px;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     overflow: hidden;
-    min-height: 75vh;
+    min-height: calc(100vh - 72px);
     display: flex;
     align-items: center;
   }
@@ -56,10 +56,11 @@ const {
   }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 24px;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    margin-bottom: 14px;
     color: white;
     text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    line-height: 1.1;
   }
   .hero h1 :global(em) {
     color: var(--orange-300);
@@ -67,11 +68,12 @@ const {
   }
 
   .hero-sub {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: rgba(255,255,255,0.92);
     max-width: 680px;
-    margin: 0 auto 40px;
+    margin: 0 auto 22px;
     text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    line-height: 1.5;
   }
 
   /* Bouton outline pour fond sombre */
@@ -95,22 +97,22 @@ const {
 
   .hero-cta {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    margin-bottom: 26px;
   }
 
   .hero-opening {
     display: inline-flex;
     align-items: center;
-    gap: 18px;
-    background: rgba(244, 101, 47, 0.18);
+    gap: 14px;
+    background: rgba(244, 101, 47, 0.2);
     border: 2px solid var(--orange-500);
     backdrop-filter: blur(6px);
-    padding: 18px 30px;
-    border-radius: 14px;
-    margin-top: 40px;
+    padding: 12px 22px;
+    border-radius: 12px;
+    margin-top: 0;
     box-shadow: 0 8px 32px rgba(244, 101, 47, 0.25);
   }
   .opening-pulse {
@@ -143,10 +145,10 @@ const {
   }
   .opening-date {
     font-family: var(--font-titre);
-    font-size: 1.55rem;
+    font-size: 1.3rem;
     color: white;
     line-height: 1.1;
-    margin: 4px 0;
+    margin: 2px 0;
   }
   .opening-date sup {
     font-size: 0.7em;
