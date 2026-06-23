@@ -4,94 +4,93 @@ import Hero from '../../components/Hero.astro';
 import FormDevis from '../../components/FormDevis.astro';
 
 const problemes = [
-  { texte: 'Infiltrations d\'eau dans les murs', icone: '💧' },
-  { texte: 'Mousses et taches sombres', icone: '🦠' },
-  { texte: 'Microfissures et faïençage', icone: '⚡' },
+  { texte: 'Infiltrations d\'eau dans le balcon', icone: '💧' },
+  { texte: 'Terrasse fissurée ou décollée', icone: '⚡' },
+  { texte: 'Escaliers extérieurs glissants', icone: '🪜' },
   { texte: 'Dommages dus au gel', icone: '🥶' },
-  { texte: 'Joints de pierre dégradés', icone: '🧱' },
-  { texte: 'Humidité dans les pièces', icone: '🌧️' },
+  { texte: 'Stagnation d\'eau en surface', icone: '🌧️' },
+  { texte: 'Joints de carrelage dégradés', icone: '🧱' },
 ];
 
+// ⚠️ NOTE INTERNE : 3 solutions proposées en attente de validation
+// par Matéo Riva (Façades Bisontines). À ajuster selon ses préconisations
+// techniques officielles pour balcons / terrasses / escaliers.
 const solutions = [
   {
-    titre: 'Système D3 armé',
-    description: 'Revêtement spécifique pour façades verticales, intégrant une trame en fibre de verre. Excellent pour les supports fissurés.',
-    applications: 'Murs extérieurs, façades de copropriétés',
+    titre: 'Étanchéité PMMA (balcons)',
+    description: 'Résine méthacrylate à polymérisation rapide, adaptée aux balcons. Souple, résistante aux variations thermiques importantes du Haut-Doubs, polymérisation en quelques heures.',
+    applications: 'Balcons, petites surfaces, zones exposées au gel',
     image: '/photos-fb/facades-bisontines-etancheite-balcon-03.jpg',
   },
   {
-    titre: 'Hydrofuge',
-    description: 'Imprégnation incolore qui rend la façade imperméable tout en la laissant respirer. Idéal pour pierres apparentes.',
-    applications: 'Pierre, brique, façades traditionnelles',
-    image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg',
-  },
-  {
-    titre: 'RSI (I1 à I4)',
-    description: 'Revêtements Souples d\'Imperméabilité classés selon la résistance anti-infiltration. I4 = niveau maximal pour façades très exposées.',
-    applications: 'Façades fissurées, exposées aux intempéries',
-    image: '/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg',
-  },
-  {
-    titre: 'Étanchéité liquide (Époxy / PMMA)',
-    description: 'Résine appliquée à froid sur supports horizontaux. Solution durable pour balcons, terrasses, escaliers extérieurs.',
-    applications: 'Balcons, terrasses, toits-terrasses, sols extérieurs',
+    titre: 'Résine époxy armée (terrasses)',
+    description: 'Système d\'étanchéité liquide avec armature en fibre de verre, particulièrement adapté aux grandes surfaces planes. Excellente résistance mécanique et étanchéité durable.',
+    applications: 'Terrasses, toitures-terrasses, espaces extérieurs accessibles',
     image: '/photos-fb/facades-bisontines-chantier-etancheite-sol-1.jpg',
+  },
+  {
+    titre: 'Système SEL polyuréthane (escaliers)',
+    description: 'Système d\'Étanchéité Liquide à base de polyuréthane, avec finition antidérapante. Souple, idéal pour les marches et nez d\'escaliers extérieurs.',
+    applications: 'Escaliers extérieurs, marches, paliers, accès en pente',
+    image: '/photos-fb/facades-bisontines-chantier-etancheite-sol-2.jpg',
   },
 ];
 
 const faq = [
   {
-    q: 'Comment savoir si ma façade a besoin d\'une étanchéité ?',
-    r: 'Plusieurs signaux : taches d\'humidité à l\'intérieur, mousses noires sur les murs, peinture qui cloque, sensation de murs froids. Un diagnostic technique gratuit lève le doute.',
+    q: 'Comment savoir si mon balcon ou ma terrasse a besoin d\'une étanchéité ?',
+    r: 'Plusieurs signaux : taches d\'humidité au plafond du dessous, mousses ou décollements en surface, eau qui stagne après une pluie, joints ou carrelage qui se dégradent. Un diagnostic technique gratuit lève le doute.',
   },
   {
-    q: 'Quel est le prix d\'une étanchéité de façade ?',
-    r: 'De 40 €/m² (hydrofuge simple) à 120 €/m² (système D3 armé). Pour balcons et terrasses : 60-90 €/m² avec étanchéité liquide. Devis personnalisé après visite.',
+    q: 'Combien de temps dure une étanchéité de sol ?',
+    r: 'Une étanchéité liquide bien posée tient 20 à 30 ans selon le système et l\'exposition. Tous nos systèmes bénéficient d\'une garantie décennale.',
   },
   {
     q: 'L\'étanchéité est-elle garantie ?',
-    r: 'Oui, garantie décennale sur tous nos systèmes. Notre certification RGE Qualibat est votre assurance qualité.',
+    r: 'Oui, garantie décennale sur l\'ensemble de nos systèmes. Notre certification RGE Qualibat est votre assurance qualité.',
   },
   {
-    q: 'Peut-on garder l\'aspect d\'origine de la façade ?',
-    r: 'Oui avec l\'hydrofuge (totalement transparent) ou un D3 teinté à votre coloris d\'origine. Aucune perte d\'esthétique.',
+    q: 'Peut-on conserver l\'aspect d\'origine du balcon ou de la terrasse ?',
+    r: 'Oui : nos résines existent dans une large gamme de teintes et de finitions (lisse, sablée, antidérapante). Vous pouvez même les recouvrir d\'un nouveau carrelage si vous le souhaitez.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Étanchéité de façade dans le Haut-Doubs — Façades Haut-Doubs"
-  description="Solutions d'étanchéité de façade dans le Haut-Doubs : hydrofuge, D3 armé, RSI, étanchéité liquide. Pontarlier, Morteau, Valdahon. Garantie décennale."
+  title="Étanchéité de sol dans le Haut-Doubs — Façades Haut-Doubs"
+  description="Solutions d'étanchéité de sol dans le Haut-Doubs : balcons, terrasses, escaliers. Pontarlier, Morteau, Valdahon. Garantie décennale, RGE Qualibat."
 >
   <Hero
-    titre="Étanchéité de façade <em>protection anti-infiltration</em>"
-    sousTitre="Préservez votre maison de l'humidité et des infiltrations. Solutions techniques durables, garantie décennale, expert du Haut-Doubs."
+    titre="Étanchéité de sol <em>balcons, terrasses, escaliers</em>"
+    sousTitre="Protégez vos espaces extérieurs des infiltrations et du gel. Solutions techniques durables, garantie décennale, expert du Haut-Doubs."
     bgImage="/photos-fb/facades-bisontines-etancheite-sol-exterieur.jpg"
   />
 
   <section>
     <div class="container intro-grid">
       <div>
-        <h2>Protéger votre maison <em>de l'humidité</em></h2>
+        <h2>Protéger vos sols <em>extérieurs</em></h2>
         <p>
-          L'<strong>étanchéité de façade</strong> traite et prévient les <strong>infiltrations
-          d'eau</strong>, les <strong>remontées capillaires</strong> et les dégâts liés à l'humidité.
+          L'<strong>étanchéité de sol</strong> traite et prévient les
+          <strong>infiltrations d'eau</strong> sur vos surfaces horizontales :
+          balcons, terrasses, escaliers extérieurs et toitures-terrasses.
         </p>
         <p>
-          Dans le <strong>Haut-Doubs</strong>, où les pluies abondantes, le gel et les écarts
-          thermiques fragilisent les murs, une étanchéité professionnelle est indispensable
-          pour protéger durablement votre bâti.
+          Dans le <strong>Haut-Doubs</strong>, où les pluies abondantes, le gel
+          et les écarts thermiques sollicitent fortement vos sols extérieurs,
+          une étanchéité professionnelle est essentielle pour préserver durablement
+          votre patrimoine.
         </p>
         <p>
-          Nous proposons <strong>4 solutions techniques</strong> selon votre problématique :
-          étanchéité verticale (façades), horizontale (balcons, terrasses), avec une
-          <strong>garantie décennale</strong> sur tous nos systèmes.
+          Nous proposons <strong>3 solutions techniques</strong> selon votre problématique :
+          l'étanchéité de vos balcons, de vos terrasses et de vos escaliers, avec une
+          <strong>garantie décennale</strong> sur l'ensemble de nos systèmes.
         </p>
       </div>
       <div>
         <img
           src="/photos-fb/facades-bisontines-chantier-etancheite-sol-2.jpg"
-          alt="Étanchéité en cours de réalisation"
+          alt="Étanchéité de sol en cours de réalisation"
           class="intro-img"
         />
       </div>
@@ -118,8 +117,8 @@ const faq = [
   <section>
     <div class="container">
       <div class="section-title">
-        <h2>Nos 4 solutions <em>techniques</em></h2>
-        <p>Chaque problématique trouve sa solution adaptée.</p>
+        <h2>Nos 3 solutions <em>techniques</em></h2>
+        <p>Une solution adaptée à chaque type de support : balcons, terrasses, escaliers.</p>
       </div>
       <div class="solutions-grid">
         {solutions.map((s) => (
@@ -155,7 +154,7 @@ const faq = [
   </section>
 
   <FormDevis
-    titre="Problème d'humidité ou d'infiltration ?"
+    titre="Un balcon, une terrasse, un escalier à étancher ?"
     sousTitre="Décrivez-nous votre problème, nous effectuons un diagnostic gratuit et proposons la solution technique adaptée."
   />
 </BaseLayout>
@@ -197,18 +196,19 @@ const faq = [
 
   .solutions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
-  @media (max-width: 700px) { .solutions-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .solutions-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .solutions-grid { grid-template-columns: 1fr; } }
   .solution-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--gris-perle); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
   .sol-img { aspect-ratio: 16/9; background-size: cover; background-position: center; }
   .sol-body { padding: 24px; }
-  .sol-body h3 { color: var(--noir-doux); margin-bottom: 10px; font-size: 1.3rem; }
-  .sol-body p { color: var(--anthracite); margin-bottom: 14px; line-height: 1.5; }
+  .sol-body h3 { color: var(--noir-doux); margin-bottom: 10px; font-size: 1.2rem; }
+  .sol-body p { color: var(--anthracite); margin-bottom: 14px; line-height: 1.5; font-size: 0.95rem; }
   .sol-meta {
     color: var(--anthracite);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     background: var(--gris-fond);
     padding: 10px 14px;
     border-radius: 6px;

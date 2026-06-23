@@ -10,6 +10,7 @@ const metiers = [
     description: 'ITE performante pour réduire vos factures de chauffage et améliorer votre confort.',
     iconeUrl: '/icones/isolation.png',
     href: '/isolation-thermique-exterieur/',
+    badgeRge: true,
   },
   {
     titre: 'Ravalement de façade',
@@ -30,10 +31,10 @@ const metiers = [
     href: '/enduit-de-facade/',
   },
   {
-    titre: 'Étanchéité de façade',
-    description: 'Solutions complètes pour protéger durablement votre habitation de l\'humidité.',
+    titre: 'Étanchéité de sol',
+    description: 'Étanchéité des balcons, terrasses et escaliers extérieurs. Garantie décennale.',
     iconeUrl: '/icones/etancheite.png',
-    href: '/etancheite-de-facade/',
+    href: '/etancheite-de-sol/',
   },
 ];
 
@@ -104,6 +105,7 @@ const secteurs = [
             description={m.description}
             iconeUrl={m.iconeUrl}
             href={m.href}
+            badgeRge={m.badgeRge}
           />
         ))}
       </div>
@@ -207,17 +209,17 @@ const secteurs = [
     <div class="container">
       <div class="aides-banner">
         <div class="aides-text">
-          <h2>Jusqu'à <em>70 €/m²</em> d'aides à l'isolation</h2>
+          <h2>Profitez des <em>aides de l'État</em> pour l'isolation thermique par l'extérieur</h2>
           <p>
-            MaPrimeRénov', Certificats d'Économies d'Énergie (CEE), Éco-PTZ...
+            Certificats d'Économies d'Énergie (CEE), Éco-PTZ, dispositifs régionaux…
             Nous vous accompagnons dans le montage de votre dossier d'aides pour réduire
-            significativement le coût de vos travaux.
+            significativement le coût de vos travaux d'isolation.
           </p>
-          <a href="#devis" class="btn">Estimer mes aides</a>
+          <a href="#devis" class="btn">Estimer mon projet</a>
         </div>
         <div class="aides-stat">
-          <div class="big-stat">70 €</div>
-          <div class="big-stat-label">par m² isolé</div>
+          <div class="big-stat-icon">💶</div>
+          <div class="big-stat-label">Aides cumulables</div>
         </div>
       </div>
     </div>
@@ -256,7 +258,7 @@ const secteurs = [
           <div class="label">collaborateurs experts</div>
         </div>
         <div class="chiffre">
-          <div class="num">1 500+</div>
+          <div class="num">2 000+</div>
           <div class="label">chantiers réalisés</div>
         </div>
         <div class="chiffre">
@@ -509,20 +511,19 @@ const secteurs = [
     margin-bottom: 24px;
     font-size: 1.05rem;
   }
-  .big-stat {
-    font-family: var(--font-titre);
-    font-size: 5rem;
-    color: var(--orange-500);
-    line-height: 1;
+  .big-stat-icon {
+    font-size: 4.5rem;
     text-align: center;
+    line-height: 1;
   }
   .big-stat-label {
     color: var(--anthracite);
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.85rem;
-    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 12px;
   }
 
   .secteur-card {
