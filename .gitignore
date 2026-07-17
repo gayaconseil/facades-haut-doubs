@@ -24,3 +24,5 @@ pnpm-debug.log*
 
 # Astro
 .astro/
+_galerie-chantiers/
+galerie-chantiers.html

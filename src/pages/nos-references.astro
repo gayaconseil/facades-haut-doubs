@@ -3,18 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FormDevis from '../components/FormDevis.astro';
 
 const projets = [
-  { titre: 'Ravalement complet', lieu: 'Valdahon', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-1.jpg' },
-  { titre: 'Façade pierre rénovée', lieu: 'Pontarlier', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg' },
-  { titre: 'Maison particulier', lieu: 'Maîche', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-chantier-maison-particulier-1.jpg' },
-  { titre: 'Façade pierre & brique', lieu: 'Morteau', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg' },
-  { titre: 'Bardage bois composite', lieu: 'Morteau', metier: 'Bardage', image: '/photos-fb/bardage-bois-composite.png' },
-  { titre: 'Bardage extérieur', lieu: 'Pontarlier', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-3.jpg' },
-  { titre: 'Bardage modulaire', lieu: 'Levier', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-6.jpg' },
-  { titre: 'Bardage architectural', lieu: 'Valdahon', metier: 'Bardage', image: '/photos-fb/facades-bisontines-bardage-exterieur-8.jpg' },
-  { titre: 'ITE maison de campagne', lieu: 'Haut-Doubs', metier: 'ITE', image: '/photos-fb/maison-campagne-montbeliard-isolation-thermique-exterieur-w600.png' },
-  { titre: 'Chantier ITE', lieu: 'Pontarlier', metier: 'ITE', image: '/photos-fb/facades-bisontines-chantier-isolation-thermique-exterieur-1.jpg' },
-  { titre: 'Enduit chaux traditionnel', lieu: 'Mouthe', metier: 'Enduit', image: '/photos-fb/enduit-chaux.jpg' },
-  { titre: 'Rénovation extérieure', lieu: 'Levier', metier: 'Ravalement', image: '/photos-fb/facades-bisontines-chantier-renovation-exterieur-4.jpg' },
+  // ITE
+  { titre: 'Isolation thermique extérieure', lieu: 'Cernay-l\'Église', metier: 'ITE', image: '/photos-chantiers/ite-cernay-1.jpg' },
+  { titre: 'Isolation thermique extérieure', lieu: 'Vallerot-lès-Belvoir', metier: 'ITE', image: '/photos-chantiers/ite-vallerot-1.jpg' },
+  { titre: 'ITE maison individuelle', lieu: 'Gilley', metier: 'ITE', image: '/photos-chantiers/ite-gilley.jpg' },
+  { titre: 'ITE immeuble collectif', lieu: 'Maîche', metier: 'ITE', image: '/photos-chantiers/ite-maiche-2.jpg' },
+  // Ravalement
+  { titre: 'Ravalement de façade (D3 armé)', lieu: 'Pontarlier', metier: 'Ravalement', image: '/photos-chantiers/ravalement-pontarlier-1.jpg' },
+  { titre: 'Ravalement maison récente', lieu: 'Houtaud', metier: 'Ravalement', image: '/photos-chantiers/ravalement-houtaud.jpg' },
+  { titre: 'Ravalement de façade', lieu: 'Gilley', metier: 'Ravalement', image: '/photos-chantiers/ravalement-gilley.jpg' },
+  // Enduit chaux
+  { titre: 'Enduit à la chaux — presbytère', lieu: 'Levier', metier: 'Enduit', image: '/photos-chantiers/enduit-levier-1.jpg' },
+  { titre: 'Enduit chaux traditionnel', lieu: 'Mouthier-Haute-Pierre', metier: 'Enduit', image: '/photos-chantiers/enduit-mouthier-1.jpg' },
+  // Joint de pierre
+  { titre: 'Joint de pierre — ferme comtoise', lieu: 'Lavans-Vuillafans', metier: 'Joint de pierre', image: '/photos-chantiers/joint-pierre-lavans-1.jpg' },
+  // Bardage
+  { titre: 'Bardage — bâtiment public', lieu: 'La Chênalotte', metier: 'Bardage', image: '/photos-chantiers/bardage-chenalotte-1.jpg' },
+  { titre: 'ITE bâtiment collectif', lieu: 'Maîche', metier: 'ITE', image: '/photos-chantiers/ite-maiche-3.jpg' },
 ];
 ---
 
