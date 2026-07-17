@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FormDevis from '../components/FormDevis.astro';
+import AvisClients from '../components/AvisClients.astro';
 
 const projets = [
   // ITE
@@ -59,41 +60,7 @@ const projets = [
     </div>
   </section>
 
-  <section class="gris">
-    <div class="container">
-      <div class="section-title">
-        <h2>Vos <em>avis comptent</em></h2>
-        <p>Note moyenne de nos clients : <strong>4,7/5</strong></p>
-      </div>
-      <div class="temoignages-grid">
-        <div class="temoignage">
-          <div class="stars">★★★★★</div>
-          <p>
-            « Travail soigné, équipe sympathique, respect des délais. Notre façade est comme
-            neuve, nous sommes ravis. »
-          </p>
-          <div class="signature">— Famille L., Pontarlier</div>
-        </div>
-        <div class="temoignage">
-          <div class="stars">★★★★★</div>
-          <p>
-            « Conseil de qualité dès la visite technique. ITE parfaitement réalisée, nos
-            factures de chauffage ont baissé de 25%. »
-          </p>
-          <div class="signature">— M. et Mme D., Valdahon</div>
-        </div>
-        <div class="temoignage">
-          <div class="stars">★★★★★</div>
-          <p>
-            « Bardage bois magnifique sur notre rénovation. Travail impeccable, équipe
-            professionnelle et à l'écoute. »
-          </p>
-          <div class="signature">— P. Barbier, Morteau</div>
-        </div>
-      </div>
-      <p class="note">Témoignages à compléter par de vrais avis clients après lancement.</p>
-    </div>
-  </section>
+  <AvisClients />
 
   <FormDevis />
 </BaseLayout>
