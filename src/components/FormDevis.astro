@@ -31,6 +31,7 @@ const pageSource = Astro.url.pathname;
         name="devis"
         method="POST"
         action="/devis-envoye/"
+        enctype="multipart/form-data"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
@@ -81,6 +82,18 @@ const pageSource = Astro.url.pathname;
         <div class="field">
           <label for="message">Votre projet *</label>
           <textarea id="message" name="message" rows="4" required placeholder="Décrivez votre projet (type de travaux, surface approximative, délai souhaité...)"></textarea>
+        </div>
+
+        <div class="field field-file">
+          <label for="fichiers">Photos ou plans <span class="opt">(facultatif)</span></label>
+          <input
+            type="file"
+            id="fichiers"
+            name="fichiers"
+            multiple
+            accept=".jpg,.jpeg,.png,.heic,.pdf"
+          />
+          <span class="file-hint">Jusqu'à 5 fichiers · 8 Mo max chacun · JPG, PNG, HEIC ou PDF</span>
         </div>
 
         <button type="submit" class="btn submit-btn">Envoyer ma demande</button>
@@ -182,4 +195,76 @@ const pageSource = Astro.url.pathname;
   }
 
   .hidden { display: none; }
+
+  /* Champ fichiers */
+  .field-file .opt {
+    color: var(--gris-moyen);
+    font-weight: 400;
+  }
+  .field-file input[type="file"] {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .field-file input[type="file"]::file-selector-button {
+    font-family: var(--font-corps);
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: var(--orange-100);
+    color: var(--orange-700);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .field-file input[type="file"]::file-selector-button:hover {
+    background: var(--orange-300);
+  }
+  .file-hint {
+    font-size: 0.78rem;
+    color: var(--gris-moyen);
+    margin-top: 6px;
+  }
+  .file-error {
+    font-size: 0.82rem;
+    color: var(--erreur);
+    font-weight: 600;
+    margin-top: 6px;
+    display: none;
+  }
+  .file-error.show { display: block; }
 </style>
+
+<script>
+  // Validation côté client : max 5 fichiers, 8 Mo chacun
+  const MAX_FILES = 5;
+  const MAX_SIZE = 8 * 1024 * 1024; // 8 Mo
+
+  document.querySelectorAll('input[type="file"][name="fichiers"]').forEach((input) => {
+    const el = input as HTMLInputElement;
+    // Crée le message d'erreur juste après le hint
+    const hint = el.parentElement?.querySelector('.file-hint');
+    const err = document.createElement('span');
+    err.className = 'file-error';
+    hint?.after(err);
+
+    el.addEventListener('change', () => {
+      err.classList.remove('show');
+      const files = Array.from(el.files || []);
+      if (files.length > MAX_FILES) {
+        err.textContent = `Maximum ${MAX_FILES} fichiers. Vous en avez sélectionné ${files.length}.`;
+        err.classList.add('show');
+        el.value = '';
+        return;
+      }
+      const tropGros = files.find((f) => f.size > MAX_SIZE);
+      if (tropGros) {
+        err.textContent = `« ${tropGros.name} » dépasse 8 Mo. Merci de réduire sa taille.`;
+        err.classList.add('show');
+        el.value = '';
+      }
+    });
+  });
+</script>
