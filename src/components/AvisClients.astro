@@ -1,0 +1,201 @@
+---
+// ============================================================
+// Section Avis Clients — renvoi vers les avis vérifiés Plus que Pro
+// Les avis sont ceux de Façades Bisontines (maison mère de FHD)
+// URL Plus que Pro : https://www.facades-bisontines-avis.fr
+// ============================================================
+
+const AVIS_URL = 'https://www.facades-bisontines-avis.fr';
+
+// Avis réels : Etienne M. (site Façades Bisontines) + avis vérifiés Plus que Pro
+// (facades-bisontines-avis.fr) — aucun avis Haut-Doubs à ce jour, l'agence
+// Valdahon ouvre en 2027. Avis authentiques du Doubs (25) en attendant.
+const temoignages = [
+  {
+    texte: 'Nous avons beaucoup apprécié de travailler avec Façades Bisontines, aussi bien pour les contacts commerciaux que pour la prestation des équipes techniques. Nous sommes très satisfaits du résultat.',
+    auteur: 'Etienne M.',
+    lieu: '',
+    presta: '',
+  },
+  {
+    texte: 'Parfait, ouvriers compétents et courtois. Le chantier était rangé tous les soirs. Le résultat est impeccable.',
+    auteur: 'Charles H.',
+    lieu: 'Montfaucon (25)',
+    presta: 'Enduit traditionnel',
+  },
+  {
+    texte: 'Bonne communication et travail bien fait.',
+    auteur: 'Cyril P.',
+    lieu: 'Bonnay (25)',
+    presta: 'Enduit traditionnel projeté',
+  },
+];
+---
+
+<section class="avis-section">
+  <div class="container">
+    <div class="avis-header">
+      <span class="avis-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Avis vérifiés Plus que Pro
+      </span>
+      <h2>Ils nous font <em>confiance</em></h2>
+      <div class="avis-note">
+        <span class="stars" aria-label="4,7 sur 5">★★★★<span class="half">★</span></span>
+        <span class="note-txt"><strong>4,7/5</strong> · 53 avis clients vérifiés</span>
+      </div>
+    </div>
+
+    <div class="avis-grid">
+      {temoignages.map((t) => (
+        <div class="avis-card">
+          <div class="card-stars">★★★★★</div>
+          <p class="avis-texte">« {t.texte} »</p>
+          <div class="avis-auteur">
+            — {t.auteur}{t.lieu && <span class="avis-lieu"> · {t.lieu}</span>}
+            {t.presta && <span class="avis-presta">{t.presta}</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="avis-cta">
+      <a href={AVIS_URL} target="_blank" rel="noopener" class="btn btn-avis">
+        Voir tous nos avis clients
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <p class="avis-mention">Avis vérifiés et certifiés par Plus que Pro — Façades Bisontines &amp; Façades Haut-Doubs</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .avis-section {
+    background: var(--gris-fond);
+    padding: 80px 0;
+  }
+
+  .avis-header {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+  .avis-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--orange-700);
+    border: 1px solid var(--orange-300);
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: var(--font-corps);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(244, 101, 47, 0.1);
+  }
+  .avis-badge svg { width: 16px; height: 16px; color: var(--orange-500); }
+
+  .avis-header h2 { margin-bottom: 14px; }
+  .avis-header h2 em { color: var(--orange-500); font-style: normal; }
+
+  .avis-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stars {
+    color: var(--orange-500);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    position: relative;
+  }
+  .stars .half {
+    color: var(--gris-moyen);
+    position: relative;
+  }
+  .note-txt { color: var(--anthracite); font-size: 1rem; }
+  .note-txt strong { color: var(--noir-doux); }
+
+  .avis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 44px;
+  }
+  @media (max-width: 900px) { .avis-grid { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; margin-bottom: 44px; } }
+
+  .avis-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid var(--orange-500);
+    display: flex;
+    flex-direction: column;
+  }
+  .card-stars {
+    color: var(--orange-500);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  .avis-texte {
+    color: var(--anthracite);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+  .avis-auteur {
+    color: var(--orange-700);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .avis-lieu {
+    color: var(--anthracite);
+    font-weight: 500;
+  }
+  .avis-presta {
+    display: block;
+    color: var(--gris-moyen);
+    font-weight: 400;
+    font-size: 0.82rem;
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .avis-cta {
+    text-align: center;
+  }
+  .btn-avis {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange-500);
+    color: white;
+    padding: 15px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    box-shadow: 0 6px 20px rgba(244, 101, 47, 0.28);
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .btn-avis:hover {
+    background: var(--orange-700);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(244, 101, 47, 0.35);
+  }
+  .btn-avis svg { width: 18px; height: 18px; }
+
+  .avis-mention {
+    color: var(--gris-moyen);
+    font-size: 0.82rem;
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+</style>

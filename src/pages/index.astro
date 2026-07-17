@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import BlocMetier from '../components/BlocMetier.astro';
 import FormDevis from '../components/FormDevis.astro';
+import AvisClients from '../components/AvisClients.astro';
 
 const metiers = [
   {
@@ -88,7 +89,7 @@ const secteurs = [
   title="Façades Haut-Doubs — Isolation, ravalement, bardage dans le Haut-Doubs"
   description="Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs. Pontarlier, Morteau, Valdahon. 18 ans d'expérience, certifié RGE."
 >
-  <Hero />
+  <Hero marque='<span class="o">F</span>açades <span class="o">H</span>aut-<span class="o">D</span>oubs' />
 
   <!-- ===== SECTION NOS MÉTIERS ===== -->
   <section>
@@ -183,6 +184,9 @@ const secteurs = [
       </div>
     </div>
   </section>
+
+  <!-- ===== AVIS CLIENTS (Plus que Pro) ===== -->
+  <AvisClients />
 
   <!-- ===== TROIS PILIERS ===== -->
   <section>
