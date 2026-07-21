@@ -58,24 +58,24 @@ const pageSource = Astro.url.pathname;
             <input type="email" id="email" name="email" required />
           </div>
           <div class="field">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="telephone" />
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" required />
           </div>
         </div>
 
         <div class="field">
-          <label for="adresse">Adresse du chantier</label>
-          <input type="text" id="adresse" name="adresse" placeholder="N° et rue (ex : 12 Rue Gay Lussac)" />
+          <label for="adresse">Adresse du chantier *</label>
+          <input type="text" id="adresse" name="adresse" required placeholder="N° et rue (ex : 12 Rue Gay Lussac)" />
         </div>
 
         <div class="row">
           <div class="field">
-            <label for="code_postal">Code postal</label>
-            <input type="text" id="code_postal" name="code_postal" pattern="[0-9]{5}" />
+            <label for="code_postal">Code postal *</label>
+            <input type="text" id="code_postal" name="code_postal" required pattern="[0-9]{5}" />
           </div>
           <div class="field">
-            <label for="ville">Ville</label>
-            <input type="text" id="ville" name="ville" />
+            <label for="ville">Ville *</label>
+            <input type="text" id="ville" name="ville" required />
           </div>
         </div>
 

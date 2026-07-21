@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "permissions": {
+    "ask": [
+      "Bash(git push)",
+      "Bash(git push:*)",
+      "Bash(netlify deploy:*)",
+      "Bash(npx netlify deploy:*)",
+      "Bash(netlify:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | grep -qE 'git[[:space:]]+push|netlify[[:space:]]+deploy' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"Déploiement détecté (git push / netlify deploy). Règle Christophe : jamais déployer sans son accord explicite. Confirmer ?\"}}' || true"
+          }
+        ]
+      }
+    ]
+  }
+}
