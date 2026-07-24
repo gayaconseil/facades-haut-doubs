@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import FormDevis from '../../components/FormDevis.astro';
+import { villes } from '../../data/villes';
 
 const benefices = [
   {
@@ -50,13 +51,13 @@ const revetements = [
   },
   {
     titre: 'Peinture façade',
-    image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg',
+    image: '/photos-chantiers/ravalement-gilley.jpg',
     description: 'Peintures siloxanes respirantes ou pliolites résistantes. Idéal pour rafraîchissement.',
     avantages: ['Solution économique', 'Vaste choix de teintes', 'Application rapide'],
   },
   {
     titre: 'Joints de pierre',
-    image: '/photos-fb/facades-bisontines-ravalement-facade-pierre-et-brique.jpg',
+    image: '/photos-fb/facades-bisontines-ravalement-facade-exterieur-2.jpg',
     description: 'Rejointoiement traditionnel pour pierres apparentes — préserve le cachet de votre maison.',
     avantages: ['Authentique', 'Patrimonial', 'Spécifique au Haut-Doubs'],
   },
@@ -112,7 +113,7 @@ const faq = [
 
 <BaseLayout
   title="Ravalement de façade dans le Haut-Doubs — Façades Haut-Doubs"
-  description="Spécialiste du ravalement de façade dans le Haut-Doubs : Pontarlier, Morteau, Valdahon. Devis gratuit, garantie décennale, 18 ans d'expérience."
+  description="Spécialiste du ravalement de façade dans le Haut-Doubs : Valdahon, Pontarlier, Morteau, Ornans, Maîche et tout le Haut-Doubs. Devis gratuit, garantie décennale, 18 ans d'expérience."
 >
   <Hero
     titre="Ravalement de façade <em>dans le Haut-Doubs</em>"
@@ -246,9 +247,9 @@ const faq = [
       <h2>Ravalement dans le <em>Haut-Doubs</em></h2>
       <p>Nous intervenons sur tout le territoire du Haut-Doubs :</p>
       <div class="zones-links">
-        <a href="/ravalement-de-facade/pontarlier/">Pontarlier</a>
-        <a href="/ravalement-de-facade/morteau/">Morteau</a>
-        <a href="/ravalement-de-facade/valdahon/">Valdahon</a>
+        {villes.map((v) => (
+          <a href={`/ravalement-de-facade/${v.slug}/`}>{v.nom}</a>
+        ))}
       </div>
     </div>
   </section>

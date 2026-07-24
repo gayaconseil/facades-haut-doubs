@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import FormDevis from '../../components/FormDevis.astro';
+import { villes } from '../../data/villes';
 
 const benefices = [
   {
@@ -24,28 +25,28 @@ const benefices = [
 const types = [
   {
     titre: 'Bardage bois',
-    image: '/photos-fb/bardage-bois-composite.png',
+    image: '/photos-fb/bardage-exterieur-01.jpg',
     description: 'Mélèze, douglas, épicéa traité. Matériau noble et chaleureux qui se patine avec le temps.',
     avantages: ['Authentique', 'Très isolant', 'Écologique', 'Local (Haut-Doubs)'],
     contrainte: 'Entretien tous les 5-10 ans',
   },
   {
     titre: 'Bardage composite',
-    image: '/photos-fb/bardage-fibre-ciment.png',
+    image: '/photos-fb/facades-bisontines-bardage-exterieur-1.jpg',
     description: 'Mélange de fibres et résines. Imite le bois sans ses contraintes d\'entretien.',
     avantages: ['Sans entretien', 'Stable', 'Large gamme de teintes', 'Garantie 25 ans'],
     contrainte: 'Investissement initial plus élevé',
   },
   {
     titre: 'Bardage métallique',
-    image: '/photos-fb/bardage-metallique-1.png',
+    image: '/photos-fb/facades-bisontines-bardage-exterieur-6.jpg',
     description: 'Aluminium, zinc ou acier laqué. Design contemporain et résistance exceptionnelle.',
     avantages: ['Très moderne', 'Inoxydable', 'Durée de vie 50+ ans', 'Recyclable'],
     contrainte: 'Esthétique urbaine, à intégrer avec soin en milieu rural',
   },
   {
     titre: 'Bardage fibre-ciment',
-    image: '/photos-fb/bardage-fibre-ciment.png',
+    image: '/photos-fb/facades-bisontines-bardage-exterieur-7.jpg',
     description: 'Mélange de sable, ciment et fibres de cellulose. Stable, résistant au feu, sans entretien.',
     avantages: ['Très durable (50+ ans)', 'Résistant au feu', 'Sans entretien', 'Large gamme de finitions'],
     contrainte: 'Plus lourd qu\'un bardage bois, à anticiper en pose',
@@ -89,7 +90,7 @@ const faq = [
 
 <BaseLayout
   title="Bardage extérieur dans le Haut-Doubs — Façades Haut-Doubs"
-  description="Pose de bardage extérieur dans le Haut-Doubs : bois, composite, métal, PVC. Pontarlier, Morteau, Valdahon. Devis gratuit, garantie décennale."
+  description="Pose de bardage extérieur dans le Haut-Doubs : bois, composite, métal, PVC. Valdahon, Pontarlier, Morteau, Ornans, Maîche et tout le Haut-Doubs. Devis gratuit, garantie décennale."
 >
   <Hero
     titre="Bardage extérieur <em>design et performant</em>"
@@ -206,9 +207,9 @@ const faq = [
       <h2>Bardage dans le <em>Haut-Doubs</em></h2>
       <p>Pose de bardage sur tout le territoire :</p>
       <div class="zones-links">
-        <a href="/bardage-exterieur/pontarlier/">Pontarlier</a>
-        <a href="/bardage-exterieur/morteau/">Morteau</a>
-        <a href="/bardage-exterieur/valdahon/">Valdahon</a>
+        {villes.map((v) => (
+          <a href={`/bardage-exterieur/${v.slug}/`}>{v.nom}</a>
+        ))}
       </div>
     </div>
   </section>

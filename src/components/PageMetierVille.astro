@@ -9,7 +9,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import FormDevis from '../components/FormDevis.astro';
-import type { Ville } from '../data/villes';
+import { villes, type Ville } from '../data/villes';
 
 interface Props {
   ville: Ville;
@@ -36,7 +36,7 @@ const description =
 <BaseLayout title={`${titre} — Façades Haut-Doubs`} description={description}>
   <Hero
     titre={`${metier.nom} <em>${ville.article}</em>`}
-    sousTitre={`${metier.accroche} Votre expert local du ${ville.nom} et ses environs.`}
+    sousTitre={`${metier.accroche} Votre expert local ${ville.article} et ses environs.`}
     bgImage={metier.heroImage}
   />
 
@@ -73,7 +73,7 @@ const description =
   <section class="gris">
     <div class="container">
       <div class="section-title">
-        <h2>Les avantages du <em>{metier.nomCourt}</em> {ville.article}</h2>
+        <h2><em>{metier.nomCourt}</em> {ville.article} : les avantages</h2>
       </div>
       <div class="benef-list">
         {metier.benefices.map((b) => (
@@ -105,7 +105,7 @@ const description =
   <section class="ville-cta-section">
     <div class="container">
       <div class="ville-cta">
-        <h2>Un projet de {metier.nomCourt} {ville.article} ?</h2>
+        <h2>Un projet {ville.article} ?</h2>
         <p>
           Notre équipe locale connaît parfaitement les spécificités de {ville.nom}.
           Bénéficiez d'un conseil sur mesure et d'un devis personnalisé.
@@ -123,16 +123,16 @@ const description =
     <div class="container">
       <h3>Voir aussi {metier.nom} dans nos autres communes :</h3>
       <div class="autres-villes-links">
-        <a href={`/${metier.slug}/pontarlier/`} class:list={[ville.slug === 'pontarlier' && 'current']}>Pontarlier</a>
-        <a href={`/${metier.slug}/morteau/`} class:list={[ville.slug === 'morteau' && 'current']}>Morteau</a>
-        <a href={`/${metier.slug}/valdahon/`} class:list={[ville.slug === 'valdahon' && 'current']}>Valdahon</a>
+        {villes.map((v) => (
+          <a href={`/${metier.slug}/${v.slug}/`} class:list={[ville.slug === v.slug && 'current']}>{v.nom}</a>
+        ))}
         <a href={`/${metier.slug}/`} class="back">← Tout savoir sur {metier.nomCourt}</a>
       </div>
     </div>
   </section>
 
   <FormDevis
-    titre={`Votre projet de ${metier.nomCourt.toLowerCase()} ${ville.article} ?`}
+    titre={`Votre projet ${ville.article} ?`}
     sousTitre={`Décrivez-nous votre projet, nous étudions votre dossier et établissons un devis sous 48h pour ${ville.nom} et ses environs.`}
   />
 </BaseLayout>

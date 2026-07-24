@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import FormDevis from '../../components/FormDevis.astro';
+import { villes } from '../../data/villes';
 
 const benefices = [
   {
@@ -103,7 +104,7 @@ const faq = [
 
 <BaseLayout
   title="Isolation thermique par l'extérieur (ITE) — Façades Haut-Doubs"
-  description="Spécialiste de l'ITE dans le Haut-Doubs. Économies d'énergie, aides de l'État, devis gratuit. Pontarlier, Morteau, Valdahon."
+  description="Spécialiste de l'ITE dans le Haut-Doubs. Économies d'énergie, aides de l'État, devis gratuit. Valdahon, Pontarlier, Morteau, Ornans, Maîche et tout le Haut-Doubs."
 >
   <Hero
     titre="Isolation thermique <em>par l'extérieur</em>"
@@ -227,9 +228,9 @@ const faq = [
       <h2>ITE dans le <em>Haut-Doubs</em></h2>
       <p>Nous intervenons sur tout le territoire du Haut-Doubs et ses environs :</p>
       <div class="zones-links">
-        <a href="/isolation-thermique-exterieur/pontarlier/">ITE à Pontarlier</a>
-        <a href="/isolation-thermique-exterieur/morteau/">ITE à Morteau</a>
-        <a href="/isolation-thermique-exterieur/valdahon/">ITE à Valdahon</a>
+        {villes.map((v) => (
+          <a href={`/isolation-thermique-exterieur/${v.slug}/`}>{v.nom}</a>
+        ))}
       </div>
     </div>
   </section>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FormDevis from '../components/FormDevis.astro';
+
+const points = [
+  { titre: 'Gratuite', desc: 'Étude et visite technique offertes' },
+  { titre: 'Sur place', desc: 'Nous venons voir votre chantier' },
+  { titre: 'Sous 48h', desc: 'Étude détaillée après la visite' },
+  { titre: 'Sans engagement', desc: 'Vous restez libre de votre décision' },
+];
+---
+
+<BaseLayout
+  title="Demandez votre étude personnalisée — Façades Haut-Doubs"
+  description="Demandez votre étude personnalisée et gratuite à Façades Haut-Doubs : ITE, ravalement, bardage, enduit. Visite technique sur place, étude détaillée sous 48h, sans engagement."
+>
+  <section class="hero-devis">
+    <div class="container">
+      <h1>Demandez votre <em>étude personnalisée</em></h1>
+      <p class="lead">
+        Un projet de façade, d'isolation ou de bardage ? Décrivez-nous votre besoin :
+        nous étudions votre dossier, nous nous déplaçons sur place et nous vous remettons
+        une étude détaillée — <strong>gratuite et sans engagement</strong>.
+      </p>
+      <div class="devis-points">
+        {points.map((p) => (
+          <div class="devis-point">
+            <strong>{p.titre}</strong>
+            <span>{p.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FormDevis
+    titre="Parlez-nous de votre projet"
+    sousTitre="Plus votre description est précise, plus notre étude sera juste. Joignez des photos ou des plans si vous le pouvez."
+    pageName="Demande d'étude personnalisée"
+  />
+</BaseLayout>
+
+<style>
+  .hero-devis {
+    background: linear-gradient(135deg, var(--orange-100) 0%, #FCEFE8 100%);
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero-devis h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+  .hero-devis h1 em { color: var(--orange-500); font-style: normal; }
+  .hero-devis .lead {
+    font-size: 1.2rem;
+    color: var(--anthracite);
+    max-width: 760px;
+    margin: 0 auto 40px;
+  }
+
+  .devis-points {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 700px) { .devis-points { grid-template-columns: 1fr 1fr; } }
+  .devis-point {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 18px;
+    border-top: 4px solid var(--orange-500);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  }
+  .devis-point strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--orange-700);
+    margin-bottom: 6px;
+  }
+  .devis-point span {
+    font-size: 0.9rem;
+    color: var(--anthracite);
+  }
+</style>

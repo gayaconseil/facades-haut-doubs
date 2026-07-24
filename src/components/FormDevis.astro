@@ -2,14 +2,40 @@
 interface Props {
   titre?: string;
   sousTitre?: string;
+  pageName?: string;
 }
 
 const {
-  titre = 'Demandez votre devis gratuit',
+  titre = 'Demandez votre étude personnalisée',
   sousTitre = 'Décrivez-nous votre projet, nous vous recontactons sous 24h ouvrées.',
+  pageName,
 } = Astro.props;
 
 const pageSource = Astro.url.pathname;
+
+// Libellé lisible de la page d'origine (pour identifier le formulaire à la réception)
+const SEG: Record<string, string> = {
+  'isolation-thermique-exterieur': 'Isolation thermique par l\'extérieur',
+  'ravalement-de-facade': 'Ravalement de façade',
+  'bardage-exterieur': 'Bardage extérieur',
+  'enduit-de-facade': 'Enduit de façade',
+  'etancheite-de-sol': 'Étanchéité de sol',
+  'nos-services': 'Nos services',
+  'choisir-ses-materiaux': 'Choisir ses matériaux',
+  'nos-references': 'Nos références',
+  'nos-valeurs': 'Nos valeurs',
+  'maitrise-ouvrage-privee': 'Maîtrise d\'ouvrage privée',
+  'maitrise-ouvrage-publique': 'Maîtrise d\'ouvrage publique',
+  'mentions-legales': 'Mentions légales',
+  'politique-confidentialite': 'Politique de confidentialité',
+};
+const segs = pageSource.split('/').filter(Boolean);
+let pageLabel = pageName;
+if (!pageLabel) {
+  if (segs.length === 0) pageLabel = 'Accueil';
+  else pageLabel = segs.map((s) => SEG[s] || (s.charAt(0).toUpperCase() + s.slice(1))).join(' — ');
+}
+const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
 ---
 
 <section id="devis" class="form-section">
@@ -37,6 +63,8 @@ const pageSource = Astro.url.pathname;
       >
         <input type="hidden" name="form-name" value="devis" />
         <input type="hidden" name="page_source" value={pageSource} />
+        <input type="hidden" name="page_origine" value={pageLabel} />
+        <input type="hidden" name="subject" value={emailSubject} />
         <p class="hidden">
           <label>Ne pas remplir : <input name="bot-field" /></label>
         </p>

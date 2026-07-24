@@ -1,4 +1,5 @@
 ---
+import { villes } from '../data/villes';
 const year = new Date().getFullYear();
 ---
 
@@ -48,10 +49,10 @@ const year = new Date().getFullYear();
 
       <div class="footer-block">
         <h4>Zones d'intervention</h4>
-        <ul>
-          <li><a href="/isolation-thermique-exterieur/valdahon/">Valdahon</a></li>
-          <li><a href="/isolation-thermique-exterieur/pontarlier/">Pontarlier</a></li>
-          <li><a href="/isolation-thermique-exterieur/morteau/">Morteau</a></li>
+        <ul class="zones-list">
+          {villes.map((v) => (
+            <li><a href={`/isolation-thermique-exterieur/${v.slug}/`}>{v.nom}</a></li>
+          ))}
           <li>Et tout le Haut-Doubs</li>
         </ul>
 
@@ -154,6 +155,17 @@ const year = new Date().getFullYear();
   }
   .footer-block ul li a:hover {
     color: var(--orange-300);
+  }
+
+  /* Liste des zones sur 2 colonnes (10 villes) */
+  .zones-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+  .zones-list li:last-child {
+    grid-column: 1 / -1;
+    margin-top: 4px;
   }
 
   .horaires {
