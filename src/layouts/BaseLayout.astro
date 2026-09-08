@@ -6,12 +6,39 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
   description = 'Façades Haut-Doubs — Rénovation, isolation et bardage de façades dans le Haut-Doubs. Devis gratuit, 18 ans d\'expérience.',
+  image = '/photos-fhd/hero-chateau-joux-02.jpg',
 } = Astro.props;
+
+// URLs absolues pour canonical + Open Graph (Astro.site = https://facades-haut-doubs.com)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+
+// Données structurées (LocalBusiness) — schema.org
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  name: 'Façades Haut-Doubs',
+  description: 'Rénovation, isolation thermique par l\'extérieur (ITE), ravalement et bardage de façades dans le Haut-Doubs.',
+  url: 'https://facades-haut-doubs.com',
+  telephone: '+33 3 81 25 55 47',
+  image: new URL('/photos-fhd/hero-chateau-joux-02.jpg', Astro.site).href,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rue Gay Lussac, ZAC En Pougie',
+    postalCode: '25800',
+    addressLocality: 'Valdahon',
+    addressRegion: 'Bourgogne-Franche-Comté',
+    addressCountry: 'FR',
+  },
+  areaServed: ['Valdahon', 'Pontarlier', 'Morteau', 'Ornans', 'Mouthe', 'Maîche', 'Frasne', 'Levier', 'Sancey', 'Mamirolle', 'Haut-Doubs'],
+  parentOrganization: { '@type': 'Organization', name: 'Façades Bisontines' },
+};
 ---
 
 <!DOCTYPE html>
@@ -19,11 +46,28 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/fonts/libre-baskerville.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Façades Haut-Doubs" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <Header />

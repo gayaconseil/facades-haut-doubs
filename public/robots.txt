@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://facades-haut-doubs.com/sitemap-index.xml

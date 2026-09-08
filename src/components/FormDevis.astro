@@ -7,7 +7,7 @@ interface Props {
 
 const {
   titre = 'Demandez votre étude personnalisée',
-  sousTitre = 'Décrivez-nous votre projet, nous vous recontactons sous 24h ouvrées.',
+  sousTitre = 'Décrivez-nous votre projet, un conseiller vous recontacte sous 72 heures ouvrées.',
   pageName,
 } = Astro.props;
 
@@ -47,8 +47,8 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
         <ul class="form-bullets">
           <li>✓ Étude personnalisée et gratuite</li>
           <li>✓ Visite technique sur place</li>
-          <li>✓ Devis détaillé sous 48h</li>
-          <li>✓ Réponse sous 24h ouvrées</li>
+          <li>✓ Devis détaillé et personnalisé</li>
+          <li>✓ Réponse sous 72 heures ouvrées</li>
         </ul>
       </div>
 
@@ -65,8 +65,8 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
         <input type="hidden" name="page_source" value={pageSource} />
         <input type="hidden" name="page_origine" value={pageLabel} />
         <input type="hidden" name="subject" value={emailSubject} />
-        <p class="hidden">
-          <label>Ne pas remplir : <input name="bot-field" /></label>
+        <p class="hidden" aria-hidden="true">
+          <label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
         </p>
 
         <div class="row">
@@ -142,7 +142,7 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
 
   .form-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
     gap: 60px;
     align-items: center;
     background: white;
@@ -170,7 +170,7 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
 
   .form .row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 16px;
     margin-bottom: 16px;
   }
@@ -182,6 +182,7 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+    min-width: 0;
   }
   .field label {
     font-size: 0.85rem;
@@ -191,6 +192,7 @@ const emailSubject = `Formulaire Façades Haut-Doubs — page : ${pageLabel}`;
   }
   .field input,
   .field textarea {
+    width: 100%;
     font-family: var(--font-corps);
     font-size: 0.95rem;
     padding: 12px 14px;

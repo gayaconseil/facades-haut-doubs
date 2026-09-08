@@ -4,12 +4,34 @@
    2 palettes basculables via classe body
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
+/* Polices auto-hébergées (RGPD : aucune requête vers Google) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/inter.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/libre-baskerville.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/libre-baskerville-italic.woff2') format('woff2');
+}
 
 :root {
   /* ----- Palette officielle (charte V2) — par défaut ----- */
   --orange-500: #F4652F;  /* orange vif officiel */
   --orange-700: #C84B1A;  /* hover */
+  --orange-800: #9E3813;  /* texte sur fond orange clair — contraste AA (≥4.5:1) */
   --orange-300: #F89870;  /* badges */
   --orange-100: #FDE3D6;  /* fonds doux */
   --anthracite: #737373;  /* gris neutre officiel */
@@ -51,7 +73,7 @@ body.palette-terra {
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: light; }
 
 body {
   font-family: var(--font-corps);
@@ -75,6 +97,7 @@ h1, h2, h3, h4 {
   font-weight: 400;
   line-height: 1.15;
   color: var(--noir-doux);
+  overflow-wrap: break-word;
 }
 
 h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
