@@ -7,12 +7,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Façades Haut-Doubs — Rénovation, isolation et bardage de façades dans le Haut-Doubs. Devis gratuit, 18 ans d\'expérience.',
   image = '/photos-fhd/hero-chateau-joux-02.jpg',
+  noindex = false,
 } = Astro.props;
 
 // URLs absolues pour canonical + Open Graph (Astro.site = https://facades-haut-doubs.com)
@@ -47,9 +49,13 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#F4652F" />
     <link rel="preload" href="/fonts/libre-baskerville.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
 

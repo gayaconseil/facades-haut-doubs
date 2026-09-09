@@ -1,0 +1,13 @@
+{
+  "name": "Façades Haut-Doubs",
+  "short_name": "Façades HD",
+  "description": "Rénovation, isolation et bardage de façades dans le Haut-Doubs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F4652F",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

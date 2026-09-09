@@ -184,7 +184,8 @@ const navItems = [
     left: 0;
     background: white;
     list-style: none;
-    min-width: 240px;
+    min-width: min(240px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px);
     border: 1px solid var(--gris-perle);
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -217,7 +218,7 @@ const navItems = [
   }
   .nav-sub li a:hover {
     background: var(--orange-100);
-    color: var(--orange-700);
+    color: var(--orange-800);
   }
 
   .btn-cta {
