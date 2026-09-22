@@ -29,11 +29,23 @@ const { ville, metier } = Astro.props;
 
 const titre = `${metier.nom} ${ville.article}`;
 const description =
-  `${metier.nom} ${ville.article} (${ville.codePostal}). ` +
-  `Spécialiste local, devis gratuit, garantie décennale. ${metier.accroche}`;
+  `${metier.nom} ${ville.article} (${ville.codePostal}) : spécialiste local du Haut-Doubs, ` +
+  `devis gratuit, garantie décennale, certifié RGE.`;
+
+// Fil d'Ariane structuré (Accueil › Métier › Ville)
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: new URL('/', Astro.site).href },
+    { '@type': 'ListItem', position: 2, name: metier.nom, item: new URL(`/${metier.slug}/`, Astro.site).href },
+    { '@type': 'ListItem', position: 3, name: titre, item: new URL(Astro.url.pathname, Astro.site).href },
+  ],
+};
 ---
 
 <BaseLayout title={`${titre} — Façades Haut-Doubs`} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
   <Hero
     titre={`${metier.nom} <em>${ville.article}</em>`}
     sousTitre={`${metier.accroche} Votre expert local ${ville.article} et ses environs.`}

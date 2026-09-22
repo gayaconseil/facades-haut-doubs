@@ -242,6 +242,13 @@ const navItems = [
     border-radius: 8px;
     cursor: pointer;
     flex-shrink: 0;
+    position: relative;
+  }
+  /* Zone tactile ≥ 44px sans agrandir le bouton (n'affecte pas la mise en page) */
+  .burger::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
   }
   .burger span {
     display: block;

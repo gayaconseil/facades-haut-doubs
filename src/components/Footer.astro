@@ -17,7 +17,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="footer-block">
-        <h4>Nous contacter</h4>
+        <h2>Nous contacter</h2>
         <p>
           <strong>Agence du Haut-Doubs</strong><br />
           Rue Gay Lussac<br />
@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="footer-block">
-        <h4>Nos métiers</h4>
+        <h2>Nos métiers</h2>
         <ul>
           <li><a href="/isolation-thermique-exterieur/">Isolation thermique</a></li>
           <li><a href="/ravalement-de-facade/">Ravalement de façade</a></li>
@@ -48,7 +48,7 @@ const year = new Date().getFullYear();
       </div>
 
       <div class="footer-block">
-        <h4>Zones d'intervention</h4>
+        <h2>Zones d'intervention</h2>
         <ul class="zones-list">
           {villes.map((v) => (
             <li><a href={`/isolation-thermique-exterieur/${v.slug}/`}>{v.nom}</a></li>
@@ -95,7 +95,7 @@ const year = new Date().getFullYear();
   .footer-avis-stars { color: var(--orange-500); font-size: 0.95rem; letter-spacing: 1px; }
   .footer-avis-txt { color: var(--gris-perle); font-size: 0.9rem; }
   .footer-avis-txt strong { color: white; }
-  .footer-avis-badge { color: var(--gris-moyen); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; }
+  .footer-avis-badge { color: var(--gris-moyen); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
 
   .footer {
     background: var(--noir-doux);
@@ -129,7 +129,7 @@ const year = new Date().getFullYear();
     font-size: 0.95rem;
   }
 
-  .footer-block h4 {
+  .footer-block h2 {
     font-family: var(--font-titre);
     font-size: 1.1rem;
     color: white;

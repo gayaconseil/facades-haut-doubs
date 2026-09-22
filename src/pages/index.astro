@@ -9,32 +9,32 @@ const metiers = [
   {
     titre: 'Isolation thermique',
     description: 'ITE performante pour réduire vos factures de chauffage et améliorer votre confort.',
-    iconeUrl: '/icones/isolation.png',
+    iconeUrl: '/icones/isolation.webp',
     href: '/isolation-thermique-exterieur/',
     badgeRge: true,
   },
   {
     titre: 'Ravalement de façade',
     description: 'Redonnez tout son éclat à votre maison avec un ravalement professionnel.',
-    iconeUrl: '/icones/ravalement.png',
+    iconeUrl: '/icones/ravalement.webp',
     href: '/ravalement-de-facade/',
   },
   {
     titre: 'Bardage extérieur',
     description: 'Bardage bois, composite ou métal pour habiller et protéger durablement votre façade.',
-    iconeUrl: '/icones/bardage.png',
+    iconeUrl: '/icones/bardage.webp',
     href: '/bardage-exterieur/',
   },
   {
     titre: 'Enduit de façade',
     description: 'Enduits décoratifs et techniques pour une protection longue durée.',
-    iconeUrl: '/icones/enduit.png',
+    iconeUrl: '/icones/enduit.webp',
     href: '/enduit-de-facade/',
   },
   {
     titre: 'Étanchéité de sol',
     description: 'Étanchéité des balcons, terrasses et escaliers extérieurs. Garantie décennale.',
-    iconeUrl: '/icones/etancheite.png',
+    iconeUrl: '/icones/etancheite.webp',
     href: '/etancheite-de-sol/',
   },
 ];
@@ -58,12 +58,12 @@ const piliers = [
 ];
 
 const realisations = [
-  { src: '/photos-chantiers/ite-cernay-1.jpg', titre: 'Isolation thermique extérieure', lieu: 'Cernay-l\'Église' },
-  { src: '/photos-chantiers/enduit-levier-1.jpg', titre: 'Enduit à la chaux', lieu: 'Levier' },
-  { src: '/photos-chantiers/ravalement-pontarlier-1.jpg', titre: 'Ravalement de façade', lieu: 'Pontarlier' },
-  { src: '/photos-chantiers/joint-pierre-lavans-1.jpg', titre: 'Joint de pierre', lieu: 'Lavans-Vuillafans' },
-  { src: '/photos-chantiers/enduit-mouthier-1.jpg', titre: 'Enduit chaux traditionnel', lieu: 'Mouthier-Haute-Pierre' },
-  { src: '/photos-chantiers/ite-vallerot-1.jpg', titre: 'Isolation thermique extérieure', lieu: 'Vallerot-lès-Belvoir' },
+  { src: '/photos-chantiers/ite-cernay-1-sm.webp', titre: 'Isolation thermique extérieure', lieu: 'Cernay-l\'Église' },
+  { src: '/photos-chantiers/enduit-levier-1-sm.webp', titre: 'Enduit à la chaux', lieu: 'Levier' },
+  { src: '/photos-chantiers/ravalement-pontarlier-1-sm.webp', titre: 'Ravalement de façade', lieu: 'Pontarlier' },
+  { src: '/photos-chantiers/joint-pierre-lavans-1-sm.webp', titre: 'Joint de pierre', lieu: 'Lavans-Vuillafans' },
+  { src: '/photos-chantiers/enduit-mouthier-1-sm.webp', titre: 'Enduit chaux traditionnel', lieu: 'Mouthier-Haute-Pierre' },
+  { src: '/photos-chantiers/ite-vallerot-1-sm.webp', titre: 'Isolation thermique extérieure', lieu: 'Vallerot-lès-Belvoir' },
 ];
 
 const secteurs = [
@@ -86,7 +86,7 @@ const secteurs = [
 ---
 
 <BaseLayout
-  title="Façades Haut-Doubs — Isolation, ravalement, bardage dans le Haut-Doubs"
+  title="Façades Haut-Doubs — Isolation, ravalement et bardage"
   description="Spécialiste de la rénovation et de l'isolation de façades dans le Haut-Doubs. Pontarlier, Morteau, Valdahon. 18 ans d'expérience, certifié RGE."
 >
   <Hero marque='<span class="o">F</span>açades <span class="o">H</span>aut-<span class="o">D</span>oubs' />
@@ -118,7 +118,7 @@ const secteurs = [
     <div class="container">
       <div class="presentation-grid">
         <div class="agence-card">
-          <img loading="lazy" decoding="async" src="/photos-fhd/agence-valdahon.jpg" alt="Future agence Façades Haut-Doubs à Valdahon" />
+          <img loading="lazy" decoding="async" src="/photos-fhd/agence-valdahon-sm.webp" alt="Future agence Façades Haut-Doubs à Valdahon" />
           <div class="agence-info">
             <span class="agence-badge">🏗️ Nouvelle agence</span>
             <strong>Bientôt à Valdahon</strong>
@@ -147,7 +147,7 @@ const secteurs = [
         </div>
 
         <div class="dejan-card">
-          <img loading="lazy" decoding="async" src="/photos-fb/facades-bisontines-photo-dejan-barisic.jpg" alt="Dejan Barisic, dirigeant" />
+          <img loading="lazy" decoding="async" src="/photos-fb/facades-bisontines-photo-dejan-barisic.webp" alt="Dejan Barisic, dirigeant" />
           <div class="dejan-info">
             <strong>Dejan Barisic</strong>
             <span>Dirigeant et fondateur</span>
@@ -338,7 +338,7 @@ const secteurs = [
     color: var(--orange-800);
     padding: 4px 10px;
     border-radius: 50px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;

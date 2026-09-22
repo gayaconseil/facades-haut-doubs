@@ -103,7 +103,7 @@ h1, h2, h3, h4 {
 /* Anti-débordement du texte (mots longs, zoom 200 %) */
 p, li, a, span, strong, em, blockquote, td, th, dd, dt,
 .realisation-titre, .avantage, .contrainte {
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
